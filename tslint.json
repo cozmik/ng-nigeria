@@ -19,13 +19,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "app",
+      "ng-nig",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "app",
+      "ng-nig",
       "kebab-case"
     ],
     "eofline": true,

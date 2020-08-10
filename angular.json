@@ -12,7 +12,7 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "ng-nig",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ng-nigeria"
+    }
+  },
+  "defaultProject": "ng-nigeria",
+  "cli": {
+    "analytics": "902e037f-d2b6-4d3c-93ec-c12a53cce319"
+  }
 }

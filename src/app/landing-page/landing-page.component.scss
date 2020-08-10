@@ -1,0 +1,9 @@
+@import "~src/assets/variables";
+
+section{
+  .hero{
+    background: url("~src/assets/images/landing_bg.png");
+    height: 100vh;
+    background-size: cover;
+  }
+}
