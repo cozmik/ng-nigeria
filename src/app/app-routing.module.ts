@@ -7,7 +7,8 @@ const routes: Routes = [
   {
     path: '',
     component: LandingPageComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
+    data: {animation: 'fade-in'}
   }
 ];
 
