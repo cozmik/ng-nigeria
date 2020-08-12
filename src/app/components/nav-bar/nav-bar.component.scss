@@ -1,1 +1,90 @@
 @import "~src/assets/variables";
+
+:host {
+  z-index: 100;
+}
+
+.site-title {
+  color: $secondary-text-color;
+}
+
+.navbar {
+  padding: 0 50px;
+  transition: 300ms ease-in-out;
+  *{
+    transition: 300ms ease-in-out;
+  }
+
+  .img-logo {
+    height: 80px;
+    width: 80px;
+  }
+
+  .navbar-nav {
+    align-items: center;
+
+    .nav-link {
+      text-decoration: none;
+      color: $secondary-text-color;
+
+      &.active-link {
+        color: $accent-color;
+      }
+    }
+  }
+
+  &.stickify {
+    top: -75px;
+    position: fixed;
+    width: 100%;
+    background: $secondary-text-color;
+    animation: slideDown 500ms 100ms forwards;
+
+
+    .navbar-nav {
+      .nav-link {
+        color: $primary-text-color;
+      }
+    }
+
+    .img-logo {
+      height: 60px;
+      width: 60px;
+    }
+
+    .site-title{
+      display: none;
+    }
+
+    button{
+      @include solid-button($secondary-text-color, $accent-color)
+    }
+  }
+}
+
+.nav-item {
+  margin-right: 40px;
+}
+
+
+.solid-button {
+  @include solid-button($color-black, $background-base);
+  text-transform: uppercase;
+  padding: 15px 25px;
+}
+
+@keyframes slideDown {
+  0% {
+    top: -75px;
+  }
+  100% {
+    top: 0
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 100%;
+  }
+}
+

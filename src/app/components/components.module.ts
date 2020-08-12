@@ -10,6 +10,7 @@ import {ModalComponent} from './modal/modal.component';
 import {SharedModule} from '../shared/shared.module';
 import { ProfileCard2Component } from './profile-card2/profile-card2.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {RouterModule} from '@angular/router';
 
 
 @NgModule({
@@ -24,18 +25,19 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     ProfileCard2Component
   ],
   exports: [
-    NavBarComponent,
     FooterComponent,
     CountDownTimerComponent,
     EventCardComponent,
     ProfileCardComponent,
     JobCardComponent,
     ModalComponent,
-    SharedModule
+    SharedModule,
+    NavBarComponent
   ],
   imports: [
     CommonModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    RouterModule
   ]
 })
 export class ComponentsModule {

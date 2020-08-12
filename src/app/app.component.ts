@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, HostListener} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 
 @Component({
@@ -8,10 +8,13 @@ import {RouterOutlet} from '@angular/router';
 })
 export class AppComponent {
   title = 'ng-nigeria';
+
   constructor() {
   }
 
-  prepareRoute(outlet: RouterOutlet) {
-    return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
-  }
+
+
+  // prepareRoute(outlet: RouterOutlet) {
+  //   return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
+  // }
 }
