@@ -43,14 +43,23 @@
         topic in-between? Join us and expect no dulling moments in our upcoming meetups, QA sessions, webinars, and
         more.
       </div>
-      <div>
+      <div class="contact">
         <span>
           Contact us:
         </span>
         <div>
-          <span>twitter icon</span>
-          <span>slack icon</span>
-          <span>whatsapp icon</span>
+          <span>
+            <a href="#">
+              <fa-icon [icon]="twitterIcon"></fa-icon></a>
+          </span>
+          <span>
+            <a href="#">
+              <fa-icon [style.color]="'#260501'" [icon]="slackIcon"></fa-icon>
+            </a>
+          </span>
+          <span>
+              <fa-icon [style.color]="'#5add8b'" [icon]="whatsAppIcon"></fa-icon>
+          </span>
         </div>
       </div>
     </article>
