@@ -8,6 +8,8 @@ import {ProfileCardComponent} from './profile-card/profile-card.component';
 import {JobCardComponent} from './job-card/job-card.component';
 import {ModalComponent} from './modal/modal.component';
 import {SharedModule} from '../shared/shared.module';
+import { ProfileCard2Component } from './profile-card2/profile-card2.component';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -18,7 +20,8 @@ import {SharedModule} from '../shared/shared.module';
     EventCardComponent,
     ProfileCardComponent,
     JobCardComponent,
-    ModalComponent
+    ModalComponent,
+    ProfileCard2Component
   ],
   exports: [
     NavBarComponent,
@@ -32,6 +35,7 @@ import {SharedModule} from '../shared/shared.module';
   ],
   imports: [
     CommonModule,
+    FontAwesomeModule
   ]
 })
 export class ComponentsModule {

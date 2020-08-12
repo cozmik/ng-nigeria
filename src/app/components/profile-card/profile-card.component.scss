@@ -1,1 +1,62 @@
 @import "~src/assets/variables";
+section{
+  display: grid;
+  grid-template-areas: 'image details'
+'line .';
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 1fr 1fr;
+  grid-column-gap: 15px;
+
+  .profile-image{
+    grid-area: image;
+    height: 80px;
+    width: 80px;
+    border-radius: 100%;
+    overflow: hidden;
+    justify-self: center;
+
+    img{
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .details{
+    margin-top: 10px;
+    grid-area: details;
+
+    .name{
+      color: $accent-color;
+      margin: 5px 0 8px;
+    }
+
+    .position{
+      margin-bottom: 5px;
+      font-size: 1em;
+    }
+
+    .social-accounts{
+      height: 10px;
+      display: block;
+      text-align: left;
+
+      a{
+        display: inline-block;
+        width: 20px;
+      }
+    }
+  }
+
+  .line{
+    justify-self: center;
+    grid-area: line;
+    height: auto;
+    width: 1px;
+    background: rgba($accent-color, .2);
+  }
+
+  &.invert{
+    grid-template-areas: 'line .'
+  'image details';
+  }
+}

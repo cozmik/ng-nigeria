@@ -39,7 +39,9 @@
     <article>
       <h2>About Angular Nigeria</h2>
       <div class="about-text">
-        Interested in Angular (1.x & 2), Frontend Engineering, Best Practices, Future of JavaScript, Tooling, and any topic in-between? Join us and expect no dulling moments in our upcoming meetups, QA sessions, webinars, and more.
+        Interested in Angular (1.x & 2), Frontend Engineering, Best Practices, Future of JavaScript, Tooling, and any
+        topic in-between? Join us and expect no dulling moments in our upcoming meetups, QA sessions, webinars, and
+        more.
       </div>
       <div>
         <span>
@@ -51,6 +53,43 @@
           <span>whatsapp icon</span>
         </div>
       </div>
+    </article>
+    <article class="profile-cards">
+      <ng-nig-profile-card
+        [profilePix]="orginizer.profilePix"
+        [facebook]="orginizer.facebook"
+        [name]="orginizer.name"
+        [position]="orginizer.position"
+        [twitter]="orginizer.twitter"
+        [stackoverflow]="orginizer.stackoverflow"
+      ></ng-nig-profile-card>
+      <ng-nig-profile-card
+        [profilePix]="orginizer.profilePix"
+        [name]="orginizer.name"
+        [facebook]="orginizer.facebook"
+        [twitter]="orginizer.twitter"
+        [slack]="orginizer.slack"
+        [position]="orginizer.position"
+        [stackoverflow]="orginizer.stackoverflow"
+      ></ng-nig-profile-card>
+      <ng-nig-profile-card
+        type="inverse"
+        [profilePix]="orginizer.profilePix"
+        [name]="orginizer.name"
+        [twitter]="orginizer.twitter"
+        [slack]="orginizer.slack"
+        [position]="orginizer.position"
+        [stackoverflow]="orginizer.stackoverflow"
+      ></ng-nig-profile-card>
+      <ng-nig-profile-card
+        type="inverse"
+        [profilePix]="orginizer.profilePix"
+        [twitter]="orginizer.twitter"
+        [slack]="orginizer.slack"
+        [name]="orginizer.name"
+        [position]="orginizer.position"
+      ></ng-nig-profile-card>
+
     </article>
 
   </div>
