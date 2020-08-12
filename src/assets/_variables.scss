@@ -1,29 +1,30 @@
-$accent-color: #FE4832;
+$accent-color: #fe4832;
 $header-color: #260501;
-$subtext-color: #403230C4;
+$subtext-color: #403230c4;
 $primary-text-color: #403230;
-$secondary-text-color: #FFFFFF;
+$secondary-text-color: #ffffff;
+$color-black: #000;
 
-$background-base: #FDFCFC;
-$background-dark: #FDF5F5;
+$background-base: #fdfcfc;
+$background-dark: #fdf5f5;
 
 @font-face {
   font-family: futura-medium;
   src: url("~src/assets/fonts/futura medium bt.ttf");
 }
 
-
 @mixin rounded-button() {
   border-radius: 200px;
   border: 2px solid;
   padding: 15px;
 
-  &:active, &:focus{
+  &:active,
+  &:focus {
     outline: none;
   }
 }
 
-@mixin solid-button($text-color, $background-color){
+@mixin solid-button($text-color, $background-color) {
   @include rounded-button;
   background: $background-color;
   color: $text-color;
@@ -51,7 +52,7 @@ $background-dark: #FDF5F5;
 
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: rgba($accent-color, .2);
+    background: rgba($accent-color, 0.2);
     border-radius: 50px;
   }
 }
