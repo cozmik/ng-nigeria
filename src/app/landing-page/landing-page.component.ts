@@ -16,6 +16,16 @@ export class LandingPageComponent implements OnInit {
   calenderIcon = faCalendar;
   eventDeadLine = '2020-08-31';
 
+  orginizer = {
+    name: 'kelechi Oti',
+    position: 'organizer',
+    profilePix: 'assets/images/funny-profile-pic59.jpg',
+    twitter: 'https://twitter.com',
+    facebook: 'https://facebook.com',
+    slack: 'https://slack.com',
+    stackoverflow: 'https://stackoverflow.com'
+  };
+
   constructor() { }
 
   ngOnInit(): void {

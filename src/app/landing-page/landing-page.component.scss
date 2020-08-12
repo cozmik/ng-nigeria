@@ -1,7 +1,5 @@
 @import "~src/assets/variables";
-
-section
-{
+section {
   @include scrollbar();
   .hero {
     position: relative;
@@ -26,13 +24,13 @@ section
 
       .meeting {
         display: flex;
-        font-size: .8em;
+        font-size: 0.8em;
         justify-content: space-evenly;
         width: 70%;
         margin-bottom: 2.5em;
 
         fa-icon {
-          color: rgba($accent-color, .8);
+          color: rgba($accent-color, 0.8);
         }
       }
 
@@ -44,26 +42,26 @@ section
       }
     }
 
-    .button-section{
+    .button-section {
       margin-top: 3em;
       display: flex;
       width: 70%;
       justify-content: space-evenly;
-      button{
+      button {
         width: 180px;
         text-transform: uppercase;
 
-        &.solid-button{
+        &.solid-button {
           @include solid-button($secondary-text-color, $accent-color);
         }
 
-        &.outline-button{
+        &.outline-button {
           @include outline-button($secondary-text-color, $accent-color);
         }
       }
     }
 
-    .timerContainer{
+    .timerContainer {
       position: absolute;
       width: 100%;
       bottom: -80px;
@@ -72,9 +70,17 @@ section
     }
   }
 
-  .about{
+  .about {
     margin-top: 40px;
     padding-top: 50px;
-  }
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
 
+    .profile-cards{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-auto-columns: 1fr 1fr;
+    }
+  }
 }
