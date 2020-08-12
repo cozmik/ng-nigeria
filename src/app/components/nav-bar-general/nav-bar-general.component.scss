@@ -5,16 +5,23 @@
 }
 
 .site-title {
-  color: $secondary-text-color;
+  color: $color-black;
 }
 
 .navbar {
   padding: 0 50px;
+  box-shadow: 0px 3px 40px #fcc2bb2e;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  opacity: 1;
 }
 
 .navbar-light .navbar-nav .nav-link {
   text-decoration: none;
-  color: $secondary-text-color;
+  color: $color-black;
+}
+
+.router-link-active {
+  color: $accent-color !important;
 }
 
 .nav-item {
@@ -28,7 +35,8 @@
 .solid-button {
   width: 180px;
   text-transform: uppercase;
-  @include solid-button($color-black, $background-base);
+  @include solid-button($secondary-text-color, $accent-color);
+  box-shadow: 0px 10px 40px #fe483233;
 }
 
 .img-logo {
