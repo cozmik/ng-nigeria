@@ -1,9 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
 @import "assets/variables";
+
+
 body{
   color: $primary-text-color;
   margin: 0;
   font-family: Futura-medium;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body::-webkit-scrollbar {
+  width: .35em;
+}
+
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: $accent-color;
+  outline: 1px solid $accent-color;
 }

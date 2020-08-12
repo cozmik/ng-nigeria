@@ -14,6 +14,7 @@ export class LandingPageComponent implements OnInit {
   locationIcon = faMapMarkerAlt;
   clockIcon = faClock;
   calenderIcon = faCalendar;
+  eventDeadLine = '2020-08-31';
 
   constructor() { }
 

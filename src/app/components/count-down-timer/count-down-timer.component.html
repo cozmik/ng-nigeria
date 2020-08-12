@@ -1,1 +1,19 @@
-<p>count-down-timer works!</p>
+<section>
+  <div class="first">
+    <span>{{countdown.days | number: '2.0-0'}}</span>
+    <span>days</span>
+  </div>
+  <div>
+    <span>{{countdown.hours | number: '2.0-0'}}</span>
+    <span>hours</span>
+  </div>
+  <div>
+    <span>{{countdown.minutes | number: '2.0-0'}}</span>
+    <span>mins</span>
+  </div>
+  <div class="last">
+    <span>{{countdown.seconds | number: '2.0-0'}}</span>
+    <span>secs</span>
+  </div>
+
+</section>
