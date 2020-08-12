@@ -1,5 +1,57 @@
 <section>
   <div class="hero">
+    <div class="container">
+      <h2>
+        Using Angular at Scale
+      </h2>
+      <article class="meeting">
+        <div>
+          <fa-icon [icon]="calenderIcon"></fa-icon>
+          October 3, 2019
+        </div>
+        <div>
+          <fa-icon [icon]="clockIcon"></fa-icon>
+          11:00AM - 1:00PM
+        </div>
+        <div>
+          <fa-icon [icon]="locationIcon"></fa-icon>
+          Lagos, Nigeria
+        </div>
+      </article>
+      <article class="description">
+        We would be hearing from experts who have used angular at a large scale and we would also discuss what issues
+        you have had scaling your applications.
+      </article>
+
+      <div class="button-section">
+        <button class="solid-button">Register now</button>
+        <button class="outline-button">View details</button>
+      </div>
+    </div>
+    <div class="timerContainer">
+      <ng-nig-count-down-timer [time]="eventDeadLine"></ng-nig-count-down-timer>
+    </div>
+  </div>
+
+  <div class="about">
+
+
+    <article>
+      <h2>About Angular Nigeria</h2>
+      <div class="about-text">
+        Interested in Angular (1.x & 2), Frontend Engineering, Best Practices, Future of JavaScript, Tooling, and any topic in-between? Join us and expect no dulling moments in our upcoming meetups, QA sessions, webinars, and more.
+      </div>
+      <div>
+        <span>
+          Contact us:
+        </span>
+        <div>
+          <span>twitter icon</span>
+          <span>slack icon</span>
+          <span>whatsapp icon</span>
+        </div>
+      </div>
+    </article>
 
   </div>
 </section>

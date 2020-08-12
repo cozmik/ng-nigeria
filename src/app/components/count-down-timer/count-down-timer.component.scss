@@ -1,1 +1,35 @@
 @import "~src/assets/variables";
+section{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 2px;
+  background: #f7f7f7;
+  box-shadow: 0px 3px 40px rgba($primary-text-color, .2);
+  border-radius: 6px;
+  width: fit-content;
+
+  div{
+    background: white;
+    font-size: 4em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 40px;
+    color: $header-color;
+
+    span:last-child{
+      color: $primary-text-color;
+      font-size: 1.2rem;
+      text-transform: capitalize;
+    }
+    &.first{
+      border-top-left-radius: 6px;
+      border-bottom-left-radius: 6px;
+    }
+
+    &.last{
+      border-top-right-radius: 6px;
+      border-bottom-right-radius: 6px;
+    }
+  }
+}

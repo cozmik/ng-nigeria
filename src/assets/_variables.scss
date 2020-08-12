@@ -2,6 +2,56 @@ $accent-color: #FE4832;
 $header-color: #260501;
 $subtext-color: #403230C4;
 $primary-text-color: #403230;
+$secondary-text-color: #FFFFFF;
 
 $background-base: #FDFCFC;
 $background-dark: #FDF5F5;
+
+@font-face {
+  font-family: futura-medium;
+  src: url("~src/assets/fonts/futura medium bt.ttf");
+}
+
+
+@mixin rounded-button() {
+  border-radius: 200px;
+  border: 2px solid;
+  padding: 15px;
+
+  &:active, &:focus{
+    outline: none;
+  }
+}
+
+@mixin solid-button($text-color, $background-color){
+  @include rounded-button;
+  background: $background-color;
+  color: $text-color;
+  border-color: $background-color;
+}
+
+@mixin outline-button($text-color, $border-color) {
+  @include rounded-button;
+  background: transparent;
+  color: $text-color;
+  border-color: $border-color;
+}
+
+@mixin scrollbar() {
+  /* width */
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px $background-dark;
+    border-radius: 5px;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgba($accent-color, .2);
+    border-radius: 50px;
+  }
+}

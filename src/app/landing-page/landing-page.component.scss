@@ -1,9 +1,80 @@
 @import "~src/assets/variables";
 
-section{
-  .hero{
-    background: url("~src/assets/images/landing_bg.png");
+section
+{
+  @include scrollbar();
+  .hero {
+    position: relative;
+    background: url("~src/assets/images/landing_bg.png") rgba(0, 0, 0, 0.6);
+    background-blend-mode: multiply;
     height: 100vh;
     background-size: cover;
+
+    .container {
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: $secondary-text-color;
+      max-width: 610px;
+
+      h2 {
+        margin-top: 35vh;
+        font-size: 3em;
+        font-weight: normal;
+      }
+
+      .meeting {
+        display: flex;
+        font-size: .8em;
+        justify-content: space-evenly;
+        width: 70%;
+        margin-bottom: 2.5em;
+
+        fa-icon {
+          color: rgba($accent-color, .8);
+        }
+      }
+
+      .description {
+        font-size: 1.05em;
+        font-weight: 500;
+        text-align: center;
+        line-height: 1.7;
+      }
+    }
+
+    .button-section{
+      margin-top: 3em;
+      display: flex;
+      width: 70%;
+      justify-content: space-evenly;
+      button{
+        width: 180px;
+        text-transform: uppercase;
+
+        &.solid-button{
+          @include solid-button($secondary-text-color, $accent-color);
+        }
+
+        &.outline-button{
+          @include outline-button($secondary-text-color, $accent-color);
+        }
+      }
+    }
+
+    .timerContainer{
+      position: absolute;
+      width: 100%;
+      bottom: -80px;
+      display: flex;
+      justify-content: center;
+    }
   }
+
+  .about{
+    margin-top: 40px;
+    padding-top: 50px;
+  }
+
 }
