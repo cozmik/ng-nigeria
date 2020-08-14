@@ -23,3 +23,12 @@ body::-webkit-scrollbar-thumb {
   background-color: $accent-color;
   outline: 1px solid $accent-color;
 }
+
+.card2{
+  padding: 40px;
+  box-shadow: 0 3px 40px #FFD3CE29;
+  background: $secondary-text-color;
+  border-left: $accent-color 4px solid;
+  border-radius: 4px;
+  width: fit-content;
+}

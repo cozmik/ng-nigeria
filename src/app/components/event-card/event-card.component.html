@@ -1,1 +1,34 @@
-<p>event-card works!</p>
+<section class="card2">
+  <img [src]="eventImage" class="image">
+  <div class="details">
+    <h4>{{title}}</h4>
+
+    <p>{{description}}</p>
+  </div>
+
+  <div class="info">
+    <div class="event-calender">
+       <span>
+         <fa-icon [icon]="calenderIcon"></fa-icon>
+         {{date}}
+       </span>
+      <span>
+         <fa-icon [icon]="clockIcon"></fa-icon>
+         {{time}}
+       </span>
+      <span>
+         <fa-icon [icon]="locationIcon"></fa-icon>
+        {{location}}
+       </span>
+    </div>
+    <button [style.visibility]="past ? 'hidden': 'visible'" (click)="clickButton()">Register now</button>
+  </div>
+
+  <div class="attendants">
+    <img [src]="sampleAttendantsPix[0]">
+    <img [src]="sampleAttendantsPix[1]">
+    <span>
+      {{totalAttendees}} people are attending
+    </span>
+  </div>
+</section>

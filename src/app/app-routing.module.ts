@@ -1,7 +1,7 @@
-import { JobsComponent } from './components/jobs/jobs.component';
-import { PhotosComponent } from './components/photos/photos.component';
-import { MembersComponent } from './components/members/members.component';
-import { EventsComponent } from './components/events/events.component';
+import { JobsComponent } from './jobs/jobs.component';
+import { PhotosComponent } from './photos/photos.component';
+import { MembersComponent } from './members/members.component';
+import { EventsComponent } from './events/events.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LandingPageComponent } from './landing-page/landing-page.component';

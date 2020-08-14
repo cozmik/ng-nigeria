@@ -54,7 +54,7 @@
           </span>
           <span>
             <a href="#">
-              <fa-icon [style.color]="'#260501'" [icon]="slackIcon"></fa-icon>
+              <fa-icon [style.color]="'#de156c'" [icon]="slackIcon"></fa-icon>
             </a>
           </span>
           <span>
@@ -101,5 +101,53 @@
 
     </article>
 
+  </div>
+
+  <div class="upcoming events">
+    <h2>Upcoming Events</h2>
+
+    <div class="container">
+      <ng-nig-event-card *ngFor="let event of upcomingEvents"
+                         [eventImage]="event.image"
+                         [past]="false"
+                         [description]="event.desc"
+                         [title]="event.title"
+                         [sampleAttendantsPix]="event.attendees.sample"
+                         [date]="event.date"
+                         [location]="event.location"
+                         [time]="event.time"
+                         [totalAttendees]="event.attendees.total"
+                         (registerClicked)="register()"
+      ></ng-nig-event-card>
+    </div>
+  </div>
+
+  <div class="events">
+    <h2>Past Events</h2>
+
+    <div class="container">
+      <ng-nig-event-card *ngFor="let event of upcomingEvents"
+                         [eventImage]="event.image"
+                         [description]="event.desc"
+                         [past]="true"
+                         [title]="event.title"
+                         [sampleAttendantsPix]="event.attendees.sample"
+                         [date]="event.date"
+                         [location]="event.location"
+                         [time]="event.time"
+                         [totalAttendees]="event.attendees.total"
+                         (registerClicked)="register()"
+      ></ng-nig-event-card>
+
+      <div class="button-container">
+        <button class="solid-button">see more</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="eventVideo">
+    <div class="vid">
+
+    </div>
   </div>
 </section>
