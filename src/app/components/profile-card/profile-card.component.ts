@@ -33,20 +33,20 @@ export class ProfileCardComponent implements OnInit, OnChanges {
       facebook:
         {
           icon: faFacebookF,
-          color: '#00ACEE',
+          color: '#4064ac',
           link: changes.facebook?.currentValue
         },
       slack:
         {
           icon: faSlackHash,
-          color: '#00ACEE',
+          color: '#de156c',
           link: changes.slack?.currentValue
         },
 
       stackoverflow:
         {
           icon: faStackOverflow,
-          color: '#00ACEE',
+          color: '#f48024',
           link: changes.stackoverflow?.currentValue
         },
     };

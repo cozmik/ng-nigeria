@@ -8,10 +8,10 @@ import { ComponentsModule } from './components/components.module';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { EventsComponent } from './components/events/events.component';
-import { PhotosComponent } from './components/photos/photos.component';
-import { MembersComponent } from './components/members/members.component';
-import { JobsComponent } from './components/jobs/jobs.component';
+import { EventsComponent } from './events/events.component';
+import { PhotosComponent } from './photos/photos.component';
+import { MembersComponent } from './members/members.component';
+import { JobsComponent } from './jobs/jobs.component';
 @NgModule({
   declarations: [
     AppComponent,

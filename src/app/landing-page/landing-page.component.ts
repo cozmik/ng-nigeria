@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {fadeInAnimation} from '../transition';
 import {faMapMarkerAlt} from '@fortawesome/free-solid-svg-icons';
 import {faCalendar, faClock} from '@fortawesome/free-regular-svg-icons';
@@ -12,13 +12,45 @@ import {faSlackHash, faTwitter, faWhatsapp} from '@fortawesome/free-brands-svg-i
 })
 export class LandingPageComponent implements OnInit {
 
+  upcomingEvents = [
+    {
+      title: 'Angular for Everyone',
+      desc: 'This Meetup is intended for everyone, the product person,' +
+        ' the designer, the angular beginner, the intermediate and the' +
+        ' experts. We will be having people talk about easier',
+      date: 'October 3, 2019',
+      time: '11:00AM - 1:00PM',
+      location: 'Lagos, Nigeria',
+      attendees: {
+        sample: ['assets/images/profile-pix2.jpg', 'assets/images/profile-pix1.jpg'],
+        total: 50
+      },
+      image: 'assets/images/angular-event-sample.png'
+    },
+    {
+      title: 'Angular for Everyone',
+      desc: 'This Meetup is intended for everyone, the product person,' +
+        ' the designer, the angular beginner, the intermediate and the' +
+        ' experts. We will be having people talk about easier',
+      date: 'October 3, 2019',
+      time: '11:00AM - 1:00PM',
+      location: 'Lagos, Nigeria',
+      attendees: {
+        sample: ['assets/images/profile-pix2.jpg', 'assets/images/profile-pix1.jpg'],
+        total: 50
+      },
+      image: 'assets/images/angular-event-sample.png'
+    }
+  ];
+
   locationIcon = faMapMarkerAlt;
   clockIcon = faClock;
+  calenderIcon = faCalendar;
+
   twitterIcon = faTwitter;
   whatsAppIcon = faWhatsapp;
   slackIcon = faSlackHash;
 
-  calenderIcon = faCalendar;
   eventDeadLine = '2020-08-31';
 
   orginizer = {
@@ -31,9 +63,14 @@ export class LandingPageComponent implements OnInit {
     stackoverflow: 'https://stackoverflow.com'
   };
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
 
+
+  register() {
+    console.log('clicked');
+  }
 }

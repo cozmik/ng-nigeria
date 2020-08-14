@@ -1,6 +1,18 @@
 @import "~src/assets/variables";
 section {
   @include scrollbar();
+  button {
+    width: 180px;
+    text-transform: uppercase;
+
+    &.solid-button {
+      @include solid-button($secondary-text-color, $accent-color);
+    }
+
+    &.outline-button {
+      @include outline-button($secondary-text-color, $accent-color);
+    }
+  }
   .hero {
     position: relative;
     background: url("~src/assets/images/landing_bg.png") rgba(0, 0, 0, 0.6);
@@ -41,24 +53,11 @@ section {
         line-height: 1.7;
       }
     }
-
     .button-section {
       margin-top: 3em;
       display: flex;
       width: 70%;
       justify-content: space-evenly;
-      button {
-        width: 180px;
-        text-transform: uppercase;
-
-        &.solid-button {
-          @include solid-button($secondary-text-color, $accent-color);
-        }
-
-        &.outline-button {
-          @include outline-button($secondary-text-color, $accent-color);
-        }
-      }
     }
 
     .timerContainer {
@@ -80,12 +79,13 @@ section {
     h2{
       font-size: 2.5em;
       margin-bottom: 20px;
+      color: $header-color;
     }
 
     .profile-cards{
       display: grid;
       grid-template-columns: 1fr 1fr;
-      grid-auto-columns: 1fr 1fr;
+      grid-auto-columns: 300px 300px;
     }
 
     .about-text{
@@ -103,6 +103,49 @@ section {
         span{
           display: inline-block;
           width: 20px;
+        }
+      }
+    }
+  }
+
+  .events{
+    position: relative;
+    min-height: 100vh;
+
+    &.upcoming:before {
+      content: "";
+      position: absolute;
+      top: 25%;
+      z-index: -1;
+      height: 60vw;
+      width: 100%;
+      background: $background-dark;
+      transform: skew(0deg, -10deg);
+    }
+  }
+
+  .events{
+    h2 {
+      padding-top: 22%;
+      color: $header-color;
+      text-align: center;
+    }
+
+    .container{
+      margin-top: 50px;
+      max-width: fit-content;
+
+      ng-nig-event-card{
+        margin-bottom: 40px;
+        display: block;
+      }
+
+      .button-container {
+        text-align: center;
+        margin-top: 50px;
+        button {
+          padding-top: 10px;
+          padding-bottom: 10px;
         }
       }
     }
