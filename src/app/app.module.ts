@@ -12,6 +12,8 @@ import { EventsComponent } from './layout/events/events.component';
 import { PhotosComponent } from './layout/photos/photos.component';
 import { MembersComponent } from './layout/members/members.component';
 import { JobsComponent } from './layout/jobs/jobs.component';
+import { MembershipComponent } from './layout/membership/membership.component';
+import { NotFoundComponent } from './layout/not-found/not-found.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +22,8 @@ import { JobsComponent } from './layout/jobs/jobs.component';
     // PhotosComponent,
     MembersComponent,
     JobsComponent,
+    MembershipComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
