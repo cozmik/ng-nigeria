@@ -5,6 +5,8 @@ import { EventsComponent } from './layout/events/events.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LandingPageComponent } from './layout/landing-page/landing-page.component';
+import {MembershipComponent} from './layout/membership/membership.component';
+import {NotFoundComponent} from './layout/not-found/not-found.component';
 
 
 const routes: Routes = [
@@ -22,6 +24,10 @@ const routes: Routes = [
     path: 'members',
     component: MembersComponent
   },
+  {
+    path: 'join',
+    component: MembershipComponent
+  },
   // {
   //   path: 'photos',
   //   component: PhotosComponent,
@@ -29,6 +35,10 @@ const routes: Routes = [
   {
     path: 'jobs',
     component: JobsComponent
+  },
+  {
+    path: '**',
+    component: NotFoundComponent
   }
 ];
 

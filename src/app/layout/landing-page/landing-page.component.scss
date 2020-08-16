@@ -17,16 +17,13 @@ section {
     width: 180px;
     text-transform: uppercase;
 
-    &.solid-button {
-      @include solid-button($secondary-text-color, $accent-color);
-    }
-
     &.outline-button {
       @include outline-button($secondary-text-color, $accent-color);
     }
   }
   .contain {
-    margin:70px 80px;
+    margin:70px 80px 0;
+    padding-bottom: 200px;
   }
   .hero {
     position: relative;
