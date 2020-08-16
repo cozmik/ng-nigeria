@@ -1,13 +1,19 @@
 <section class="main">
-<!--  <article class="page-hero">-->
-<!--    <h2>-->
-<!--      Job Opportunities-->
-<!--    </h2>-->
-<!--    <p>-->
-<!--      We always post job opportunities from top companies. So whether you are an Angular member or you just stumbled on-->
-<!--      our website, we encourage you to apply.-->
-<!--    </p>-->
-<!--  </article>-->
+  <article class="page-hero">
+    <h2>
+      Job Opportunities
+    </h2>
+    <p>
+      We always post job opportunities from top companies. So whether you are an Angular member or you just stumbled on
+      our website, we encourage you to apply.
+    </p>
+  </article>
 
-  <ng-nig-job-card></ng-nig-job-card>
+  <div class="job-section">
+    <div>
+    <h4>{{jobs.length}} Job Opportunities Available</h4>
+  <ng-nig-job-card *ngFor="let job of jobs" [title]="job.title" [location]="job.location"
+                   [type]="job.type" [about]="job.about"></ng-nig-job-card>
+    </div>
+  </div>
 </section>
