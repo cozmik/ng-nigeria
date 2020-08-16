@@ -26,10 +26,10 @@ const routes: Routes = [
   //   path: 'photos',
   //   component: PhotosComponent,
   // },
-  // {
-  //   path: 'jobs',
-  //   component: JobsComponent
-  // }
+  {
+    path: 'jobs',
+    component: JobsComponent
+  }
 ];
 
 @NgModule({

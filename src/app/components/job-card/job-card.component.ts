@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'ng-nig-job-card',
@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JobCardComponent implements OnInit {
 
-  constructor() { }
+  @Output() applyClicked: EventEmitter<string> = new EventEmitter();
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
 
+  apply(): void {
+    this.applyClicked.emit();
+  }
 }
