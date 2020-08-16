@@ -43,11 +43,6 @@ section{
 
     button{
       margin-top: 20px;
-      @include solid-button($secondary-text-color, $accent-color);
-      padding-top: 8px;
-      padding-bottom: 8px;
-      text-transform: uppercase;
-      font-size: .8em;
     }
   }
 

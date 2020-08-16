@@ -19,7 +19,7 @@ import { JobsComponent } from './layout/jobs/jobs.component';
     EventsComponent,
     // PhotosComponent,
     MembersComponent,
-    // JobsComponent,
+    JobsComponent,
   ],
   imports: [
     BrowserModule,

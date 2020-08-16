@@ -1,1 +1,51 @@
 @import "~src/assets/variables";
+
+section {
+  display: grid;
+  grid-template-areas: 'title .'
+                       'desc button'
+                       'extras .';
+
+  grid-column-gap: 150px;
+  grid-row-gap: 30px;
+
+  .title {
+    grid-area: title;
+    font-weight: bold;
+    font-size: 1.3em;
+    color: $header-color;
+  }
+
+  .desc {
+    grid-area: desc;
+    font-size: 1.1em;
+  }
+
+  .extras {
+    grid-area: extras;
+
+    span {
+      display: inline-block;
+      color: $subtext-color;
+      font-size: 1em;
+
+      &:first-child:after {
+        content: '';
+        display: inline-block;
+        height: 5px;
+        width: 5px;
+        background: $accent-color;
+        border-radius: 100%;
+        margin-right: 10px;
+        margin-left: 10px;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .apply {
+    grid-area: button;
+    padding: 15px 40px;
+    height: fit-content;
+  }
+}
