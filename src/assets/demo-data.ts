@@ -320,3 +320,28 @@ export const demoMembers = [
   }
 ];
 
+export const jobs = [
+  {
+    title: 'Senior Front-End Engineer',
+    about: 'Terragon Group is looking for a senior front-end engineer who is curious, empathetic, and kind, and who’re looking to launch' +
+      ' their career at a fast-growing tech startup that cares.',
+    type: 'Fulltime',
+    location: 'Lagos, Nigeria'
+  },
+  {
+    title: 'Senior Front-End Engineer',
+    about: 'Terragon Group is looking for a senior front-end engineer who is curious, empathetic, and kind, and who’re looking to launch' +
+      ' their career at a fast-growing tech startup that cares.',
+    type: 'Fulltime',
+    location: 'Lagos, Nigeria'
+  },
+  {
+    title: 'Senior Front-End Engineer',
+    about: 'Terragon Group is looking for a senior front-end engineer who is curious, empathetic, and kind, and who’re looking to launch' +
+      ' their career at a fast-growing tech startup that cares.',
+    type: 'Fulltime',
+    location: 'Lagos, Nigeria'
+  }
+]
+
+
