@@ -1,0 +1,5 @@
+<div class="video-container notPlaying" [ngStyle]="{'height.px': height, 'width.px': width}">
+  <div class="info"><span>{{title}}</span> <span><fa-icon [icon]="shareIcon"></fa-icon> </span></div>
+  <video #target class="video-js vjs-fill theme" playsinline preload="auto"></video>
+<!--  <button class="play-button"><fa-icon [icon]="playIcon"></fa-icon> </button>-->
+</div>

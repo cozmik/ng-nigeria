@@ -1,0 +1,17 @@
+@import "src/assets/variables";
+
+ng-nig-event-card{
+  margin-bottom: 20px;
+}
+
+tabs {
+  ::ng-deep
+  ul {
+    width: 60%;
+  }
+}
+::ng-deep .tabs__panel {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+}

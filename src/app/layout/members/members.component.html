@@ -1,0 +1,18 @@
+<section class="main tab">
+  <tabs>
+    <tab tabTitle="Leadership Team">
+      <ng-nig-profile-card2 *ngFor="let member of members" [profilePix]="member.profilePix"
+                            userName="{{member.firstName + ' ' + member.lastName}}"
+                            job="{{member.jobRole}}, {{member.company}}"
+                            [socials]="member.socials"
+      ></ng-nig-profile-card2>
+    </tab>
+    <tab tabTitle="Members">
+      <ng-nig-profile-card2 *ngFor="let member of members" [profilePix]="member.profilePix"
+                            userName="{{member.firstName + ' ' + member.lastName}}"
+                            job="{{member.jobRole}}, {{member.company}}"
+                            [socials]="member.socials"
+      ></ng-nig-profile-card2>
+    </tab>
+  </tabs>
+</section>

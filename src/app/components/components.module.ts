@@ -8,9 +8,11 @@ import {ProfileCardComponent} from './profile-card/profile-card.component';
 import {JobCardComponent} from './job-card/job-card.component';
 import {ModalComponent} from './modal/modal.component';
 import {SharedModule} from '../shared/shared.module';
-import { ProfileCard2Component } from './profile-card2/profile-card2.component';
+import {ProfileCard2Component} from './profile-card2/profile-card2.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {RouterModule} from '@angular/router';
+import {VideoPlayerComponent} from './video-player/video-player.component';
+import {TabModule} from 'angular-tabs-component';
 
 
 @NgModule({
@@ -22,7 +24,8 @@ import {RouterModule} from '@angular/router';
     ProfileCardComponent,
     JobCardComponent,
     ModalComponent,
-    ProfileCard2Component
+    ProfileCard2Component,
+    VideoPlayerComponent,
   ],
   exports: [
     FooterComponent,
@@ -32,11 +35,15 @@ import {RouterModule} from '@angular/router';
     JobCardComponent,
     ModalComponent,
     SharedModule,
-    NavBarComponent
+    TabModule,
+    NavBarComponent,
+    VideoPlayerComponent,
+    ProfileCard2Component
   ],
   imports: [
     CommonModule,
     FontAwesomeModule,
+    TabModule,
     RouterModule
   ]
 })

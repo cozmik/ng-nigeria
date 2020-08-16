@@ -1,1 +1,15 @@
-<p>profile-card2 works!</p>
+<div class="card-container">
+  <div class="profile-pix">
+    <img [src]="profilePix">
+  </div>
+  <h4>{{userName}}</h4>
+  <div class="job">{{job}}</div>
+
+  <div class="social">
+    <ng-template ngFor let-social [ngForOf]="socialAccounts | keyvalue">
+      <a *ngIf="social.value.link" [href]="social.value.link" target="_blank">
+        <fa-icon *ngIf="social.value.link" [icon]="social.value.icon" [style.color]="social.value.color"></fa-icon>
+      </a>
+    </ng-template>
+  </div>
+</div>

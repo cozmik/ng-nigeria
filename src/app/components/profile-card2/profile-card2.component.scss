@@ -1,0 +1,52 @@
+@import "~src/assets/variables";
+
+div.card-container {
+  box-shadow: 0 3px 40px rgba($primary-text-color, .2);
+  background: $secondary-text-color;
+  width: fit-content;
+  text-align: center;
+  padding: 40px 40px 25px;
+
+  .profile-pix {
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+    overflow: hidden;
+    display: inline-block;
+    overflow: hidden;
+
+    img {
+      height: 100%;
+      width: inherit;
+      //border-radius: 100%;
+    }
+  }
+
+  h4 {
+    font-size: 1em;
+    font-weight: 600;
+  }
+
+  .job {
+    font-size: .8em;
+    font-weight: 200;
+    height: 40px;
+  }
+
+  .social {
+    height: 10px;
+    display: block;
+    a {
+      display: inline-block;
+      width: 25px;
+    }
+  }
+
+  //span {
+  //  display: inline-block;
+  //
+  //  fa-icon {
+  //    font-size: .8em;
+  //  }
+  //}
+}

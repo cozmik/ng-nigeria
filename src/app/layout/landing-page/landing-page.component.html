@@ -1,0 +1,189 @@
+<section class="main">
+  <div class="hero">
+    <div class="container">
+      <h2>
+        Using Angular at Scale
+      </h2>
+      <article class="meeting">
+        <div>
+          <fa-icon [icon]="calenderIcon"></fa-icon>
+          October 3, 2019
+        </div>
+        <div>
+          <fa-icon [icon]="clockIcon"></fa-icon>
+          11:00AM - 1:00PM
+        </div>
+        <div>
+          <fa-icon [icon]="locationIcon"></fa-icon>
+          Lagos, Nigeria
+        </div>
+      </article>
+      <article class="description">
+        We would be hearing from experts who have used angular at a large scale and we would also discuss what issues
+        you have had scaling your applications.
+      </article>
+
+      <div class="button-section">
+        <button class="solid-button">Register now</button>
+        <button class="outline-button">View details</button>
+      </div>
+    </div>
+    <div class="timerContainer">
+      <ng-nig-count-down-timer [time]="eventDeadLine"></ng-nig-count-down-timer>
+    </div>
+  </div>
+
+  <div class="about contain">
+
+
+    <article>
+      <h3>About Angular Nigeria</h3>
+      <div class="about-text">
+        Interested in Angular (1.x & 2), Frontend Engineering, Best Practices, Future of JavaScript, Tooling, and any
+        topic in-between? Join us and expect no dulling moments in our upcoming meetups, QA sessions, webinars, and
+        more.
+      </div>
+      <div class="contact">
+        <span>
+          Contact us:
+        </span>
+        <div>
+          <span>
+            <a href="#">
+              <fa-icon [icon]="twitterIcon"></fa-icon></a>
+          </span>
+          <span>
+            <a href="#">
+              <fa-icon [style.color]="'#de156c'" [icon]="slackIcon"></fa-icon>
+            </a>
+          </span>
+          <span>
+              <fa-icon [style.color]="'#5add8b'" [icon]="whatsAppIcon"></fa-icon>
+          </span>
+        </div>
+      </div>
+    </article>
+    <article class="profile-cards">
+      <ng-nig-profile-card
+        [profilePix]="orginizer.profilePix"
+        [facebook]="orginizer.facebook"
+        [name]="orginizer.name"
+        [position]="orginizer.position"
+        [twitter]="orginizer.twitter"
+        [stackoverflow]="orginizer.stackoverflow"
+      ></ng-nig-profile-card>
+      <ng-nig-profile-card
+        [profilePix]="orginizer.profilePix"
+        [name]="orginizer.name"
+        [facebook]="orginizer.facebook"
+        [twitter]="orginizer.twitter"
+        [slack]="orginizer.slack"
+        [position]="orginizer.position"
+        [stackoverflow]="orginizer.stackoverflow"
+      ></ng-nig-profile-card>
+      <ng-nig-profile-card
+        type="inverse"
+        [profilePix]="orginizer.profilePix"
+        [name]="orginizer.name"
+        [twitter]="orginizer.twitter"
+        [slack]="orginizer.slack"
+        [position]="orginizer.position"
+        [stackoverflow]="orginizer.stackoverflow"
+      ></ng-nig-profile-card>
+      <ng-nig-profile-card
+        type="inverse"
+        [profilePix]="orginizer.profilePix"
+        [twitter]="orginizer.twitter"
+        [slack]="orginizer.slack"
+        [name]="orginizer.name"
+        [position]="orginizer.position"
+      ></ng-nig-profile-card>
+
+    </article>
+
+  </div>
+
+  <div class="upcoming events">
+    <h2>Upcoming Events</h2>
+
+    <div class="container">
+        <ng-nig-event-card *ngFor="let event of upComing"
+                           [eventImage]="event.image"
+                           [past]="eventIsPast(event.date)"
+                           [description]="event.desc"
+                           [title]="event.title"
+                           [sampleAttendantsPix]="event.attendees.sample"
+                           [date]="event.date"
+                           [location]="event.location"
+                           [time]="event.time"
+                           [totalAttendees]="event.attendees.total"
+                           (registerClicked)="register()"
+        ></ng-nig-event-card>
+    </div>
+  </div>
+
+  <div class="events">
+    <h2>Past Events</h2>
+
+    <div class="container">
+      <ng-nig-event-card *ngFor="let event of pastEvents"
+                         [eventImage]="event.image"
+                         [description]="event.desc"
+                         [past]="eventIsPast(event.date)"
+                         [title]="event.title"
+                         [sampleAttendantsPix]="event.attendees.sample"
+                         [date]="event.date"
+                         [location]="event.location"
+                         [time]="event.time"
+                         [totalAttendees]="event.attendees.total"
+                         (registerClicked)="register()"
+      ></ng-nig-event-card>
+
+      <div class="button-container">
+        <button class="solid-button">see more</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="eventVideo contain">
+    <div class="container">
+      <ng-nig-video-player [height]="480" [title]="'Interview with an applicant'" [width]="854"
+                           [options]="playerOptions"></ng-nig-video-player>
+    </div>
+  </div>
+  <div class="sponsors-section contain">
+    <h2>Sponsors</h2>
+    <h6>Our amazing sponsors</h6>
+    <article>
+      <h5>Platinum</h5>
+      <div>
+        <img src="../../../assets/images/logos/terragon_logo.png">
+        <img src="../../../assets/images/logos/Andela%20Nigeria%20Logo.png">
+      </div>
+    </article>
+    <article>
+      <h5>Gold</h5>
+      <div>
+        <img src="../../../assets/images/logos/Decagon%20Logo.png">
+        <img src="../../../assets/images/logos/Softcom%20Logo.png">
+      </div>
+    </article>
+    <article>
+      <h5>Silver</h5>
+      <div>
+        <img src="../../../assets/images/logos/Summitech%20Computing%20Limited%20Logo.png">
+      </div>
+    </article>
+    <article>
+      <h5>Bronze</h5>
+      <div>
+        <img src="../../../assets/images/logos/terragon_logo.png">
+        <img src="../../../assets/images/logos/Andela%20Nigeria%20Logo.png">
+      </div>
+    </article>
+
+    <div class="button-container">
+      <button class="solid-button">see more</button>
+    </div>
+  </div>
+</section>

@@ -18,7 +18,7 @@ export class CountDownTimerComponent implements OnInit {
     this.startCountDown();
   }
 
-  startCountDown() {
+  startCountDown(): void {
     setInterval(() => {
       const currentTime = new Date().toISOString().split('.')[0];
       this.countdown = this.eventDate.diff(DateTime.fromISO(currentTime), ['days', 'hours', 'minutes', 'seconds']).values;

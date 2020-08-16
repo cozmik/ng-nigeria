@@ -4,14 +4,14 @@
   </article>
   <article class="details">
     <h4 class="name">{{name | titlecase}}</h4>
-  <div class="position">{{position | titlecase}}</div>
-  <div class="social-accounts">
-    <ng-template ngFor let-social [ngForOf]="socialAccounts | keyvalue">
-    <a *ngIf="social.value.link" [href]="social.value.link" target="_blank">
-    <fa-icon *ngIf="social.value.link" [icon]="social.value.icon" [style.color]="social.value.color"></fa-icon>
-    </a>
-    </ng-template>
-  </div>
+    <div class="position">{{position | titlecase}}</div>
+    <div class="social-accounts">
+      <ng-template ngFor let-social [ngForOf]="socialAccounts | keyvalue">
+        <a *ngIf="social.value.link" [href]="social.value.link" target="_blank">
+          <fa-icon *ngIf="social.value.link" [icon]="social.value.icon" [style.color]="social.value.color"></fa-icon>
+        </a>
+      </ng-template>
+    </div>
   </article>
   <div class="line"></div>
 </section>
