@@ -4,9 +4,11 @@ ng-nig-event-card{
   margin-bottom: 20px;
 }
 
-::ng-deep
-ul {
-  width: 60%;
+tabs {
+  ::ng-deep
+  ul {
+    width: 60%;
+  }
 }
 ::ng-deep .tabs__panel {
     display: flex !important;
