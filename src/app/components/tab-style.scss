@@ -1,0 +1,34 @@
+@import "~src/assets/variables";
+
+
+section.tab {
+  padding-top: 200px;
+
+  tabs{
+    min-height: auto;
+    ::ng-deep ul {
+      z-index: 2;
+      margin-bottom: 50px;
+      border-radius: 30px;
+
+      li {
+        padding: 16px 40px;
+        width: 50%;
+        text-align: center;
+
+        &.active {
+          background: $accent-color !important;
+        }
+      }
+    }
+    tab{
+
+      ::ng-deep .tabs__panel {
+        padding-top: 50px;
+        background: $background-base;
+        box-shadow: none;
+      }
+    }
+  }
+
+}

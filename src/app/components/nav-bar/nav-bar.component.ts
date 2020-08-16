@@ -1,5 +1,5 @@
-import {Component, HostListener, Input, OnInit} from '@angular/core';
-import {Event, NavigationStart, Router} from '@angular/router';
+import {AfterViewInit, Component, HostListener, Input, OnInit} from '@angular/core';
+import {Event, ResolveEnd, Router} from '@angular/router';
 
 @Component({
   selector: 'ng-nig-nav-bar',
@@ -12,15 +12,22 @@ export class NavBarComponent implements OnInit {
 
   constructor(private router: Router) {
     this.router.events.subscribe((event: Event) => {
-      if (event instanceof NavigationStart) {
-        this.navUrl = event.url;
+      if (event instanceof ResolveEnd) {
+        if (event.url) {
+          this.navUrl = event.url;
+          this.setNavBarProps();
+        }
       }
     });
   }
 
   @HostListener('window:scroll', ['$event'])
   onScroll(): void {
-    if ((window.pageYOffset >= 120) || (this.navUrl !== '/') ) {
+    this.setNavBarProps();
+  }
+
+  setNavBarProps(): void {
+    if ((window.pageYOffset >= 120) || (this.navUrl !== '/')) {
       this.stickify = true;
     } else if ((window.pageYOffset === 0) && (this.navUrl === '/')) {
       this.stickify = false;

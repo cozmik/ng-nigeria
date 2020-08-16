@@ -20,11 +20,13 @@ export class EventCardComponent implements OnInit {
   @Input() totalAttendees: number;
   @Output() registerClicked: EventEmitter<any> = new EventEmitter();
 
+
   locationIcon = faMapMarkerAlt;
   clockIcon = faClock;
   calenderIcon = faCalendar;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

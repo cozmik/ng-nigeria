@@ -1,10 +1,10 @@
-import { JobsComponent } from './jobs/jobs.component';
-import { PhotosComponent } from './photos/photos.component';
-import { MembersComponent } from './members/members.component';
-import { EventsComponent } from './events/events.component';
+import { JobsComponent } from './layout/jobs/jobs.component';
+import { PhotosComponent } from './layout/photos/photos.component';
+import { MembersComponent } from './layout/members/members.component';
+import { EventsComponent } from './layout/events/events.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LandingPageComponent } from './landing-page/landing-page.component';
+import { LandingPageComponent } from './layout/landing-page/landing-page.component';
 
 
 const routes: Routes = [
@@ -14,14 +14,14 @@ const routes: Routes = [
     pathMatch: 'full',
     data: { animation: 'fade-in' }
   },
-  // {
-  //   path: 'events',
-  //   component: EventsComponent
-  // },
-  // {
-  //   path: 'members',
-  //   component: MembersComponent
-  // },
+  {
+    path: 'events',
+    component: EventsComponent
+  },
+  {
+    path: 'members',
+    component: MembersComponent
+  },
   // {
   //   path: 'photos',
   //   component: PhotosComponent,
