@@ -5,6 +5,7 @@ import {faCalendar, faClock} from '@fortawesome/free-regular-svg-icons';
 import {faSlackHash, faTwitter, faWhatsapp} from '@fortawesome/free-brands-svg-icons';
 import {AppService} from '../../app.service';
 import {DateTime} from 'luxon';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'ng-nig-landing-page',
@@ -49,12 +50,18 @@ export class LandingPageComponent implements OnInit {
   };
   upComing: any[] = [];
   pastEvents: any[] = [];
+  videoId: string;
 
-  constructor(private event: AppService) {
+  constructor(private event: AppService, private router: Router) {
     this.getEvents();
   }
 
   ngOnInit(): void {
+    this.videoId = '7W_qrc-TkR8';
+    const tag = document.createElement('script');
+
+    tag.src = 'https://www.youtube.com/iframe_api';
+    document.body.appendChild(tag);
   }
 
   getEvents(): void{
@@ -82,5 +89,9 @@ export class LandingPageComponent implements OnInit {
 
   register(): void {
     console.log('clicked');
+  }
+
+  gotoEventPage(): void {
+    this.router.navigate(['events']);
   }
 }

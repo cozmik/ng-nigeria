@@ -28,10 +28,10 @@ const routes: Routes = [
     path: 'join',
     component: MembershipComponent
   },
-  // {
-  //   path: 'photos',
-  //   component: PhotosComponent,
-  // },
+  {
+    path: 'photos',
+    component: PhotosComponent,
+  },
   {
     path: 'jobs',
     component: JobsComponent

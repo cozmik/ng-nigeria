@@ -14,12 +14,13 @@ import { MembersComponent } from './layout/members/members.component';
 import { JobsComponent } from './layout/jobs/jobs.component';
 import { MembershipComponent } from './layout/membership/membership.component';
 import { NotFoundComponent } from './layout/not-found/not-found.component';
+import {YouTubePlayerModule} from '@angular/youtube-player';
 @NgModule({
   declarations: [
     AppComponent,
     LandingPageComponent,
     EventsComponent,
-    // PhotosComponent,
+    PhotosComponent,
     MembersComponent,
     JobsComponent,
     MembershipComponent,
@@ -30,7 +31,8 @@ import { NotFoundComponent } from './layout/not-found/not-found.component';
     AppRoutingModule,
     ComponentsModule,
     FontAwesomeModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    YouTubePlayerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

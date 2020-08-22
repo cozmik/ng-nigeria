@@ -140,15 +140,14 @@
       ></ng-nig-event-card>
 
       <div class="button-container">
-        <button class="solid-button primary-button">see more</button>
+        <button class="solid-button primary-button" (click)="gotoEventPage()">see more</button>
       </div>
     </div>
   </div>
 
   <div class="eventVideo contain">
     <div class="container">
-      <ng-nig-video-player [height]="480" [title]="'Interview with an applicant'" [width]="854"
-                           [options]="playerOptions"></ng-nig-video-player>
+      <youtube-player [videoId]="videoId"></youtube-player>
     </div>
   </div>
   <div class="sponsors-section contain">

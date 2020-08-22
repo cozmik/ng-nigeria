@@ -13,6 +13,7 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {RouterModule} from '@angular/router';
 import {VideoPlayerComponent} from './video-player/video-player.component';
 import {TabModule} from 'angular-tabs-component';
+import {YouTubePlayerModule} from '@angular/youtube-player';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import {TabModule} from 'angular-tabs-component';
     CommonModule,
     FontAwesomeModule,
     TabModule,
-    RouterModule
+    RouterModule,
+    YouTubePlayerModule
   ]
 })
 export class ComponentsModule {
