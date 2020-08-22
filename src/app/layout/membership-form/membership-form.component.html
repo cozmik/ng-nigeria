@@ -1,0 +1,30 @@
+<section>
+  <h1 class="main-title text-center">Become a Member</h1>
+  <div class="form-container col-md-6 offset-3">
+    <p class="form-header text-center">Fields marked with * are required</p>
+    <form (ngSubmit)="onSubmit(membershipForm)" #membershipForm="ngForm">
+      <div class="form-group flex-column text-left">
+        <label for="fullName">Name *</label>
+        <input id="fullName" required type="text" [(ngModel)]='fullName' name="fullName" class="form-control w-100"
+          placeholder="Enter your full name">
+      </div>
+      <div class="form-group flex-column text-left">
+        <label for="email">Email Address *</label>
+        <input id="email" required type="email" [(ngModel)]='email' name="email" class="form-control w-100"
+          placeholder="e.g johndoe@gmail.com">
+      </div>
+      <div class="form-group flex-column text-left">
+        <label for="jobTitle">Job Title *</label>
+        <input id="jobTitle" required type="text" [(ngModel)]='jobTitle' name="jobTitle" class="form-control w-100"
+          placeholder="What best fits what you currently do?">
+      </div>
+      <div class="form-group flex-column text-left">
+        <label for="twitterUsername">Twitter Username</label>
+        <input id="twitterUsername" type="text" [(ngModel)]='twitterUsername' name="twitterUsername"
+          class="form-control w-100" placeholder="Enter your twitter username">
+      </div>
+      <span class="notice d-block">Your name is public. We'll use your email to send you updates on our meetups.</span>
+      <button type="submit" [disabled]="membershipForm.invalid">Become a Member</button>
+    </form>
+  </div>
+</section>

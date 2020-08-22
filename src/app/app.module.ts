@@ -14,6 +14,9 @@ import { MembersComponent } from './layout/members/members.component';
 import { JobsComponent } from './layout/jobs/jobs.component';
 import { MembershipComponent } from './layout/membership/membership.component';
 import { NotFoundComponent } from './layout/not-found/not-found.component';
+import { MembershipFormComponent } from './layout/membership-form/membership-form.component';
+import { FormsModule } from "@angular/forms";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,13 +27,15 @@ import { NotFoundComponent } from './layout/not-found/not-found.component';
     JobsComponent,
     MembershipComponent,
     NotFoundComponent,
+    MembershipFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ComponentsModule,
     FontAwesomeModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
