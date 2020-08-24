@@ -1,0 +1,38 @@
+@import "src/assets/variables";
+
+.sponsors {
+  article {
+    display: flex;
+    flex-wrap: wrap;
+
+    h5 {
+      text-align: left;
+      width: 100%;
+      font-weight: 600;
+      font-size: 1em;
+      font-style: italic;
+      text-transform: uppercase;
+      margin-bottom: 60px;
+
+      &:after {
+        content: '';
+        display: inline-block;
+        width: 20px;
+        border-bottom: .12em $accent-color solid;
+        margin-left: 10px;
+      }
+    }
+
+    div {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-column-gap: 70px;
+    }
+
+    img {
+      height: 40px;
+      width: auto;
+      margin-bottom: 40px;
+    }
+  }
+}

@@ -123,6 +123,10 @@ section {
     position: relative;
     min-height: 100vh;
 
+    .container{
+      width: 60%;
+    }
+
     h2 {
       padding-top: 10%;
       color: $header-color;
@@ -158,43 +162,12 @@ section {
       margin-top: 0;
       padding-top: 70px;
     }
-    h6{
+    h6 {
       text-align: center;
       margin-top: 20px;
       font-weight: 600;
       font-size: .9em;
       margin-bottom: 60px;
-    }
-    article {
-      display: flex;
-      flex-wrap: wrap;
-
-      h5 {
-        width: 100%;
-        font-weight: 600;
-        font-size: 1em;
-        font-style: italic;
-        text-transform: uppercase;
-        margin-bottom: 60px;
-
-        &:after {
-          content: '';
-          display: inline-block;
-          width: 20px;
-          border-bottom: .12em $accent-color solid;
-          margin-left: 10px;
-        }
-      }
-      div{
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-column-gap: 70px;
-      }
-      img{
-        height: 40px;
-        width: auto;
-        margin-bottom: 40px;
-      }
     }
   }
   .eventVideo{

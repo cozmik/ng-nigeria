@@ -2,30 +2,29 @@
   <div class="hero">
     <div class="container">
       <h2>
-        Using Angular at Scale
+        {{nextEvent.title}}
       </h2>
       <article class="meeting">
         <div>
           <fa-icon [icon]="calenderIcon"></fa-icon>
-          October 3, 2019
+          {{nextEvent.date |date:'MMMM d, yyyy'}}
         </div>
         <div>
           <fa-icon [icon]="clockIcon"></fa-icon>
-          11:00AM - 1:00PM
+          {{nextEvent.time}}
         </div>
         <div>
           <fa-icon [icon]="locationIcon"></fa-icon>
-          Lagos, Nigeria
+          {{nextEvent.shortAddress}}
         </div>
       </article>
       <article class="description">
-        We would be hearing from experts who have used angular at a large scale and we would also discuss what issues
-        you have had scaling your applications.
+        {{nextEvent.shortDesc}}
       </article>
 
       <div class="button-section">
-        <button class="solid-button primary-button">Register now</button>
-        <button class="outline-button">View details</button>
+        <button class="solid-button primary-button" (click)='openRegDialog(nextEvent)'>Register now</button>
+        <button class="outline-button" [routerLink]="'events/' + nextEvent.id">View details</button>
       </div>
     </div>
     <div class="timerContainer">
@@ -108,16 +107,7 @@
 
     <div class="container">
         <ng-nig-event-card *ngFor="let event of upComing"
-                           [eventImage]="event.image"
-                           [past]="eventIsPast(event.date)"
-                           [description]="event.desc"
-                           [title]="event.title"
-                           [sampleAttendantsPix]="event.attendees.sample"
-                           [date]="event.date"
-                           [location]="event.location"
-                           [time]="event.time"
-                           [totalAttendees]="event.attendees.total"
-                           (registerClicked)="register()"
+                           [ngEvent]="event"
         ></ng-nig-event-card>
     </div>
   </div>
@@ -127,16 +117,7 @@
 
     <div class="container">
       <ng-nig-event-card *ngFor="let event of pastEvents"
-                         [eventImage]="event.image"
-                         [description]="event.desc"
-                         [past]="eventIsPast(event.date)"
-                         [title]="event.title"
-                         [sampleAttendantsPix]="event.attendees.sample"
-                         [date]="event.date"
-                         [location]="event.location"
-                         [time]="event.time"
-                         [totalAttendees]="event.attendees.total"
-                         (registerClicked)="register()"
+                         [ngEvent]="event"
       ></ng-nig-event-card>
 
       <div class="button-container">
@@ -150,7 +131,7 @@
       <youtube-player [videoId]="videoId"></youtube-player>
     </div>
   </div>
-  <div class="sponsors-section contain">
+  <div class="sponsors-section contain sponsors">
     <h2>Sponsors</h2>
     <h6>Our amazing sponsors</h6>
     <article>

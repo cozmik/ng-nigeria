@@ -12,9 +12,13 @@ import { EventsComponent } from './layout/events/events.component';
 import { PhotosComponent } from './layout/photos/photos.component';
 import { MembersComponent } from './layout/members/members.component';
 import { JobsComponent } from './layout/jobs/jobs.component';
-import { MembershipComponent } from './layout/membership/membership.component';
 import { NotFoundComponent } from './layout/not-found/not-found.component';
 import {YouTubePlayerModule} from '@angular/youtube-player';
+import { MembershipFormComponent } from './layout/membership-form/membership-form.component';
+import { FormsModule } from '@angular/forms';
+import { EventComponent } from './layout/event/event.component';
+import {MatDialogModule} from '@angular/material/dialog';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,8 +27,9 @@ import {YouTubePlayerModule} from '@angular/youtube-player';
     PhotosComponent,
     MembersComponent,
     JobsComponent,
-    MembershipComponent,
     NotFoundComponent,
+    MembershipFormComponent,
+    EventComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +38,9 @@ import {YouTubePlayerModule} from '@angular/youtube-player';
     FontAwesomeModule,
     BrowserAnimationsModule,
     YouTubePlayerModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

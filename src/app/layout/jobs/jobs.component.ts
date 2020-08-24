@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {AppService} from '../../app.service';
-import {JobModel} from '../../models/job.model';
+import { AppService } from '../../app.service';
+import { JobModel } from '../../models/job.model';
 
 @Component({
   selector: 'ng-nig-jobs',

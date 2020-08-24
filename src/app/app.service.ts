@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Observable, of} from 'rxjs';
+import {BehaviorSubject, Observable, of} from 'rxjs';
 import {demoData, demoMembers, jobs} from '../assets/demo-data';
 import {EventModel} from './models/events';
 import {Member} from './models/members';
@@ -9,6 +9,7 @@ import {JobModel} from './models/job.model';
   providedIn: 'root'
 })
 export class AppService {
+  selectedService = new BehaviorSubject<EventModel>(null);
 
   constructor() {
   }
@@ -23,5 +24,9 @@ export class AppService {
 
   getJobs(): Observable<JobModel[]> {
     return of(jobs.map(j => j as JobModel));
+  }
+
+  getEvent(eventId: number): Observable<EventModel> {
+    return of(new EventModel(demoData.find(e => e.id === eventId)));
   }
 }

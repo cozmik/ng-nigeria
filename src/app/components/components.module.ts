@@ -14,6 +14,9 @@ import {RouterModule} from '@angular/router';
 import {VideoPlayerComponent} from './video-player/video-player.component';
 import {TabModule} from 'angular-tabs-component';
 import {YouTubePlayerModule} from '@angular/youtube-player';
+import { EventRegistrationModalComponent } from './modal/event-registration-modal/event-registration-modal.component';
+import {FormsModule} from '@angular/forms';
+import { ResponseModalComponent } from './modal/response-modal/response-modal.component';
 
 
 @NgModule({
@@ -27,6 +30,8 @@ import {YouTubePlayerModule} from '@angular/youtube-player';
     ModalComponent,
     ProfileCard2Component,
     VideoPlayerComponent,
+    EventRegistrationModalComponent,
+    ResponseModalComponent,
   ],
   exports: [
     FooterComponent,
@@ -46,7 +51,8 @@ import {YouTubePlayerModule} from '@angular/youtube-player';
     FontAwesomeModule,
     TabModule,
     RouterModule,
-    YouTubePlayerModule
+    YouTubePlayerModule,
+    FormsModule
   ]
 })
 export class ComponentsModule {

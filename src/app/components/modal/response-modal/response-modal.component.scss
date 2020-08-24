@@ -1,0 +1,95 @@
+@import "src/assets/variables";
+
+.dialog-title{
+  font-size: 1.1em;
+}
+
+.dialog-content{
+  padding-top: 20px;
+}
+
+.subtitle{
+  font-size: .9em;
+  color: $header-color;
+  margin-bottom: 20px;
+}
+
+.success{
+  color: $success-color;
+}
+
+.icon-section {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  fa-icon {
+    font-size: 1.5em;
+    padding: 25px;
+    border: 2px solid;
+
+    &.success{
+      border-color: $success-color;
+      border-radius: 50%;
+    }
+  }
+  div{
+    margin-top: 30px;
+  }
+}
+.extra-info {
+  .invite{
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .tweet-message {
+    padding: 5px 10px;
+    background: white;
+    border-radius: 4px;
+    border: 1px solid #E8E9EC;
+    font-size: .95em;
+
+    input{
+      border: none;
+      background: none;
+      max-width: 100%;
+    }
+
+    .link{
+      color: #1FA9E6;
+    }
+  }
+
+  .tweet-message {
+    button {
+      border: none;
+      background: none;
+
+      &:active {
+        transform: scale(.9);
+      }
+
+      .copy {
+        font-size: 1.3em;
+        margin-left: 8px;
+        cursor: pointer;
+        color: rgba($header-color, .5);
+      }
+    }
+  }
+}
+
+.button-section {
+  margin-top: 20px;
+  text-align: right;
+  a {
+    text-decoration: none;
+    padding: 10px 30px;
+    width: 120px;
+    text-align: center;
+    color: $secondary-text-color;
+  }
+  a:hover{
+    color: $secondary-text-color;
+  }
+}

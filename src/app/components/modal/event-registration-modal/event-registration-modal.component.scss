@@ -1,0 +1,40 @@
+@import "src/assets/variables";
+
+.dialog-title{
+  font-size: 1.1em;
+}
+
+.subtitle{
+  font-size: .9em;
+  color: $header-color;
+  margin-bottom: 20px;
+}
+
+label{
+  display: block;
+  margin-bottom: 20px;
+  span{
+    display: block;
+    margin-bottom: 5px;
+  }
+  input{
+    border: 1px solid #E8E9EC;
+    padding: 10px;
+    border-radius: 4px;
+    width: 100%;
+
+    &::placeholder{
+      color: rgba($primary-text-color, .4);
+    }
+  }
+}
+
+.button-section {
+  margin-top: 20px;
+  text-align: right;
+  button {
+    padding: 10px 30px;
+    width: 120px;
+    text-align: center;
+  }
+}

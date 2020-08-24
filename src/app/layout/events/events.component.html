@@ -2,29 +2,12 @@
   <tabs>
     <tab [tabTitle]="'Upcoming Events (' + futureEventCount + ')'">
       <ng-nig-event-card *ngFor="let event of futureComing"
-                         [eventImage]="event.image"
-                         [past]="event.isPast()"
-                         [description]="event.desc"
-                         [title]="event.title"
-                         [sampleAttendantsPix]="event.attendees.sample"
-                         [date]="event.date"
-                         [location]="event.location"
-                         [time]="event.time"
-                         [totalAttendees]="event.attendees.total"
-                         (registerClicked)="register()"
+                         [ngEvent]="event"
       ></ng-nig-event-card>
     </tab>
     <tab [tabTitle]="'Past Events (' + pastEventCount + ')'">
       <ng-nig-event-card *ngFor="let event of pastEvents"
-                         [eventImage]="event.image"
-                         [past]="event.isPast()"
-                         [description]="event.desc"
-                         [title]="event.title"
-                         [sampleAttendantsPix]="event.attendees.sample"
-                         [date]="event.date"
-                         [location]="event.location"
-                         [time]="event.time"
-                         [totalAttendees]="event.attendees.total"
+                         [ngEvent]="event"
       ></ng-nig-event-card>
     </tab>
   </tabs>

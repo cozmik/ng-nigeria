@@ -1,16 +1,55 @@
 import {DateTime} from 'luxon';
 
 export class EventModel {
+
   private _title: string;
   private _desc: string;
   private _date: string;
   private _time: string;
-  private _location: string;
   private _attendees: {
     sample: string[]
     total: number
   };
   private _image: string;
+  private _id: number;
+  private _address: string;
+  private _state: string;
+  private _country: string;
+
+  get shortDesc(): string {
+    return this.desc.split('.')[0];
+  }
+
+  get address(): string {
+    return this._address;
+  }
+
+  set address(value: string) {
+    this._address = value;
+  }
+
+  get state(): string {
+    return this._state;
+  }
+
+  set state(value: string) {
+    this._state = value;
+  }
+
+  get country(): string {
+    return this._country;
+  }
+
+  set country(value: string) {
+    this._country = value;
+  }
+  get id(): number {
+    return this._id;
+  }
+
+  set id(value: number) {
+    this._id = value;
+  }
 
   get title(): string {
     return this._title;
@@ -44,12 +83,12 @@ export class EventModel {
     this._time = value;
   }
 
-  get location(): string {
-    return this._location;
+  get shortAddress(): string {
+    return this.state + ', ' + this.country;
   }
 
-  set location(value: string) {
-    this._location = value;
+  get fullAddress(): string {
+    return `${this.address}, ${this.state}, ${this.country}`;
   }
 
   get attendees(): { sample: string[]; total: number } {
@@ -68,17 +107,20 @@ export class EventModel {
   }
 
 
-  isPast(): boolean{
+  get isPast(): boolean{
       const currentTime = DateTime.fromISO(new Date().toISOString().split('.')[0]);
       return currentTime > DateTime.fromISO(this.date);
   }
 
   constructor(data: any) {
+    this._id = data.id;
     this._title = data.title;
     this._desc = data.desc;
     this._date = data.date;
     this._time = data.time;
-    this._location = data.location;
+    this._address = data.address;
+    this._state = data.state;
+    this._country = data.country;
     this._attendees = data.attendees;
     this._image = data.image;
   }
