@@ -26,10 +26,13 @@
     font-size: 1.5em;
     padding: 25px;
     border: 2px solid;
+    border-radius: 50%;
 
     &.success{
       border-color: $success-color;
-      border-radius: 50%;
+    }
+    &.error {
+      border-color: tomato;
     }
   }
   div{

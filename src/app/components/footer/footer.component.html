@@ -1,23 +1,29 @@
 <section class="footer main">
   <div class="footer-container d-flex flex-wrap">
     <div class="slack footer-container-box">
-      <img src="assets/images/slack.png" alt="slack-logo" class="logo">
+      <img src="assets/images/slack.png" alt="slack-logo">
       <p class="text">Join our Slack group</p>
-      <button class="footer-btn">join</button>
+      <button (click)="joinSocialMedia('slack')">join</button>
     </div>
     <div class="whatsapp footer-container-box">
-      <img src="assets/images/whatsapp.png" alt="slack-logo" class="logo">
+      <img src="assets/images/whatsapp.png" alt="slack-logo">
       <p class="text">Join our Whatsapp group</p>
-      <button class="footer-btn">join</button>
+      <button (click)="joinSocialMedia('whatsApp')">join</button>
     </div>
   </div>
   <div class="sub-footer">
-    <span class="left-text">Angular Nigeria</span>
-    <span class="middle-text">Copy 2019. Angular Nigeria</span>
-    <div class="right-side">
-      <img src="assets/images/twitter-colored.png" alt="twitter" class="footer-img">
-      <img src="assets/images/slack-colored.png" alt="slack" class="footer-img">
-      <img src="assets/images/whatsapp-colored.png" alt="whatsapp" class="footer-img">
+    <span>Angular Nigeria</span>
+    <span> &copy;{{year}}. Angular Nigeria</span>
+    <div>
+      <a href="#">
+        <img src="assets/images/twitter-colored.png" alt="twitter" class="footer-img">
+      </a>
+      <a href="#">
+        <img src="assets/images/slack-colored.png" alt="slack" class="footer-img">
+      </a>
+      <a href="#">
+        <img src="assets/images/whatsapp-colored.png" alt="whatsapp" class="footer-img">
+      </a>
     </div>
   </div>
 </section>

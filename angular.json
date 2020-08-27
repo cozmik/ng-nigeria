@@ -38,6 +38,21 @@
               "./node_modules/popper.js/dist/umd/popper.js",
               "./node_modules/video.js/dist/video.min.js",
               "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "global/document",
+              "mux.js/lib/tools/ts-inspector.js",
+              "videojs-vtt.js",
+              "@babel/runtime/helpers/possibleConstructorReturn",
+              "@babel/runtime/helpers/construct",
+              "@babel/runtime/helpers/inherits",
+              "mux.js/lib/tools/mp4-inspector",
+              "mux.js/lib/mp4/caption-parser",
+              "@videojs/xhr",
+              "@videojs/vhs-utils/dist/resolve-url",
+              "@videojs/vhs-utils/dist/decode-b64-to-uint8-array",
+              "xmldom",
+              "mux.js/lib/mp4/probe"
             ]
           },
           "configurations": {

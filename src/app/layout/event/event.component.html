@@ -23,7 +23,7 @@
       </span>
       </div>
     </div>
-    <button class="primary-button">register</button>
+    <button class="primary-button" (click)="openRegDialog()">register</button>
   </div>
 
   <div class="timerContainer">
@@ -84,42 +84,10 @@
     </div>
   </article>
 
-  <article>
+  <article class="contain">
     <h2>Sponsors</h2>
     <h5>This ngEvent is possible from the support of these wonderful people</h5>
 
-    <div class="sponsors">
-      <article>
-        <h5>Platinum</h5>
-        <div>
-          <img src="../../../assets/images/logos/terragon_logo.png">
-          <img src="../../../assets/images/logos/Andela%20Nigeria%20Logo.png">
-        </div>
-      </article>
-      <article>
-        <h5>Gold</h5>
-        <div>
-          <img src="../../../assets/images/logos/Decagon%20Logo.png">
-          <img src="../../../assets/images/logos/Softcom%20Logo.png">
-        </div>
-      </article>
-      <article>
-        <h5>Silver</h5>
-        <div>
-          <img src="../../../assets/images/logos/Summitech%20Computing%20Limited%20Logo.png">
-        </div>
-      </article>
-      <article>
-        <h5>Bronze</h5>
-        <div>
-          <img src="../../../assets/images/logos/terragon_logo.png">
-          <img src="../../../assets/images/logos/Andela%20Nigeria%20Logo.png">
-        </div>
-      </article>
-
-      <div class="button-container">
-        <button class="solid-button primary-button">become a sponsor</button>
-      </div>
-    </div>
+   <ng-nig-sponsors [sponsors]="sponsors"></ng-nig-sponsors>
   </article>
 </section>

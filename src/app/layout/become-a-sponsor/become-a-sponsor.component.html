@@ -1,0 +1,121 @@
+<section class="main">
+  <h2>Event Sponsorship Form</h2>
+  <article>
+    <form #sponsorForm="ngForm">
+      <label for="sponsor-name">
+        <span>Sponsor Name</span>
+        <input id="sponsor-name" required [(ngModel)]="sponsorData.sponsorName"
+               placeholder="(Business, Organisation or Individual)"
+               name="sponsorName">
+      </label>
+
+      <label for="contact-name">
+        <span>Name of Contact Person</span>
+        <input id="contact-name" required [(ngModel)]="sponsorData.contactName" placeholder="Enter contact person full name"
+               name="contactName">
+      </label>
+
+      <label for="email">
+        <span>Email Address</span>
+        <input id="email" required [(ngModel)]="sponsorData.email" placeholder="e.g johndoe@domain.com" name="email">
+      </label>
+
+      <label for="number">
+        <span>Phone Number</span>
+        <input id="number" required [(ngModel)]="sponsorData.phoneNumber" placeholder="080123456789" name="phoneNumber">
+      </label>
+
+      <label for="country">
+        <span>Country</span>
+        <select id="country" required [(ngModel)]="sponsorData.country" name="country">
+          <option value="">
+            Select Country
+          </option>
+          <option value="1">
+            Nigeria
+          </option>
+        </select>
+      </label>
+
+      <label for="state">
+        <span>State</span>
+        <select id="state" required [(ngModel)]="sponsorData.state" name="state">
+          <option value="">
+            Select State
+          </option>
+          <option value="1">
+            Lagos
+          </option>
+        </select>
+      </label>
+
+
+      <label for="city">
+        <span>City</span>
+        <select id="city" required [(ngModel)]="sponsorData.city" name="city">
+          <option value="">
+            Select City
+          </option>
+          <option value="1">
+            Ikeja
+          </option>
+        </select>
+      </label>
+
+      <label for="street-address">
+        <span>Street Address</span>
+        <input id="street-address" required placeholder="no 3, going-nowhere St, somewhere idk local gvt."
+               [(ngModel)]="sponsorData.streetAddress"
+               name="streetAddress">
+      </label>
+
+
+      <div class="radio">
+        <div>Sponsorship Level</div>
+        <label for="platinum">
+          <input id="platinum" [(ngModel)]="sponsorData.category" type="radio" name="category" value="platinum">
+          <span>Platinum > N199,000</span>
+        </label>
+        <label for="gold">
+          <input id="gold" [(ngModel)]="sponsorData.category" type="radio" name="category" value="gold">
+          <span>Gold - N100,000 - N199,000</span>
+        </label>
+        <label for="silver">
+          <input id="silver" [(ngModel)]="sponsorData.category" type="radio" name="category" value="silver">
+          <span>Silver - N50,000 - N99,000</span>
+        </label>
+        <label for="bronze">
+          <input id="bronze" [(ngModel)]="sponsorData.category" type="radio" name="category" value="bronze">
+          <span>Bronze - N1,000 - N49,000</span>
+        </label>
+      </div>
+
+      <div class="radio">
+        <div>Payment Method</div>
+        <label for="check">
+          <input id="check" type="radio" [(ngModel)]="sponsorData.paymentMethod" name="method" value="check">
+          <span>Check</span>
+        </label>
+        <label for="card">
+          <input id="card" type="radio" [(ngModel)]="sponsorData.paymentMethod" name="method" value="card">
+          <span>Credit/Debit Card</span>
+        </label>
+        <label for="invoice">
+          <input id="invoice" [(ngModel)]="sponsorData.paymentMethod" type="radio" name="method" value="invoice">
+          <span>Invoice</span>
+        </label>
+      </div>
+
+      <div class="spanWidth">
+        <span>If you are an event sponsor, please email your company logo to <a
+        href="mailto:kelchioti@gmail.com">
+          kelchioti@gmail.com</a> in jpg or png format </span>
+      </div>
+
+      <div class="spanWidth button-section">
+        <button class="primary-button" [disabled]="sponsorForm.invalid" (click)="submitRequest()">Submit</button>
+      </div>
+    </form>
+
+  </article>
+</section>

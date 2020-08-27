@@ -9,18 +9,19 @@ import {EventModel} from '../../models/events';
 import {MatDialog} from '@angular/material/dialog';
 import {EventRegistrationModalComponent} from '../../components/modal/event-registration-modal/event-registration-modal.component';
 import {ResponseModalComponent} from '../../components/modal/response-modal/response-modal.component';
+import {Sponsor} from '../../models/sponsor.model';
 
 @Component({
   selector: 'ng-nig-landing-page',
   templateUrl: './landing-page.component.html',
-  styleUrls: ['./landing-page.component.scss', '../event/event.scss'],
+  styleUrls: ['./landing-page.component.scss'],
   animations: [fadeInAnimation]
 })
 export class LandingPageComponent implements OnInit {
 
   events: EventModel[] = [];
 
-  @ViewChild(TemplateRef, { static: false }) modal: TemplateRef<any>;
+  @ViewChild(TemplateRef, {static: false}) modal: TemplateRef<any>;
 
   locationIcon = faMapMarkerAlt;
   clockIcon = faClock;
@@ -45,17 +46,19 @@ export class LandingPageComponent implements OnInit {
   pastEvents: EventModel[] = [];
   videoId: string;
   nextEvent: EventModel;
+  sponsors: Sponsor[];
 
-  constructor(private event: AppService,
+  constructor(private appService: AppService,
               private router: Router,
               public dialog: MatDialog
-              ) {
+  ) {
     this.getEvents();
   }
 
   ngOnInit(): void {
     this.videoId = '7W_qrc-TkR8';
     const tag = document.createElement('script');
+    this.getSponsors();
 
     tag.src = 'https://www.youtube.com/iframe_api';
     document.body.appendChild(tag);
@@ -68,7 +71,7 @@ export class LandingPageComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result){
+      if (result) {
         this.openResDialog(result);
       }
     });
@@ -77,25 +80,25 @@ export class LandingPageComponent implements OnInit {
   openResDialog(result): void {
     const dialogRef = this.dialog.open(ResponseModalComponent, {
       width: '550px',
-      data: {title: this.nextEvent.title, type: 'eventReg', status: result, message: 'Registration Successful!', link: 'https://angularm' }
+      data: {title: this.nextEvent.title, type: 'eventReg', status: result, message: 'Registration Successful!', link: 'https://angularm'}
     });
 
     dialogRef.afterClosed().subscribe(res => {
     });
   }
 
-  getEvents(): void{
+  getEvents(): void {
     let pastCount = 0;
     let futureCount = 0;
-    this.event.getEvents().subscribe((res: any[]) => {
+    this.appService.getEvents().subscribe((res: any[]) => {
       res.forEach((e, i) => {
         e = new EventModel(e);
-        if (e.isPast && pastCount < 2){
+        if (e.isPast && pastCount < 2) {
           this.pastEvents.push(e);
           pastCount++;
         }
 
-        if ((!e.isPast) && futureCount < 2){
+        if ((!e.isPast) && futureCount < 2) {
           this.upComing.push(e);
           futureCount++;
         }
@@ -104,8 +107,8 @@ export class LandingPageComponent implements OnInit {
     });
   }
 
-  register(): void {
-    console.log('clicked');
+  getSponsors(): void {
+    this.appService.getSponsors().subscribe(res => this.sponsors = res);
   }
 
   gotoEventPage(): void {

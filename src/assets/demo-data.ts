@@ -396,6 +396,51 @@ export const jobs = [
     type: 'Fulltime',
     location: 'Lagos, Nigeria'
   }
-]
+];
+
+export const sponsors = [
+  {
+    id: 1,
+    category: 'platinum',
+    logo: '../../../assets/images/logos/terragon_logo.png',
+    link: '#'
+  },
+  {
+    id: 2,
+    category: 'platinum',
+    logo: '../../../assets/images/logos/Andela%20Nigeria%20Logo.png',
+    link: '#'
+  },
+  {
+    id: 3,
+    category: 'gold',
+    logo: '../../../assets/images/logos/Decagon%20Logo.png',
+    link: '#'
+  },
+  {
+    id: 4,
+    category: 'gold',
+    logo: '../../../assets/images/logos/Softcom%20Logo.png',
+    link: '#'
+  },
+  {
+    id: 5,
+    category: 'silver',
+    logo: '../../../assets/images/logos/Summitech%20Computing%20Limited%20Logo.png',
+    link: '#'
+  },
+  {
+    id: 6,
+    category: 'bronze',
+    logo: '../../../assets/images/logos/terragon_logo.png',
+    link: '#'
+  },
+  {
+    id: 7,
+    category: 'bronze',
+    logo: '../../../assets/images/logos/Andela%20Nigeria%20Logo.png',
+    link: '#'
+  }
+];
 
 

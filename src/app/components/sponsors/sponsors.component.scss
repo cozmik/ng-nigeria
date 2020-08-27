@@ -29,10 +29,17 @@
       grid-column-gap: 70px;
     }
 
-    img {
-      height: 40px;
-      width: auto;
-      margin-bottom: 40px;
+    a {
+      transition: 500ms ease-in-out;
+      filter: grayscale(.85);
+      &:hover{
+        filter: grayscale(0);
+      }
+      img {
+        height: 40px;
+        width: auto;
+        margin-bottom: 40px;
+      }
     }
   }
 }

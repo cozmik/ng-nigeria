@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable, of} from 'rxjs';
-import {demoData, demoMembers, jobs} from '../assets/demo-data';
+import {demoData, demoMembers, jobs, sponsors} from '../assets/demo-data';
 import {EventModel} from './models/events';
 import {Member} from './models/members';
 import {JobModel} from './models/job.model';
+import {Sponsor} from './models/sponsor.model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,5 +29,9 @@ export class AppService {
 
   getEvent(eventId: number): Observable<EventModel> {
     return of(new EventModel(demoData.find(e => e.id === eventId)));
+  }
+
+  getSponsors(): Observable<any> {
+    return of (sponsors.map(s => s as Sponsor));
   }
 }

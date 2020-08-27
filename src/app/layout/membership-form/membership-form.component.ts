@@ -20,7 +20,7 @@ export class MembershipFormComponent implements OnInit {
   }
 
 
-  onSubmit(form: NgForm) {
+  onSubmit(form: NgForm): void {
     const payload: any = {};
     payload.full_name = form.value.fullName;
     payload.email = form.value.email;
@@ -28,8 +28,6 @@ export class MembershipFormComponent implements OnInit {
     payload.twitter_username = form.value.twitterUsername;
 
     console.log(payload);
-
-
   }
 
 }

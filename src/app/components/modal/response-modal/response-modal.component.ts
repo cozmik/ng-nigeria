@@ -3,6 +3,7 @@ import {faCopy, faTimesCircle} from '@fortawesome/free-regular-svg-icons';
 import {faTwitter} from '@fortawesome/free-brands-svg-icons';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {faCheck} from '@fortawesome/free-solid-svg-icons';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 export interface EventRegResp {
   title: string;
@@ -30,7 +31,8 @@ export class ResponseModalComponent implements OnInit {
   messageToShare: string;
 
   constructor(public dialogRef: MatDialogRef<ResponseModalComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: EventRegResp) {
+              @Inject(MAT_DIALOG_DATA) public data: EventRegResp,
+              private snackBar: MatSnackBar) {
     this.title = data.title;
     this.status = data.status;
     this.type = data.type;
@@ -58,5 +60,10 @@ export class ResponseModalComponent implements OnInit {
     copyBox.select();
     document.execCommand('copy');
     document.body.removeChild(copyBox);
+
+    this.snackBar.open('copied', '', {
+      duration: 3000,
+      panelClass: ['simple-snack-bar']
+    });
   }
 }

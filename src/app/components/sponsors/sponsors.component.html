@@ -1,0 +1,37 @@
+<div class="sponsors">
+    <article *ngIf="allSponsors['platinum'].length > 0">
+      <h5>platinum</h5>
+      <div>
+        <a *ngFor="let image of allSponsors['platinum']" [href]="image.link" target="_blank">
+        <img [src]="image.logo">
+        </a>
+      </div>
+    </article>
+
+  <article *ngIf="allSponsors['gold'].length > 0">
+    <h5>gold</h5>
+    <div>
+      <a *ngFor="let image of allSponsors['gold']" [href]="image.link" target="_blank">
+      <img [src]="image.logo">
+      </a>
+    </div>
+  </article>
+
+  <article *ngIf="allSponsors['silver'].length > 0">
+    <h5>silver</h5>
+    <div>
+      <a *ngFor="let image of allSponsors['silver']" [href]="image.link" target="_blank">
+      <img [src]="image.logo">
+      </a>
+    </div>
+  </article>
+
+  <article *ngIf="allSponsors['bronze'].length > 0">
+    <h5>bronze</h5>
+    <div>
+      <a *ngFor="let image of allSponsors['bronze']" [href]="image.link" target="_blank">
+      <img [src]="image.logo">
+      </a>
+    </div>
+  </article>
+</div>

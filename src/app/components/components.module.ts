@@ -17,6 +17,11 @@ import {YouTubePlayerModule} from '@angular/youtube-player';
 import { EventRegistrationModalComponent } from './modal/event-registration-modal/event-registration-modal.component';
 import {FormsModule} from '@angular/forms';
 import { ResponseModalComponent } from './modal/response-modal/response-modal.component';
+import { EventPhotosComponent } from './event-photos/event-photos.component';
+import {LightboxModule} from '@ngx-gallery/lightbox';
+import {GalleryModule} from '@ngx-gallery/core';
+import { SponsorsComponent } from './sponsors/sponsors.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -32,6 +37,8 @@ import { ResponseModalComponent } from './modal/response-modal/response-modal.co
     VideoPlayerComponent,
     EventRegistrationModalComponent,
     ResponseModalComponent,
+    EventPhotosComponent,
+    SponsorsComponent,
   ],
   exports: [
     FooterComponent,
@@ -44,7 +51,9 @@ import { ResponseModalComponent } from './modal/response-modal/response-modal.co
     TabModule,
     NavBarComponent,
     VideoPlayerComponent,
-    ProfileCard2Component
+    ProfileCard2Component,
+    EventPhotosComponent,
+    SponsorsComponent
   ],
   imports: [
     CommonModule,
@@ -52,7 +61,10 @@ import { ResponseModalComponent } from './modal/response-modal/response-modal.co
     TabModule,
     RouterModule,
     YouTubePlayerModule,
-    FormsModule
+    FormsModule,
+    LightboxModule,
+    GalleryModule,
+    MatSnackBarModule
   ]
 })
 export class ComponentsModule {

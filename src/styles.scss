@@ -25,18 +25,19 @@ body::-webkit-scrollbar-thumb {
 }
 
 .contain {
-  margin: 70px 80px;
+  margin: 70px 80px 0;
+  padding-bottom: 80px;
+}
+
+input{
+  background: white !important;
+  color: $primary-text-color !important;
 }
 
 .mat-dialog-container{
   background: $background-base !important;
   color: $primary-text-color;
   padding: 0 !important;
-  font-family: Futura-medium;
-
-  input{
-    background: white;
-  }
 }
 
 button:disabled{
@@ -44,7 +45,7 @@ button:disabled{
   border-color: rgba($accent-color, .1);;
 }
 
-button, input, input:active, input:focus, button:active, button:focus {
+button, input, select, input:active, input:focus, select:active, select:focus, button:active, button:focus {
   outline: none;
   transition: 400ms all;
 }
@@ -66,5 +67,13 @@ button, input, input:active, input:focus, button:active, button:focus {
   width: fit-content;
 }
 
+.simple-snack-bar .mat-simple-snackbar {
+  justify-content: center;
+}
+
+.mat-snack-bar-container{
+  width: 100px !important;
+  min-width: 100px !important;
+}
+
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

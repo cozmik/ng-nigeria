@@ -8,6 +8,7 @@ import { LandingPageComponent } from './layout/landing-page/landing-page.compone
 import { NotFoundComponent } from './layout/not-found/not-found.component';
 import {MembershipFormComponent} from './layout/membership-form/membership-form.component';
 import {EventComponent} from './layout/event/event.component';
+import {BecomeASponsorComponent} from './layout/become-a-sponsor/become-a-sponsor.component';
 
 
 const routes: Routes = [
@@ -15,19 +16,18 @@ const routes: Routes = [
     path: '',
     component: LandingPageComponent,
     pathMatch: 'full',
-    data: { animation: 'fade-in' }
   },
   {
     path: 'events',
-    component: EventsComponent
+    component: EventsComponent,
   },
   {
     path: 'events/:id',
-    component: EventComponent
+    component: EventComponent,
   },
   {
     path: 'members',
-    component: MembersComponent
+    component: MembersComponent,
   },
   {
     path: 'photos',
@@ -35,15 +35,19 @@ const routes: Routes = [
   },
   {
     path: 'join',
-    component: MembershipFormComponent
+    component: MembershipFormComponent,
+  },
+  {
+    path: 'sponsor',
+    component: BecomeASponsorComponent,
   },
   {
     path: 'jobs',
-    component: JobsComponent
+    component: JobsComponent,
   },
   {
     path: '**',
-    component: NotFoundComponent
+    component: NotFoundComponent,
   }
 ];
 

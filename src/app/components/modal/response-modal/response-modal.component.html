@@ -7,7 +7,7 @@
       <div [class]="status">{{message}}</div>
     </div>
 
-    <div *ngIf="type === 'eventReg'" class="extra-info">
+    <div *ngIf="type === 'eventReg' && status === 'success'" class="extra-info">
       <div class="invite">Let people know you are attending {{title}} meetup</div>
       <div class="tweet-message">
         <input [size]="messageToShare.length" [(ngModel)]="messageToShare"> - <span class="link">{{link}}</span>
