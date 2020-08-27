@@ -11,7 +11,6 @@ import {SharedModule} from '../shared/shared.module';
 import {ProfileCard2Component} from './profile-card2/profile-card2.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {RouterModule} from '@angular/router';
-import {VideoPlayerComponent} from './video-player/video-player.component';
 import {TabModule} from 'angular-tabs-component';
 import {YouTubePlayerModule} from '@angular/youtube-player';
 import { EventRegistrationModalComponent } from './modal/event-registration-modal/event-registration-modal.component';
@@ -34,7 +33,6 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     JobCardComponent,
     ModalComponent,
     ProfileCard2Component,
-    VideoPlayerComponent,
     EventRegistrationModalComponent,
     ResponseModalComponent,
     EventPhotosComponent,
@@ -50,7 +48,6 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     SharedModule,
     TabModule,
     NavBarComponent,
-    VideoPlayerComponent,
     ProfileCard2Component,
     EventPhotosComponent,
     SponsorsComponent
