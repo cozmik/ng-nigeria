@@ -1,0 +1,29 @@
+<ng-nig-modal (close)="onNoClick()">
+  <h2 class="dialog-title">{{title}}</h2>
+  <article class="dialog-content">
+    <div class="icon-section">
+      <fa-icon *ngIf="status === 'success'" class="success" [size]="1" [icon]="checkCircleIcon"></fa-icon>
+      <fa-icon *ngIf="status === 'error'" [icon]="timesCircleIcon"></fa-icon>
+      <div [class]="status">{{message}}</div>
+    </div>
+
+    <div *ngIf="type === 'eventReg' && status === 'success'" class="extra-info">
+      <div class="invite">Let people know you are attending {{title}} meetup</div>
+      <div class="tweet-message">
+        <input [size]="messageToShare.length" [(ngModel)]="messageToShare"> - <span class="link">{{link}}</span>
+
+
+        <button>
+          <fa-icon (click)="copyText()" [icon]="copyIcon" class="copy"></fa-icon>
+        </button>
+      </div>
+
+      <div class="button-section">
+        <a class="primary-button" (click)="dialogRef.close()" href="http://twitter.com/ng-nigeria" target="_blank">tweet
+          <fa-icon [icon]="twitterIcon"></fa-icon>
+        </a>
+      </div>
+    </div>
+
+  </article>
+</ng-nig-modal>

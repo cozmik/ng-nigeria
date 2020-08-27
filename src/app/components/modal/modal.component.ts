@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, EventEmitter, Output} from '@angular/core';
+import {faTimes} from '@fortawesome/free-solid-svg-icons/faTimes';
 
 @Component({
   selector: 'ng-nig-modal',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalComponent implements OnInit {
 
+  @Output() close: EventEmitter<any> = new EventEmitter<any>();
+  closeIcon = faTimes;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  closeModal(): void {
+    this.close.emit('close');
+  }
 }

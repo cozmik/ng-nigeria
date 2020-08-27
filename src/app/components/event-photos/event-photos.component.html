@@ -1,0 +1,33 @@
+<section>
+  <div>
+    <h2>Angular for Everyone</h2>
+    <div class="sub-title">
+      <span>
+        <span class="icon">
+          <fa-icon [icon]="calenderIcon"></fa-icon>
+        </span>
+        <span>{{theEvent.date}}</span>
+      </span>
+      <span>
+        <span class="icon">
+                    <fa-icon [icon]="clockIcon"></fa-icon>
+        </span>
+        <span>{{theEvent.time}}</span>
+      </span>
+      <span>
+        <span class="icon">
+                    <fa-icon [icon]="locationIcon"></fa-icon>
+        </span>
+        <span>{{theEvent.location}}</span>
+      </span>
+    </div>
+    <div class="images">
+      <div *ngFor="let img of sample; index as i">
+        <img [hidden]="i > 4" [src]="img.data.src"
+             [lightbox]="i"
+             [gallery]="ref"
+        >
+      </div>
+    </div>
+  </div>
+</section>

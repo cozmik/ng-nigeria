@@ -25,7 +25,29 @@ body::-webkit-scrollbar-thumb {
 }
 
 .contain {
-  margin: 70px 80px;
+  margin: 70px 80px 0;
+  padding-bottom: 80px;
+}
+
+input{
+  background: white !important;
+  color: $primary-text-color !important;
+}
+
+.mat-dialog-container{
+  background: $background-base !important;
+  color: $primary-text-color;
+  padding: 0 !important;
+}
+
+button:disabled{
+  background: rgba($accent-color, .7);
+  border-color: rgba($accent-color, .1);;
+}
+
+button, input, select, input:active, input:focus, select:active, select:focus, button:active, button:focus {
+  outline: none;
+  transition: 400ms all;
 }
 
 .primary-button {
@@ -44,3 +66,14 @@ body::-webkit-scrollbar-thumb {
   border-radius: 4px;
   width: fit-content;
 }
+
+.simple-snack-bar .mat-simple-snackbar {
+  justify-content: center;
+}
+
+.mat-snack-bar-container{
+  width: 100px !important;
+  min-width: 100px !important;
+}
+
+html, body { height: 100%; }

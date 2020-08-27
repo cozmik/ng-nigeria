@@ -13,6 +13,15 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {RouterModule} from '@angular/router';
 import {VideoPlayerComponent} from './video-player/video-player.component';
 import {TabModule} from 'angular-tabs-component';
+import {YouTubePlayerModule} from '@angular/youtube-player';
+import { EventRegistrationModalComponent } from './modal/event-registration-modal/event-registration-modal.component';
+import {FormsModule} from '@angular/forms';
+import { ResponseModalComponent } from './modal/response-modal/response-modal.component';
+import { EventPhotosComponent } from './event-photos/event-photos.component';
+import {LightboxModule} from '@ngx-gallery/lightbox';
+import {GalleryModule} from '@ngx-gallery/core';
+import { SponsorsComponent } from './sponsors/sponsors.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -26,6 +35,10 @@ import {TabModule} from 'angular-tabs-component';
     ModalComponent,
     ProfileCard2Component,
     VideoPlayerComponent,
+    EventRegistrationModalComponent,
+    ResponseModalComponent,
+    EventPhotosComponent,
+    SponsorsComponent,
   ],
   exports: [
     FooterComponent,
@@ -38,13 +51,20 @@ import {TabModule} from 'angular-tabs-component';
     TabModule,
     NavBarComponent,
     VideoPlayerComponent,
-    ProfileCard2Component
+    ProfileCard2Component,
+    EventPhotosComponent,
+    SponsorsComponent
   ],
   imports: [
     CommonModule,
     FontAwesomeModule,
     TabModule,
-    RouterModule
+    RouterModule,
+    YouTubePlayerModule,
+    FormsModule,
+    LightboxModule,
+    GalleryModule,
+    MatSnackBarModule
   ]
 })
 export class ComponentsModule {

@@ -1,10 +1,15 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {fadeInAnimation} from '../../transition';
 import {faMapMarkerAlt} from '@fortawesome/free-solid-svg-icons';
 import {faCalendar, faClock} from '@fortawesome/free-regular-svg-icons';
 import {faSlackHash, faTwitter, faWhatsapp} from '@fortawesome/free-brands-svg-icons';
 import {AppService} from '../../app.service';
-import {DateTime} from 'luxon';
+import {Router} from '@angular/router';
+import {EventModel} from '../../models/events';
+import {MatDialog} from '@angular/material/dialog';
+import {EventRegistrationModalComponent} from '../../components/modal/event-registration-modal/event-registration-modal.component';
+import {ResponseModalComponent} from '../../components/modal/response-modal/response-modal.component';
+import {Sponsor} from '../../models/sponsor.model';
 
 @Component({
   selector: 'ng-nig-landing-page',
@@ -14,19 +19,9 @@ import {DateTime} from 'luxon';
 })
 export class LandingPageComponent implements OnInit {
 
-  playerOptions = {
-    autoplay: false,
-    controls: true,
-    sources: [
-      {
-        src: 'assets/video/interview.mp4',
-        type: 'video/mp4'
-      }
-    ]
-  };
+  events: EventModel[] = [];
 
-
-  events: any[] = [];
+  @ViewChild(TemplateRef, {static: false}) modal: TemplateRef<any>;
 
   locationIcon = faMapMarkerAlt;
   clockIcon = faClock;
@@ -47,40 +42,76 @@ export class LandingPageComponent implements OnInit {
     slack: 'https://slack.com',
     stackoverflow: 'https://stackoverflow.com'
   };
-  upComing: any[] = [];
-  pastEvents: any[] = [];
+  upComing: EventModel[] = [];
+  pastEvents: EventModel[] = [];
+  videoId: string;
+  nextEvent: EventModel;
+  sponsors: Sponsor[];
 
-  constructor(private event: AppService) {
+  constructor(private appService: AppService,
+              private router: Router,
+              public dialog: MatDialog
+  ) {
     this.getEvents();
   }
 
   ngOnInit(): void {
+    this.videoId = '7W_qrc-TkR8';
+    const tag = document.createElement('script');
+    this.getSponsors();
+
+    tag.src = 'https://www.youtube.com/iframe_api';
+    document.body.appendChild(tag);
   }
 
-  getEvents(): void{
+  openRegDialog(event: EventModel): void {
+    const dialogRef = this.dialog.open(EventRegistrationModalComponent, {
+      width: '550px',
+      data: {event}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.openResDialog(result);
+      }
+    });
+  }
+
+  openResDialog(result): void {
+    const dialogRef = this.dialog.open(ResponseModalComponent, {
+      width: '550px',
+      data: {title: this.nextEvent.title, type: 'eventReg', status: result, message: 'Registration Successful!', link: 'https://angularm'}
+    });
+
+    dialogRef.afterClosed().subscribe(res => {
+    });
+  }
+
+  getEvents(): void {
     let pastCount = 0;
     let futureCount = 0;
-    this.event.getEvents().subscribe((res: any[]) => {
+    this.appService.getEvents().subscribe((res: any[]) => {
       res.forEach((e, i) => {
-        if (this.eventIsPast(e.date) && pastCount < 2){
+        e = new EventModel(e);
+        if (e.isPast && pastCount < 2) {
           this.pastEvents.push(e);
           pastCount++;
         }
 
-        if ((!this.eventIsPast(e.date)) && futureCount < 2){
+        if ((!e.isPast) && futureCount < 2) {
           this.upComing.push(e);
           futureCount++;
         }
       });
+      this.nextEvent = this.upComing[0];
     });
   }
 
-  eventIsPast(time: any): boolean{
-    const currentTime = DateTime.fromISO(new Date().toISOString().split('.')[0]);
-    return currentTime > DateTime.fromISO(time);
+  getSponsors(): void {
+    this.appService.getSponsors().subscribe(res => this.sponsors = res);
   }
 
-  register(): void {
-    console.log('clicked');
+  gotoEventPage(): void {
+    this.router.navigate(['events']);
   }
 }

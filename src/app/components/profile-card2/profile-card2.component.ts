@@ -60,7 +60,6 @@ export class ProfileCard2Component implements OnInit, OnChanges {
 
   getSocials(socials: any[], type: string): string | undefined {
     const socialLink = socials.filter(s => s.name === type)[0];
-    console.log(socialLink);
     if (socialLink){
       return socialLink.link;
     }

@@ -1,0 +1,167 @@
+@import "src/assets/variables";
+
+section {
+  background: $background-base;
+
+  .event-details {
+    padding-top: 150px;
+    grid-template-columns: 2fr 3fr;
+    grid-template-areas: 'image details'
+  'image info'
+  'image button';
+    width: 80%;
+    margin: 0 auto 200px;
+
+    h2{
+      font-size: 2.5em;
+    }
+
+    .image {
+      height: auto;
+      width: 100%;
+    }
+
+    button {
+      padding: 15px 45px;
+    }
+
+    .event-calender {
+      width: fit-content !important;
+      max-width: unset !important;
+      display: flex;
+
+      > span {
+        display: flex !important;
+        font-size: 1.05em !important;
+        min-width: 170px;
+
+        fa-icon{
+          font-size: .8em;
+        }
+
+        > span {
+          margin-left: 8px;
+        }
+      }
+    }
+
+    button{
+      width: fit-content;
+      height: fit-content;
+      align-self: end;
+    }
+  }
+
+  .about-event {
+    background: $background-dark;
+    padding: 250px 0 100px;
+
+    > div {
+      margin: 0 auto;
+      padding-bottom: 100px;
+      display: flex;
+      justify-content: space-between;
+      width: 80%;
+
+      > div {
+        text-align: center;
+        width: 280px;
+
+        .icon {
+          height: 100px;
+          width: 100px;
+          background: white;
+          padding: 20px;
+          margin: 0 auto 20px;
+
+          img{
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        h4 {
+          color: $header-color;
+        }
+
+        .text {
+          line-height: 2;
+        }
+      }
+    }
+  }
+
+  article{
+    h2, h5{
+      text-align: center;
+    }
+
+    h2{
+      color: $header-color;
+    }
+    h5{
+      font-size: 1em;
+      margin-top: 20px;
+      font-weight: 500;
+    }
+  }
+
+  .speakers-section{
+    background: $background-dark;
+    position: relative;
+    margin-bottom: 300px;
+
+    &:before{
+      content: '';
+      display: block;
+      position: absolute;
+      transform: skewY(-10deg);
+      height: 500px;
+      padding-bottom: 300px;
+      background: #fdf5f5;
+      width: 100%;
+      top: 40%;
+      transform-origin: center;
+    }
+
+    .speakers {
+      padding-top: 100px;
+      display: flex;
+      justify-content: space-between;
+      width: 90%;
+      margin: 0 auto;
+      position: inherit;
+    }
+
+    .button{
+      text-align: center;
+      margin-top: 100px;
+      position: relative;
+
+      button {
+        padding: 15px 40px;
+      }
+    }
+  }
+
+  .timerContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: -90px;
+  }
+
+  .sponsors {
+    margin: 100px auto 0;
+    padding-bottom: 300px;
+    width: 80%;
+
+    .button-container{
+      text-align: center;
+      margin-top: 40px;
+
+      button{
+        padding: 15px 20px;
+      }
+    }
+  }
+}

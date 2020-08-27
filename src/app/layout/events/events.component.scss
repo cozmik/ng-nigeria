@@ -5,9 +5,15 @@ ng-nig-event-card{
 }
 
 tabs {
+  margin: 0 auto;
+  min-width: 810px;
   ::ng-deep
   ul {
     width: 60%;
+  }
+  tab{
+    margin: 0 auto;
+    width: 65%;
   }
 }
 ::ng-deep .tabs__panel {

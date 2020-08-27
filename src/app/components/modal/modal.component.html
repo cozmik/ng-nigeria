@@ -1,1 +1,9 @@
-<p>modal works!</p>
+<section>
+  <div class="header">
+    <ng-content select=".dialog-title"></ng-content>
+    <button (click)="closeModal()"><fa-icon [icon]="closeIcon"></fa-icon> </button>
+  </div>
+  <div class="modal-container">
+    <ng-content select=".dialog-content"></ng-content>
+  </div>
+</section>

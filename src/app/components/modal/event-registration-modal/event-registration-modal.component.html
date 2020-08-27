@@ -1,0 +1,29 @@
+<ng-nig-modal (close)="onNoClick()">
+  <h2 class="dialog-title">{{title}}</h2>
+  <article class="dialog-content">
+    <div class="subtitle">To register for this ngEvent, please fill in your full name and email address</div>
+
+    <form #registrationForm='ngForm'>
+      <label for="fullName">
+        <span>Name</span>
+        <input id="fullName" [disabled]="isLoading" name="fullName" [(ngModel)]="regModel.fullName" placeholder="Enter your full name"
+               type="text"
+               required>
+      </label>
+      <label for="fullName">
+        <span>Name</span>
+        <input id="email" type="email" [disabled]="isLoading" name="email" [(ngModel)]="regModel.email"
+               placeholder="e.g johndoe@domain.com"
+               required>
+      </label>
+
+      <div class="button-section">
+      <button class="primary-button" [disabled]="!registrationForm.form.valid" (click)="submit()">
+        <span *ngIf="!isLoading">Register</span>
+        <fa-icon  *ngIf="isLoading" [icon]="loader" [spin]="true"></fa-icon>
+      </button>
+      </div>
+    </form>
+
+  </article>
+</ng-nig-modal>

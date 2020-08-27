@@ -8,7 +8,7 @@ import { JobModel } from '../../models/job.model';
   styleUrls: ['./jobs.component.scss']
 })
 export class JobsComponent implements OnInit {
-  jobs: JobModel[];
+  jobs: JobModel[] = [];
 
   constructor(private appService: AppService) { }
 

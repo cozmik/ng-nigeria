@@ -1,0 +1,93 @@
+<section>
+  <div class="event-details">
+    <img [src]="event.image" class="image">
+    <div class="details">
+      <h2>{{event.title}}</h2>
+      <div>
+        <p>{{event.desc}}</p>
+      </div>
+    </div>
+    <div class="info">
+      <div class="event-calender">
+      <span>
+         <fa-icon [icon]="calenderIcon"></fa-icon>
+        <span>{{event.date}}</span>
+      </span>
+        <span>
+         <fa-icon [icon]="clockIcon"></fa-icon>
+          <span>{{event.time}}</span>
+      </span>
+        <span>
+          <fa-icon [icon]="locationIcon"></fa-icon>
+          <span>{{event.fullAddress}}</span>
+      </span>
+      </div>
+    </div>
+    <button class="primary-button" (click)="openRegDialog()">register</button>
+  </div>
+
+  <div class="timerContainer">
+    <ng-nig-count-down-timer [time]="eventDeadLine"></ng-nig-count-down-timer>
+  </div>
+
+  <article class="about-event">
+    <div>
+      <div>
+        <div class="icon">
+          <img src="assets/images/learn.svg">
+        </div>
+        <h4>Learn</h4>
+        <div class="text">
+          Learn how to use Angular technology in your projects. Attendees can also ask questions
+        </div>
+      </div>
+
+      <div>
+        <div class="icon">
+          <img src="assets/images/microphone.svg">
+        </div>
+        <h4>Diverse Speakers</h4>
+        <div class="text">
+          We’ll have speakers from top tech companies in Nigeria like Terragon Group, Andela, Softcom etc.
+        </div>
+      </div>
+
+      <div>
+        <div class="icon">
+          <img src="assets/images/meeting.svg">
+        </div>
+        <h4>Professional Network</h4>
+        <div class="text">
+          Improve your professional network by connecting with people. Who knows, you might get connected to your dream
+          job!
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="speakers-section">
+    <h2>Speakers</h2>
+    <h5>Our amazing and talented speakers</h5>
+
+    <div class="speakers">
+      <ng-nig-profile-card2 *ngFor="let sp of speakers" [profilePix]="sp.profilePix"
+                            userName="{{sp.firstName + ' ' + sp.lastName}}"
+                            job="{{sp.jobRole}}, {{sp.company}}"
+                            [socials]="sp.socials"
+      ></ng-nig-profile-card2>
+
+
+    </div>
+
+    <div class="button">
+      <button class="primary-button">Register now</button>
+    </div>
+  </article>
+
+  <article class="contain">
+    <h2>Sponsors</h2>
+    <h5>This ngEvent is possible from the support of these wonderful people</h5>
+
+   <ng-nig-sponsors [sponsors]="sponsors"></ng-nig-sponsors>
+  </article>
+</section>

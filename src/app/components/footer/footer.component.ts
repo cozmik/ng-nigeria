@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'ng-nig-footer',
@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  year: number;
+  constructor() {
   }
 
+  ngOnInit(): void {
+    const date = new Date();
+    this.year = date.getFullYear();
+  }
+
+  joinSocialMedia(sm: string): void {
+    if (sm === 'whatsApp') {
+      console.log('go to whatsapp link');
+    } else if (sm === 'slack') {
+      console.log('go to slack link');
+    }
+  }
 }
