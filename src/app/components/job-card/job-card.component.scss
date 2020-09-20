@@ -49,3 +49,27 @@ section {
     height: fit-content;
   }
 }
+
+@media screen and (max-width: 1000px){
+  section{
+    grid-column-gap: 40px;
+  }
+}
+
+
+@media screen and (max-width: 750px){
+  section{
+    grid-template-areas: 'title title'
+                       'desc desc'
+                       'extras extras'
+    'button button';
+  }
+}
+
+@media screen and (max-width: 570px){
+  section{
+    .title{
+      justify-self: center;
+    }
+  }
+}

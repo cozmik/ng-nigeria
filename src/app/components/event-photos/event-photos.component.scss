@@ -101,3 +101,16 @@ section{
     margin-right: 20px !important;
   }
 }
+
+@media screen and (max-width: 670px){
+  section{
+    .images{
+      div {
+        &:nth-child(5) {
+          display: none;
+        }
+      }
+    }
+  }
+}
+

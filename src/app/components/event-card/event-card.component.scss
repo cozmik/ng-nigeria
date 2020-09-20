@@ -1,11 +1,11 @@
 @import "~src/assets/variables";
 
-section{
+section {
   position: relative;
   grid-template-areas: 'image details'
 '. info';
 
-  .attendants{
+  .attendants {
     position: absolute;
     font-size: .8em;
     color: $subtext-color;
@@ -14,20 +14,74 @@ section{
     display: flex;
     align-items: center;
 
-    span{
+    span {
       margin-left: 8px;
     }
 
-    img{
+    img {
       width: 40px;
       height: 40px;
       border-radius: 100%;
       z-index: 2;
 
-      &:nth-child(2){
+      &:nth-child(2) {
         margin-left: -15px;
         z-index: 1;
       }
+    }
+  }
+}
+
+@media screen and (max-width: 765px) {
+  section {
+    grid-template-areas: 'image image'
+    'details details'
+'info info';
+
+    .image {
+      width: stretch;
+      height: unset !important;
+      margin-bottom: 10px;
+    }
+
+    .event-calender {
+      width: 100% !important;
+      max-width: unset !important;
+    }
+  }
+}
+
+@media screen and (max-width: 560px) {
+  section {
+    grid-template-areas: 'image image'
+    'details details'
+'info info'
+    'attendants attendants';
+
+    .image {
+      width: stretch;
+      height: unset !important;
+      margin-bottom: 10px;
+    }
+
+    .info {
+      text-align: center;
+    }
+
+    .details{
+      text-align: center;
+    }
+
+    .attendants {
+      position: initial;
+      grid-area: attendants;
+      margin-top: 20px;
+      justify-content: center;
+    }
+
+    .event-calender {
+      width: 100% !important;
+      max-width: unset !important;
     }
   }
 }

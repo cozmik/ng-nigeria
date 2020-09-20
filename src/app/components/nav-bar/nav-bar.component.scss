@@ -76,6 +76,21 @@
   margin-right: 40px;
 }
 
+@media screen and (max-width: 990px){
+  nav {
+    .container {
+      margin: 0;
+    >div{
+        margin: 0 0 20px;
+      }
+      max-width: 100%;
+      .nav-item {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
 
 @keyframes slideDown {
   0% {

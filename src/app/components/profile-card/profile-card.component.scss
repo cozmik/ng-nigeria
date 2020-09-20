@@ -60,3 +60,23 @@ section{
   'image details';
   }
 }
+
+@media screen and (max-width: 1230px){
+  section{
+    grid-template-areas: 'image image'
+  'details details'
+  'line line';
+    text-align: center;
+    .details{
+      >* {
+        text-align: center !important;
+      }
+    }
+
+    &.invert{
+      grid-template-areas: 'line line'
+  'image image'
+  'details details';
+    }
+  }
+}

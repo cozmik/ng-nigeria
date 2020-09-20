@@ -3,7 +3,7 @@
 div.card-container {
   box-shadow: 0 3px 40px rgba($primary-text-color, .2);
   background: $secondary-text-color;
-  width: fit-content;
+  width: stretch;
   text-align: center;
   padding: 40px 40px 25px;
 
@@ -41,12 +41,4 @@ div.card-container {
       width: 25px;
     }
   }
-
-  //span {
-  //  display: inline-block;
-  //
-  //  fa-icon {
-  //    font-size: .8em;
-  //  }
-  //}
 }

@@ -24,12 +24,14 @@
     }
 
     div {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-column-gap: 70px;
+      display: flex;
+      flex-wrap: wrap;
+      //grid-template-columns: 1fr 1fr 1fr;
+      //grid-column-gap: 70px;
     }
 
     a {
+      margin-right: 70px;
       transition: 500ms ease-in-out;
       filter: grayscale(.85);
       &:hover{

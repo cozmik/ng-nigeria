@@ -6,7 +6,6 @@ ng-nig-event-card{
 
 tabs {
   margin: 0 auto;
-  min-width: 810px;
   ::ng-deep
   ul {
     width: 60%;
@@ -20,4 +19,34 @@ tabs {
     display: flex !important;
     flex-direction: column;
     align-items: center;
+}
+
+@media screen and (max-width: 1190px){
+  tabs {
+    ::ng-deep
+    ul {
+      width: 75%;
+    }
+    tab{
+      margin: 0 auto;
+      width: 80%;
+    }
+  }
+}
+
+
+@media screen and (max-width: 950px){
+  tabs {
+    ::ng-deep
+    ul {
+      width: 85%;
+      li{
+        padding: 15px 20px !important;
+      }
+    }
+    tab{
+      margin: 0 auto;
+      width: 90%;
+    }
+  }
 }

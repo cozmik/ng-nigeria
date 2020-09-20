@@ -1,11 +1,5 @@
 @import "src/assets/variables";
 
-// section {
-//   padding-top: 150px;
-//   text-align: center;
-//   height: 70vh;
-// }
-
 section {
   margin-top: 250px;
 }
@@ -20,7 +14,9 @@ section {
   border: 1px solid #3333331a;
   border-radius: 6px;
   padding: 0 50px;
-  margin-bottom: 200px;
+  margin: 0 auto 200px;
+  width: 90%;
+  max-width: 780px;
 
   label {
     letter-spacing: 0px;
@@ -68,5 +64,12 @@ button {
 
   &:disabled {
     opacity: 0.6;
+  }
+}
+
+
+@media screen and (max-width: 700px){
+  section{
+    margin-top: 150px;
   }
 }

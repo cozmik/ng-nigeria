@@ -1,5 +1,7 @@
 import {Component, HostListener, Input, OnInit} from '@angular/core';
 import {Event, ResolveEnd, Router} from '@angular/router';
+import {faBars} from '@fortawesome/free-solid-svg-icons/faBars';
+import {faTimes} from '@fortawesome/free-solid-svg-icons/faTimes';
 
 @Component({
   selector: 'ng-nig-nav-bar',
@@ -9,6 +11,8 @@ import {Event, ResolveEnd, Router} from '@angular/router';
 export class NavBarComponent implements OnInit {
   stickify: boolean;
   private navUrl: string;
+  harmBuggerIcon = faBars;
+  closeIcon = faTimes;
 
   constructor(private router: Router) {
     this.router.events.subscribe((event: Event) => {
