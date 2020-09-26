@@ -4,26 +4,27 @@
       <img src="assets/images/angular.png" alt="angular-ng" class="img-logo">
       <span class="site-title">Angular Nigeria</span>
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <fa-icon [icon]="harmBuggerIcon"></fa-icon>
+      <fa-icon [icon]="showMenu ? closeIcon : harmBuggerIcon"></fa-icon>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
+        <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
           <a class="nav-link" [routerLinkActive]="'active-link'" [routerLink]="['/events']">Events</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
           <a class="nav-link" [routerLinkActive]="'active-link'" [routerLink]="['/members']">Members</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
           <a class="nav-link" [routerLinkActive]="'active-link'" [routerLink]="['/photos']">Photos</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
           <a class="nav-link" [routerLinkActive]="'active-link'" [routerLink]="['/jobs']">Jobs</a>
         </li>
-        <li>
+        <li data-toggle="collapse" data-target=".navbar-collapse.show">
           <button class="solid-button" [routerLink]="['/join']">Become a member</button>
         </li>
       </ul>

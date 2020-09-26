@@ -11,7 +11,8 @@
 .navbar {
   padding: 0 50px;
   transition: 300ms ease-in-out;
-  *{
+
+  * {
     transition: 300ms ease-in-out;
   }
 
@@ -60,7 +61,7 @@
       width: 60px;
     }
 
-    .site-title{
+    .site-title {
       display: none;
     }
 
@@ -74,18 +75,58 @@
 
 .nav-item {
   margin-right: 40px;
+
+  .nav-link:hover{
+    cursor: pointer;
+  }
 }
 
-@media screen and (max-width: 990px){
+@media screen and (max-width: 990px) {
   nav {
+    background-color: rgba(0, 0, 0, .6);
+
     .container {
       margin: 0;
-    >div{
+
+      > div {
         margin: 0 0 20px;
       }
+
+      .navbar-toggler{
+        fa-icon{
+          color: white;
+        }
+      }
+
+      .navbar-brand {
+        img {
+          height: 60px;
+          width: 60px;
+        }
+
+        .site-title{
+          display: none;
+        }
+
+        span {
+          font-size: .9em;
+        }
+      }
+
       max-width: 100%;
+
       .nav-item {
         margin-right: 0;
+      }
+    }
+
+    &.stickify {
+      .container {
+        .navbar-toggler {
+          fa-icon {
+            color: $primary-text-color;
+          }
+        }
       }
     }
   }

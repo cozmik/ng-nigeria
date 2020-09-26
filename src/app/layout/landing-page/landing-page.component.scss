@@ -241,6 +241,24 @@ section {
 
 @media screen and (max-width: 900px){
   section{
+    .button-section{
+      button{
+        padding: 10px;
+        width: 130px;
+      }
+    }
+
+    .hero {
+      .container {
+        h2{
+          font-size: 2.5em;
+        }
+        .meeting {
+          width: 90%;
+        }
+      }
+    }
+
     .events {
       .container {
         width: 90vw;

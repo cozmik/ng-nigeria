@@ -1,4 +1,4 @@
-import {Component, HostListener, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, HostListener, Input, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {Event, ResolveEnd, Router} from '@angular/router';
 import {faBars} from '@fortawesome/free-solid-svg-icons/faBars';
 import {faTimes} from '@fortawesome/free-solid-svg-icons/faTimes';
@@ -12,9 +12,12 @@ export class NavBarComponent implements OnInit {
   stickify: boolean;
   private navUrl: string;
   harmBuggerIcon = faBars;
+  @ViewChild('navbarSupportedContent') navbarContent: ElementRef;
+  @ViewChild('navbarToggler') toggler: ElementRef;
   closeIcon = faTimes;
+  showMenu: boolean;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private render: Renderer2) {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof ResolveEnd) {
         if (event.url) {
@@ -40,5 +43,4 @@ export class NavBarComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

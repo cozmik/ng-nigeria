@@ -33,3 +33,24 @@ section{
     }
   }
 }
+
+@media screen and (max-width: 900px){
+  section{
+    div{
+      font-size: 3em;
+    }
+  }
+}
+
+@media screen and (max-width: 690px){
+  section{
+    div{
+      font-size: 2.5em;
+      padding: 10px 15px;
+
+      span:last-child {
+        font-size: 1rem;
+      }
+    }
+  }
+}
