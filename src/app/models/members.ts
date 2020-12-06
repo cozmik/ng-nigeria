@@ -4,7 +4,8 @@ export interface Member {
   company: string;
   profilePix: string;
   jobRole: string;
-  socials: Array<{
+  type?: string;
+  socials?: Array<{
     name: string;
     link: string;
   }>;

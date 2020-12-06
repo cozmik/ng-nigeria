@@ -22,32 +22,32 @@ export class ProfileCard2Component implements OnInit, OnChanges {
           {
             icon: faTwitter,
             color: '#00ACEE',
-            link: this.getSocials(socials, 'twitter')
+            link: this.getSocials(socials, 'Twitter')
           },
         facebook:
           {
             icon: faFacebookF,
             color: '#4064ac',
-            link: this.getSocials(socials, 'facebook')
+            link: this.getSocials(socials, 'Facebook')
           },
         slack:
           {
             icon: faSlackHash,
             color: '#de156c',
-            link: this.getSocials(socials, 'slack')
+            link: this.getSocials(socials, 'Slack')
           },
         linkedIn:
           {
             icon: faLinkedinIn,
             color: '#de156c',
-            link: this.getSocials(socials, 'linkedIn')
+            link: this.getSocials(socials, 'LinkedIn')
           },
 
         stackoverflow:
           {
             icon: faStackOverflow,
             color: '#f48024',
-            link: this.getSocials(socials, 'stackoverflow')
+            link: this.getSocials(socials, 'Stackoverflow')
           },
       };
     }

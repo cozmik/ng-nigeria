@@ -47,6 +47,11 @@ section {
     grid-area: button;
     padding: 15px 40px;
     height: fit-content;
+    color: white;
+
+    &:hover{
+      text-decoration: none;
+    }
   }
 }
 

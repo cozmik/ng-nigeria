@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {faFacebookF, faSlackHash, faStackOverflow, faTwitter} from '@fortawesome/free-brands-svg-icons';
+import {faFacebookF, faLinkedinIn, faSlackHash, faStackOverflow, faTwitter} from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'ng-nig-profile-card',
@@ -13,46 +13,60 @@ export class ProfileCardComponent implements OnInit, OnChanges {
   @Input() position: string;
   @Input() type: string;
   @Input() profilePix: string;
-  @Input() facebook: string;
-  @Input() twitter: string;
-  @Input() slack: string;
-  @Input() stackoverflow: string;
+  @Input() socials: any[];
   socialAccounts: {[key: string]: {[keyVal: string]: any}};
 
   constructor() {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.socialAccounts = {
-      twitter:
-        {
-          icon: faTwitter,
-          color: '#00ACEE',
-          link: changes.twitter?.currentValue
-        },
-      facebook:
-        {
-          icon: faFacebookF,
-          color: '#4064ac',
-          link: changes.facebook?.currentValue
-        },
-      slack:
-        {
-          icon: faSlackHash,
-          color: '#de156c',
-          link: changes.slack?.currentValue
-        },
+    if (changes.socials?.currentValue) {
+      const socials = changes.socials?.currentValue;
+      this.socialAccounts = {
+        twitter:
+          {
+            icon: faTwitter,
+            color: '#00ACEE',
+            link: this.getSocials(socials, 'Twitter')
+          },
+        facebook:
+          {
+            icon: faFacebookF,
+            color: '#4064ac',
+            link: this.getSocials(socials, 'Facebook')
+          },
+        slack:
+          {
+            icon: faSlackHash,
+            color: '#de156c',
+            link: this.getSocials(socials, 'Slack')
+          },
+        linkedIn:
+          {
+            icon: faLinkedinIn,
+            color: '#de156c',
+            link: this.getSocials(socials, 'LinkedIn')
+          },
 
-      stackoverflow:
-        {
-          icon: faStackOverflow,
-          color: '#f48024',
-          link: changes.stackoverflow?.currentValue
-        },
-    };
+        stackoverflow:
+          {
+            icon: faStackOverflow,
+            color: '#f48024',
+            link: this.getSocials(socials, 'Stackoverflow')
+          },
+      };
+    }
   }
 
   ngOnInit(): void {
+  }
+
+  getSocials(socials: any[], type: string): string | undefined {
+    const socialLink = socials.filter(s => s.name === type)[0];
+    if (socialLink){
+      return socialLink.link;
+    }
+    return undefined;
   }
 
 }

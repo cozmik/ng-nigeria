@@ -38,7 +38,7 @@ const routes: Routes = [
     component: MembershipFormComponent,
   },
   {
-    path: 'sponsor',
+    path: 'sponsor/:eventId',
     component: BecomeASponsorComponent,
   },
   {

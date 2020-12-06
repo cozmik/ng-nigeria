@@ -1,5 +1,5 @@
 <div class="sponsors">
-    <article *ngIf="allSponsors['platinum'].length > 0">
+    <article *ngIf="allSponsors['platinum']">
       <h5>platinum</h5>
       <div>
         <a *ngFor="let image of allSponsors['platinum']" [href]="image.link" target="_blank">
@@ -8,7 +8,7 @@
       </div>
     </article>
 
-  <article *ngIf="allSponsors['gold'].length > 0">
+  <article *ngIf="allSponsors['gold']">
     <h5>gold</h5>
     <div>
       <a *ngFor="let image of allSponsors['gold']" [href]="image.link" target="_blank">
@@ -17,7 +17,7 @@
     </div>
   </article>
 
-  <article *ngIf="allSponsors['silver'].length > 0">
+  <article *ngIf="allSponsors['silver']">
     <h5>silver</h5>
     <div>
       <a *ngFor="let image of allSponsors['silver']" [href]="image.link" target="_blank">
@@ -26,7 +26,7 @@
     </div>
   </article>
 
-  <article *ngIf="allSponsors['bronze'].length > 0">
+  <article *ngIf="allSponsors['bronze']">
     <h5>bronze</h5>
     <div>
       <a *ngFor="let image of allSponsors['bronze']" [href]="image.link" target="_blank">

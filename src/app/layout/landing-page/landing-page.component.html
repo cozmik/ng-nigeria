@@ -2,29 +2,30 @@
   <div class="hero">
     <div class="container">
       <h2>
-        {{nextEvent.title}}
+        {{nextEvent?.title}}
       </h2>
       <article class="meeting">
         <div>
           <fa-icon [icon]="calenderIcon"></fa-icon>
-          {{nextEvent.date |date:'MMMM d, yyyy'}}
+          {{nextEvent?.date | date:'MMMM d, yyyy'}}
         </div>
         <div>
           <fa-icon [icon]="clockIcon"></fa-icon>
-          {{nextEvent.time}}
+          {{nextEvent?.startTime | date: 'shortTime'}}
+           - {{nextEvent?.endTime | date: 'shortTime'}}
         </div>
         <div>
           <fa-icon [icon]="locationIcon"></fa-icon>
-          {{nextEvent.shortAddress}}
+          {{nextEvent?.shortAddress}}
         </div>
       </article>
       <article class="description">
-        {{nextEvent.shortDesc}}
+        {{nextEvent?.shortDesc}}
       </article>
 
       <div class="button-section">
         <button (click)='openRegDialog(nextEvent)' class="solid-button primary-button">Register now</button>
-        <button [routerLink]="'events/' + nextEvent.id" class="outline-button">View details</button>
+        <button [routerLink]="'events/' + nextEvent?.id" class="outline-button">View details</button>
       </div>
     </div>
     <div class="timerContainer">
@@ -63,43 +64,16 @@
       </div>
     </article>
     <article class="profile-cards">
+      <ng-template ngFor let-organizer [ngForOf]="organizers" let-i="index">
       <ng-nig-profile-card
-        [facebook]="orginizer.facebook"
-        [name]="orginizer.name"
-        [position]="orginizer.position"
-        [profilePix]="orginizer.profilePix"
-        [stackoverflow]="orginizer.stackoverflow"
-        [twitter]="orginizer.twitter"
+        [name]="organizer.firstName + ' ' + organizer.lastName"
+        [position]="organizer.jobRole"
+        [profilePix]="organizer.profilePix"
+        [socials]="organizer.socials"
+        [type]="i < 2 ? '' : 'inverse'"
       ></ng-nig-profile-card>
-      <ng-nig-profile-card
-        [facebook]="orginizer.facebook"
-        [name]="orginizer.name"
-        [position]="orginizer.position"
-        [profilePix]="orginizer.profilePix"
-        [slack]="orginizer.slack"
-        [stackoverflow]="orginizer.stackoverflow"
-        [twitter]="orginizer.twitter"
-      ></ng-nig-profile-card>
-      <ng-nig-profile-card
-        [name]="orginizer.name"
-        [position]="orginizer.position"
-        [profilePix]="orginizer.profilePix"
-        [slack]="orginizer.slack"
-        [stackoverflow]="orginizer.stackoverflow"
-        [twitter]="orginizer.twitter"
-        type="inverse"
-      ></ng-nig-profile-card>
-      <ng-nig-profile-card
-        [name]="orginizer.name"
-        [position]="orginizer.position"
-        [profilePix]="orginizer.profilePix"
-        [slack]="orginizer.slack"
-        [twitter]="orginizer.twitter"
-        type="inverse"
-      ></ng-nig-profile-card>
-
+      </ng-template>
     </article>
-
   </div>
 
   <div class="upcoming events">
@@ -134,10 +108,6 @@
   <div class="sponsors-section contain sponsors">
     <h2>Sponsors</h2>
     <h6>Our amazing sponsors</h6>
-    <ng-nig-sponsors [sponsors]="sponsors"></ng-nig-sponsors>
-
-    <div class="button-container">
-      <button class="solid-button primary-button" [routerLink]="'sponsor'">become a sponsor</button>
-    </div>
+    <ng-nig-sponsors [sponsors]="pastEvents[0]?.sponsors"></ng-nig-sponsors>
   </div>
 </section>

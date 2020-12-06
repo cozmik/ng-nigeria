@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {faMapMarkerAlt} from '@fortawesome/free-solid-svg-icons';
 import {faCalendar, faClock} from '@fortawesome/free-regular-svg-icons';
 import {Gallery, GalleryItem, ImageItem} from '@ngx-gallery/core';
+import {EventModel} from '../../models/events';
 
 @Component({
   selector: 'ng-nig-event-photos',
@@ -10,18 +11,7 @@ import {Gallery, GalleryItem, ImageItem} from '@ngx-gallery/core';
 })
 export class EventPhotosComponent implements OnInit {
 
-  @Input() theEvent: {
-    id: number;
-    eventName: string;
-    date: string;
-    time: string;
-    location: string;
-    pictures: [
-      {
-        url: string;
-        description: string;
-      }]
-  };
+  @Input() theEvent: EventModel;
 
   locationIcon = faMapMarkerAlt;
   clockIcon = faClock;
@@ -33,8 +23,8 @@ export class EventPhotosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.theEvent.pictures.forEach((data, i) => {
-        this.sample.push(new ImageItem({src: data.url, thumb: data.url, caption: data.description}));
+    this.theEvent.eventPictures.forEach((data, i) => {
+        this.sample.push(new ImageItem({src: data, thumb: data}));
     });
     this.basicLightboxExample();
   }

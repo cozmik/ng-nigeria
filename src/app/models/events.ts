@@ -1,20 +1,52 @@
 import {DateTime} from 'luxon';
+import {Member} from './members';
+import {Sponsor} from './sponsor.model';
 
 export class EventModel {
+  get eventPictures(): string[] {
+    return this._eventPictures;
+  }
+
+  set eventPictures(value: string[]) {
+    this._eventPictures = value;
+  }
+  get organizers(): Member[] {
+    return this._organizers;
+  }
+
+  set organizers(value: Member[]) {
+    this._organizers = value;
+  }
+  get sponsors(): Sponsor[] {
+    return this._sponsors;
+  }
+
+  set sponsors(value: Sponsor[]) {
+    this._sponsors = value;
+  }
+  get speakers(): Member[] {
+    return this._speakers;
+  }
+
+  set speakers(value: Member[]) {
+    this._speakers = value;
+  }
 
   private _title: string;
   private _desc: string;
-  private _date: string;
-  private _time: string;
-  private _attendees: {
-    sample: string[]
-    total: number
-  };
+  private _date: Date;
+  private _startTime: DateTime;
+  private _endTime: DateTime;
+  private _attendees: any[];
   private _image: string;
-  private _id: number;
+  private _id: string;
   private _address: string;
   private _state: string;
   private _country: string;
+  private _speakers: Member[];
+  private _sponsors: Sponsor[];
+  private _organizers: Member[];
+  private _eventPictures: string[];
 
   get shortDesc(): string {
     return this.desc.split('.')[0];
@@ -43,11 +75,11 @@ export class EventModel {
   set country(value: string) {
     this._country = value;
   }
-  get id(): number {
+  get id(): string {
     return this._id;
   }
 
-  set id(value: number) {
+  set id(value: string) {
     this._id = value;
   }
 
@@ -67,20 +99,28 @@ export class EventModel {
     this._desc = value;
   }
 
-  get date(): string {
+  get date(): Date {
     return this._date;
   }
 
-  set date(value: string) {
+  set date(value: Date) {
     this._date = value;
   }
 
-  get time(): string {
-    return this._time;
+  get startTime(): DateTime {
+    return this._startTime;
   }
 
-  set time(value: string) {
-    this._time = value;
+  set startTime(value: DateTime) {
+    this._startTime = value;
+  }
+
+  get endTime(): DateTime {
+    return this._endTime;
+  }
+
+  set endTime(value: DateTime) {
+    this._endTime = value;
   }
 
   get shortAddress(): string {
@@ -91,11 +131,11 @@ export class EventModel {
     return `${this.address}, ${this.state}, ${this.country}`;
   }
 
-  get attendees(): { sample: string[]; total: number } {
+  get attendees(): any[] {
     return this._attendees;
   }
 
-  set attendees(value: { sample: string[]; total: number }) {
+  set attendees(value) {
     this._attendees = value;
   }
   get image(): string {
@@ -108,16 +148,21 @@ export class EventModel {
 
 
   get isPast(): boolean{
-      const currentTime = DateTime.fromISO(new Date().toISOString().split('.')[0]);
-      return currentTime > DateTime.fromISO(this.date);
+      const currentTime = new Date();
+      return currentTime > new Date(this.date);
   }
 
   constructor(data: any) {
-    this._id = data.id;
+    this._id = data._id;
+    this._eventPictures = data.eventPictures;
+    this._organizers = data.organizers;
+    this._sponsors = data.sponsors;
+    this._speakers = data.speakers;
     this._title = data.title;
     this._desc = data.desc;
-    this._date = data.date;
-    this._time = data.time;
+    this._date = data.startTime;
+    this._startTime = data.startTime;
+    this._endTime = data.endTime;
     this._address = data.address;
     this._state = data.state;
     this._country = data.country;

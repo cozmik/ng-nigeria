@@ -1,25 +1,25 @@
 <section>
   <div class="event-details">
-    <img [src]="event.image" class="image">
+    <img [src]="event?.image" class="image">
     <div class="details">
-      <h2>{{event.title}}</h2>
+      <h2>{{event?.title}}</h2>
       <div>
-        <p>{{event.desc}}</p>
+        <p>{{event?.desc}}</p>
       </div>
     </div>
     <div class="info">
       <div class="event-calender">
       <span>
          <fa-icon [icon]="calenderIcon"></fa-icon>
-        <span>{{event.date}}</span>
+        <span>{{event?.date | date:'MMMM d, yyyy'}}</span>
       </span>
         <span>
          <fa-icon [icon]="clockIcon"></fa-icon>
-          <span>{{event.time}}</span>
+          <span>{{event?.startTime | date: 'shortTime'}}</span>
       </span>
         <span>
           <fa-icon [icon]="locationIcon"></fa-icon>
-          <span>{{event.fullAddress}}</span>
+          <span>{{event?.fullAddress}}</span>
       </span>
       </div>
     </div>
@@ -75,12 +75,10 @@
                             job="{{sp.jobRole}}, {{sp.company}}"
                             [socials]="sp.socials"
       ></ng-nig-profile-card2>
-
-
     </div>
 
     <div class="button">
-      <button class="primary-button">Register now</button>
+      <button class="primary-button" (click)="openRegDialog()">Register now</button>
     </div>
   </article>
 
@@ -88,6 +86,9 @@
     <h2>Sponsors</h2>
     <h5>This ngEvent is possible from the support of these wonderful people</h5>
 
-   <ng-nig-sponsors [sponsors]="sponsors"></ng-nig-sponsors>
+   <ng-nig-sponsors [sponsors]="event?.sponsors"></ng-nig-sponsors>
+    <div class="button-container">
+      <button class="solid-button primary-button" (click)="sponsorEvent()">become a sponsor</button>
+    </div>
   </article>
 </section>

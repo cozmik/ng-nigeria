@@ -3,4 +3,5 @@ export interface JobModel {
   about: string;
   type: string;
   location: string;
+  link: string;
 }

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {DateTime} from 'luxon';
 
 @Component({
@@ -6,16 +6,21 @@ import {DateTime} from 'luxon';
   templateUrl: './count-down-timer.component.html',
   styleUrls: ['./count-down-timer.component.scss']
 })
-export class CountDownTimerComponent implements OnInit {
+export class CountDownTimerComponent implements OnInit, OnChanges {
 
   @Input() time: any;
   private eventDate;
-  countdown: { days: number; hours: number; minutes: number; seconds: number } = { days: 0, hours: 0, minutes: 0, seconds: 0 };
-  constructor() { }
+  countdown: { days: number; hours: number; minutes: number; seconds: number } = {days: 0, hours: 0, minutes: 0, seconds: 0};
 
-  ngOnInit(): void {
+  constructor() {
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
     this.eventDate = DateTime.fromISO(this.time);
     this.startCountDown();
+    }
+
+  ngOnInit(): void {
   }
 
   startCountDown(): void {

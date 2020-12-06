@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {JobModel} from '../../models/job.model';
 
 @Component({
   selector: 'ng-nig-job-card',
@@ -7,11 +8,8 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class JobCardComponent implements OnInit {
 
-  @Output() applyClicked: EventEmitter<string> = new EventEmitter();
-  @Input() title: string;
-  @Input() about: string;
-  @Input() type: string;
-  @Input() location: string;
+  // @Output() applyClicked: EventEmitter<string> = new EventEmitter();
+  @Input() job: JobModel;
 
   constructor() {
   }
@@ -19,7 +17,7 @@ export class JobCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  apply(): void {
-    this.applyClicked.emit();
-  }
+  // apply(): void {
+  //   this.applyClicked.emit(this.job.link);
+  // }
 }

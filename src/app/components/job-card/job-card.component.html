@@ -1,11 +1,11 @@
 <section class="card2">
-  <div class="title">{{title}}</div>
-  <p class="desc">{{about}}</p>
+  <div class="title">{{job.title}}</div>
+  <p class="desc">{{job.about}}</p>
 
   <div class="extras">
-    <span>{{type}}</span>
-    <span >{{location}}</span>
+    <span>{{job.type}}</span>
+    <span >{{job.location}}</span>
   </div>
 
-  <button class="apply primary-button" (click)="apply()">Apply now</button>
+  <a class="apply primary-button" [href]="job.link" target="_blank">Apply now</a>
 </section>

@@ -14,7 +14,8 @@
        </span>
       <span>
          <fa-icon [icon]="clockIcon"></fa-icon>
-         {{time}}
+        {{startTime | date: 'shortTime'}}
+        - {{endTime | date: 'shortTime'}}
        </span>
       <span>
          <fa-icon [icon]="locationIcon"></fa-icon>
@@ -22,14 +23,16 @@
        </span>
     </div>
     <button class="primary-button" [style.visibility]="past ? 'hidden': 'visible'"
-            (click)="openRegDialog(ngEvent)">Register now</button>
+            (click)="openRegDialog(ngEvent)">Register now
+    </button>
   </div>
 
   <div class="attendants">
-    <img [src]="sampleAttendantsPix[0]">
-    <img [src]="sampleAttendantsPix[1]">
+    <ng-template ngFor let-attendee [ngForOf]="ngEvent.attendees" let-index="index">
+      <img *ngIf="index < 2" [src]="urlFor(attendee.picture)">
+    </ng-template>
     <span>
-      {{totalAttendees}} people are attending
+      {{totalAttendees}} people {{past ? 'attended' : 'are attending'}}
     </span>
   </div>
 </section>

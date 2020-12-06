@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {EventModel} from '../../models/events';
 import {AppService} from '../../app.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {faCalendar, faClock} from '@fortawesome/free-regular-svg-icons';
 import {faMapMarkerAlt} from '@fortawesome/free-solid-svg-icons';
 import {Member} from '../../models/members';
@@ -21,24 +21,25 @@ export class EventComponent implements OnInit {
   calenderIcon = faCalendar;
   clockIcon = faClock;
   locationIcon = faMapMarkerAlt;
-  eventDeadLine = '2020-08-31';
+  eventDeadLine;
 
-  private eventId: number;
+  private eventId: string;
   speakers: Member[];
   sponsors: Sponsor[];
 
   constructor(private appService: AppService,
               private ar: ActivatedRoute,
-              private dialog: MatDialog) {
-    this.eventId = +this.ar.snapshot.params.id;
+              private dialog: MatDialog,
+              private router: Router) {
+    this.eventId = this.ar.snapshot.params.id;
   }
 
   ngOnInit(): void {
     this.appService.getEvent(this.eventId).subscribe(res => {
       this.event = res;
+      this.eventDeadLine = this.event.endTime;
+      this.speakers = this.event.speakers;
     });
-    this.getSpeakers();
-    this.getSponsors();
   }
 
   openRegDialog(): void {
@@ -59,16 +60,12 @@ export class EventComponent implements OnInit {
       width: '550px',
       data: {title: this.event.title, type: 'eventReg', status: result, message: 'Registration Successful!', link: 'https://angularm'}
     });
-
     dialogRef.afterClosed().subscribe(res => {
     });
   }
 
-  getSpeakers(): void{
-    this.appService.getMembers().subscribe(res => this.speakers = res);
-  }
 
-  getSponsors(): void {
-    this.appService.getSponsors().subscribe(res => this.sponsors = res);
+  sponsorEvent(): void{
+    this.router.navigate(['sponsor/' + this.event.id]);
   }
 }

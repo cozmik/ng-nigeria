@@ -1,18 +1,22 @@
 <section class="main tab">
   <tabs>
     <tab tabTitle="Leadership Team">
-      <ng-nig-profile-card2 *ngFor="let member of members" [profilePix]="member.profilePix"
+      <ng-template ngFor let-member [ngForOf]="members">
+      <ng-nig-profile-card2 *ngIf="member.type === 'admin'" [profilePix]="member.profilePix"
                             userName="{{member.firstName + ' ' + member.lastName}}"
                             job="{{member.jobRole}}, {{member.company}}"
                             [socials]="member.socials"
       ></ng-nig-profile-card2>
+      </ng-template>
     </tab>
     <tab tabTitle="Members">
-      <ng-nig-profile-card2 *ngFor="let member of members" [profilePix]="member.profilePix"
+      <ng-template ngFor let-member [ngForOf]="members">
+      <ng-nig-profile-card2 *ngIf="member.type === 'member'" [profilePix]="member.profilePix"
                             userName="{{member.firstName + ' ' + member.lastName}}"
                             job="{{member.jobRole}}, {{member.company}}"
                             [socials]="member.socials"
       ></ng-nig-profile-card2>
+      </ng-template>
     </tab>
   </tabs>
 </section>

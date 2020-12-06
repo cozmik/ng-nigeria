@@ -15,6 +15,22 @@
                name="contactName">
       </label>
 
+      <label for="sponsor-logo">
+        <span>Logo</span>
+        <input #fileInput id="sponsor-logo" required
+               (change)="sponsorData.logo = fileInput.files"
+               type="file"
+               name="logo">
+      </label>
+
+      <label for="sponsor-website">
+        <span>Website</span>
+        <input id="sponsor-website" required [(ngModel)]="sponsorData.website"
+               type="text"
+               placeholder="www.xyz.com"
+               name="website">
+      </label>
+
       <label for="email">
         <span>Email Address</span>
         <input id="email" required [(ngModel)]="sponsorData.email" placeholder="e.g johndoe@domain.com" name="email">
@@ -31,7 +47,7 @@
           <option value="">
             Select Country
           </option>
-          <option value="1">
+          <option value="Nigeria">
             Nigeria
           </option>
         </select>
@@ -43,7 +59,7 @@
           <option value="">
             Select State
           </option>
-          <option value="1">
+          <option value="Lagos">
             Lagos
           </option>
         </select>
@@ -56,7 +72,7 @@
           <option value="">
             Select City
           </option>
-          <option value="1">
+          <option value="Ikeja">
             Ikeja
           </option>
         </select>
@@ -113,7 +129,10 @@
       </div>
 
       <div class="spanWidth button-section">
-        <button class="primary-button" [disabled]="sponsorForm.invalid" (click)="submitRequest()">Submit</button>
+        <button class="primary-button" [disabled]="sponsorForm.invalid || submittingRequest" (click)="submitRequest()">
+          <span *ngIf="!submittingRequest">Submit</span>
+          <span *ngIf="submittingRequest" class="loadingData">Processing </span>
+        </button>
       </div>
     </form>
 

@@ -3,6 +3,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {NgForm} from '@angular/forms';
 import {faSpinner} from '@fortawesome/free-solid-svg-icons';
 import {EventModel} from '../../../models/events';
+import {AppService} from '../../../app.service';
 
 @Component({
   selector: 'ng-nig-event-registration-modal',
@@ -13,6 +14,8 @@ export class EventRegistrationModalComponent implements OnInit {
 
   title: string;
   regModel: {
+    eventId: string,
+    twitter: string,
     fullName: string,
     email: string,
   };
@@ -21,12 +24,12 @@ export class EventRegistrationModalComponent implements OnInit {
   loader = faSpinner;
 
   constructor(public dialogRef: MatDialogRef<EventRegistrationModalComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: { event: EventModel }) {
+              @Inject(MAT_DIALOG_DATA) public data: { event: EventModel }, private appService: AppService) {
   }
 
   ngOnInit(): void {
     this.title = this.data.event.title;
-    this.regModel = {fullName: '', email: ''};
+    this.regModel = {eventId: this.data.event.id, fullName: '', email: '', twitter: ''};
     this.isLoading = false;
   }
 
@@ -36,10 +39,12 @@ export class EventRegistrationModalComponent implements OnInit {
 
   submit(): void {
     this.isLoading = true;
-    setTimeout(() => {
-      this.isLoading = false;
-      console.log(this.regModel);
+    this.appService.registerForEvent(this.regModel).subscribe(res => {
       this.dialogRef.close('success');
-    }, 2000);
+      this.isLoading = false;
+    }, error => {
+      this.dialogRef.close('error');
+      this.isLoading = false;
+    });
   }
 }

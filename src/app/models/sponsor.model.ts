@@ -1,7 +1,15 @@
 export interface Sponsor {
-  id: number;
+  sponsorName: string;
+  contactName: string;
+  email: string;
+  phoneNumber: string;
+  country: string;
+  state: string;
+  logo: any;
+  city: string;
+  activated?: boolean;
+  website: string;
+  streetAddress: string;
   category: string;
-  logo: string;
-  link: string;
-  name?: string;
+  paymentMethod: string;
 }

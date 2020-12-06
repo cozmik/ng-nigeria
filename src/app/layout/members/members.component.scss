@@ -11,11 +11,16 @@ tabs {
     width: 40%;
   }
 
+  ng-nig-profile-card2{
+    margin: 40px;
+  }
+
   ::ng-deep
   .tabs__panel {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 100px;
+    justify-content: center;
+    display: flex !important;
+    flex-wrap: wrap;
+    flex-direction: initial;
   }
 }
 
@@ -31,9 +36,9 @@ tabs {
 
     ::ng-deep
     .tabs__panel {
-      display: grid !important;
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-gap: 40px !important;
+      //display: grid !important;
+      //grid-template-columns: 1fr 1fr 1fr;
+      //grid-gap: 40px !important;
     }
   }
 }
@@ -47,9 +52,9 @@ tabs {
 
     ::ng-deep
     .tabs__panel {
-      display: grid !important;
-      grid-template-columns: 1fr 1fr;
-      grid-gap: 100px;
+      //display: grid !important;
+      //grid-template-columns: 1fr 1fr;
+      //grid-gap: 100px;
     }
   }
 }
@@ -65,9 +70,9 @@ tabs {
 
     ::ng-deep
     .tabs__panel {
-      display: grid !important;
-      grid-template-columns: 1fr 1fr;
-      grid-gap: 100px;
+      //display: grid !important;
+      //grid-template-columns: 1fr 1fr;
+      //grid-gap: 100px;
     }
   }
 }
@@ -81,10 +86,10 @@ tabs {
 
     ::ng-deep
     .tabs__panel {
-      display: grid !important;
-      grid-template-columns: 1fr;
-      grid-gap: 100px;
-      justify-items: center;
+      //display: grid !important;
+      //grid-template-columns: 1fr;
+      //grid-gap: 100px;
+      //justify-items: center;
     }
   }
 }

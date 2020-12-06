@@ -10,6 +10,8 @@ import {MatDialog} from '@angular/material/dialog';
 import {EventRegistrationModalComponent} from '../../components/modal/event-registration-modal/event-registration-modal.component';
 import {ResponseModalComponent} from '../../components/modal/response-modal/response-modal.component';
 import {Sponsor} from '../../models/sponsor.model';
+import {DateTime} from 'luxon';
+import {Member} from '../../models/members';
 
 @Component({
   selector: 'ng-nig-landing-page',
@@ -31,7 +33,7 @@ export class LandingPageComponent implements OnInit {
   whatsAppIcon = faWhatsapp;
   slackIcon = faSlackHash;
 
-  eventDeadLine = '2020-08-31';
+  eventDeadLine;
 
   orginizer = {
     name: 'kelechi Oti',
@@ -47,6 +49,7 @@ export class LandingPageComponent implements OnInit {
   videoId: string;
   nextEvent: EventModel;
   sponsors: Sponsor[];
+  organizers: Member[];
 
   constructor(private appService: AppService,
               private router: Router,
@@ -58,8 +61,6 @@ export class LandingPageComponent implements OnInit {
   ngOnInit(): void {
     this.videoId = '7W_qrc-TkR8';
     const tag = document.createElement('script');
-    this.getSponsors();
-
     tag.src = 'https://www.youtube.com/iframe_api';
     document.body.appendChild(tag);
   }
@@ -90,25 +91,32 @@ export class LandingPageComponent implements OnInit {
   getEvents(): void {
     let pastCount = 0;
     let futureCount = 0;
-    this.appService.getEvents().subscribe((res: any[]) => {
-      res.forEach((e, i) => {
-        e = new EventModel(e);
-        if (e.isPast && pastCount < 2) {
-          this.pastEvents.push(e);
+    this.appService.getEvents().subscribe((res: EventModel[]) => {
+     const past = [];
+     const future = [];
+     res.forEach((e, i) => {
+        if (e.isPast) {
+          past.push(e);
           pastCount++;
         }
-
-        if ((!e.isPast) && futureCount < 2) {
-          this.upComing.push(e);
+        if ((!e.isPast)) {
+          future.push(e);
           futureCount++;
         }
       });
-      this.nextEvent = this.upComing[0];
-    });
-  }
+     past.sort((a, b) => {
+        return DateTime.fromISO(a.startTime.toString()).toMillis() - DateTime.fromISO(b.startTime.toString()).toMillis();
+      });
 
-  getSponsors(): void {
-    this.appService.getSponsors().subscribe(res => this.sponsors = res);
+     future.sort((a, b) => {
+        return DateTime.fromISO(a.startTime.toString()).toMillis() - DateTime.fromISO(b.startTime.toString()).toMillis();
+      });
+     this.pastEvents = [past[past.length - 1], past[past.length - 2]];
+     this.upComing = future.filter((e, i) => i < 2);
+     this.nextEvent = future[0];
+     this.organizers = this.nextEvent.organizers;
+     this.eventDeadLine = this.nextEvent.endTime;
+    });
   }
 
   gotoEventPage(): void {

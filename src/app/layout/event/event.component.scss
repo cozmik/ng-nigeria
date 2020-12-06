@@ -3,6 +3,16 @@
 section {
   background: $background-base;
 
+  .button-container {
+    text-align: center;
+    margin-top: 50px;
+
+    button {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+  }
+
   .event-details {
     padding-top: 150px;
     grid-template-columns: 2fr 3fr;
@@ -132,10 +142,10 @@ section {
 
     .speakers {
       padding-top: 100px;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-      grid-gap: 20px;
+      display: flex;
+      flex-wrap: wrap;
       width: 90%;
+      justify-content: center;
       margin: 0 auto;
       position: inherit;
 
@@ -143,6 +153,7 @@ section {
         max-width: 400px;
         min-width: 300px;
         justify-self: center;
+        margin: 20px;
       }
     }
 
@@ -187,7 +198,7 @@ section {
         top: 60%;
       }
       .speakers {
-        grid-template-columns: 1fr 1fr;
+        //grid-template-columns: 1fr 1fr;
       }
     }
   }
@@ -231,7 +242,7 @@ section {
       margin-bottom: 40px;
 
       .speakers {
-        grid-template-columns: 1fr;
+        //grid-template-columns: 1fr;
       }
     }
   }
