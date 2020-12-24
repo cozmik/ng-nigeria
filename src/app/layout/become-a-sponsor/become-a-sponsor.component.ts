@@ -8,7 +8,7 @@ import {MatDialog} from '@angular/material/dialog';
 @Component({
   selector: 'ng-nig-become-a-sponsor',
   templateUrl: './become-a-sponsor.component.html',
-  styleUrls: ['./become-a-sponsor.component.scss']
+  styleUrls: ['./become-a-sponsor.component.scss', '../../components/form.styles.scss']
 })
 export class BecomeASponsorComponent implements OnInit {
   submittingRequest: boolean;
@@ -34,7 +34,7 @@ export class BecomeASponsorComponent implements OnInit {
     paymentMethod: 'card',
   };
 
-  sponsorData = this.emptyData;
+  sponsorData = {...this.emptyData};
 
   @ViewChild('fileInput') fileInputVariable: any;
   private readonly eventId: string;
@@ -48,7 +48,7 @@ export class BecomeASponsorComponent implements OnInit {
     this.appService.becomeASponsor(this.sponsorData, this.eventId).subscribe(res => {
       this.submittingRequest = false;
       this.openResDialog('success', 'Your sponsorship is being processed');
-      this.sponsorData = this.emptyData;
+      this.sponsorData = {...this.emptyData};
     }, error => {
       this.openResDialog('error', 'Sorry, something went wrong');
     });
@@ -57,7 +57,7 @@ export class BecomeASponsorComponent implements OnInit {
   openResDialog(result, message): void {
     const dialogRef = this.dialog.open(ResponseModalComponent, {
       width: '550px',
-      data: {title: 'Sponsor', type: 'Sponsorship', status: result, message }
+      data: { title: 'Sponsor', type: 'Sponsorship', status: result, message }
     });
     dialogRef.afterClosed().subscribe(res => {
     });

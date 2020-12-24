@@ -1,6 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {NgForm} from '@angular/forms';
 import {faSpinner} from '@fortawesome/free-solid-svg-icons';
 import {EventModel} from '../../../models/events';
 import {AppService} from '../../../app.service';

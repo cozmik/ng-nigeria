@@ -5,7 +5,7 @@
       <ng-nig-profile-card2 *ngIf="member.type === 'admin'" [profilePix]="member.profilePix"
                             userName="{{member.firstName + ' ' + member.lastName}}"
                             job="{{member.jobRole}}, {{member.company}}"
-                            [socials]="member.socials"
+                            [socials]="member.socialHandles"
       ></ng-nig-profile-card2>
       </ng-template>
     </tab>
@@ -14,7 +14,7 @@
       <ng-nig-profile-card2 *ngIf="member.type === 'member'" [profilePix]="member.profilePix"
                             userName="{{member.firstName + ' ' + member.lastName}}"
                             job="{{member.jobRole}}, {{member.company}}"
-                            [socials]="member.socials"
+                            [socials]="member.socialHandles"
       ></ng-nig-profile-card2>
       </ng-template>
     </tab>

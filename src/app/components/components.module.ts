@@ -21,6 +21,7 @@ import {LightboxModule} from '@ngx-gallery/lightbox';
 import {GalleryModule} from '@ngx-gallery/core';
 import { SponsorsComponent } from './sponsors/sponsors.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { SocialMediaModalComponent } from './modal/social-media-modal/social-media-modal.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     ResponseModalComponent,
     EventPhotosComponent,
     SponsorsComponent,
+    SocialMediaModalComponent,
   ],
   exports: [
     FooterComponent,

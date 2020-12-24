@@ -19,6 +19,7 @@ import {EventComponent} from './layout/event/event.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {BecomeASponsorComponent} from './layout/become-a-sponsor/become-a-sponsor.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -33,19 +34,21 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     EventComponent,
     BecomeASponsorComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        ComponentsModule,
-        FontAwesomeModule,
-        BrowserAnimationsModule,
-        YouTubePlayerModule,
-        BrowserAnimationsModule,
-        FormsModule,
-        MatDialogModule,
-        MatProgressSpinnerModule,
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ComponentsModule,
+    FontAwesomeModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
+    YouTubePlayerModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    MatDialogModule,
+    MatProgressSpinnerModule,
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

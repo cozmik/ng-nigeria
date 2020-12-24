@@ -1,0 +1,34 @@
+<ng-nig-modal (close)="onNoClick()">
+  <h2 class="dialog-title">Add your social handle</h2>
+  <article class="dialog-content">
+    <div class="subtitle">Choose social media and add your handle</div>
+
+    <form>
+      <label class="spanWidth">
+        <span>Social handle</span>
+        <div class="inner">
+          <span class="icon">
+            <fa-icon
+              [icon]="this.appService.getSocialIcon(social.media).icon"
+              [style.color]="this.appService.getSocialIcon(social.media).color"></fa-icon>
+          </span>
+          <select [(ngModel)]="social.media" name="media">
+            <option *ngFor="let m of availableMedia" [ngValue]="m">{{m.name}}</option>
+          </select>
+        </div>
+      </label>
+      <label for="handle" class="spanWidth">
+        <span>Handle</span>
+        <input id="handle" type="text" name="handle" [(ngModel)]="social.handle"
+               placeholder="e.g @twitterHandle"
+               required>
+      </label>
+
+      <div class="button-section">
+        <button class="primary-button" (click)="addHandle()">
+          Add
+        </button>
+      </div>
+    </form>
+  </article>
+</ng-nig-modal>

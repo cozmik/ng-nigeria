@@ -1,30 +1,89 @@
-<section>
+<section class="main">
   <h1 class="main-title text-center">Become a Member</h1>
   <div class="form-container">
     <p class="form-header text-center">Fields marked with * are required</p>
-    <form (ngSubmit)="onSubmit(membershipForm)" #membershipForm="ngForm">
-      <div class="form-group flex-column text-left">
-        <label for="fullName">Name *</label>
-        <input id="fullName" required type="text" [(ngModel)]='fullName' name="fullName" class="form-control w-100"
-          placeholder="Enter your full name">
+    <form #memberForm="ngForm">
+      <label for="fName">
+        <span>First Name *</span>
+        <input id="fName" required [disabled]="submittingRequest" type="text" [(ngModel)]='memberData.firstName' name="fullName"
+               placeholder="Enter your First Name">
+      </label>
+
+      <label for="lName">
+        <span>Last Name *</span>
+        <input id="lName" required type="text" [disabled]="submittingRequest" [(ngModel)]='memberData.lastName' name="fullName"
+               placeholder="Enter your Last Name">
+      </label>
+
+      <label for="number">
+        <span>Phone number *</span>
+        <input id="number" required type="text" [disabled]="submittingRequest" [(ngModel)]='memberData.number' name="number"
+               placeholder="Phone Number">
+      </label>
+
+      <label for="email">
+        <span>Email Address *</span>
+        <input id="email" required type="email" [disabled]="submittingRequest" [(ngModel)]='memberData.email' name="email"
+               placeholder="e.g johndoe@gmail.com">
+      </label>
+      <label for="company">
+        <span>Company *</span>
+        <input id="company" required type="text" [disabled]="submittingRequest" [(ngModel)]='memberData.company' name="company"
+               placeholder="What best fits what you currently do?">
+      </label>
+
+      <label for="jobTitle">
+        <span>Job Title *</span>
+        <input id="jobTitle" required type="text" [disabled]="submittingRequest" [(ngModel)]='memberData.jobRole' name="jobTitle"
+               placeholder="What best fits what you currently do?">
+      </label>
+
+      <label for="profilePix" class="spanWidth">
+        <span>Profile Pix</span>
+        <input id="profilePix" #fileInput type="file" [disabled]="submittingRequest"
+               (change)="memberData.profilePix = fileInput.files"
+               name="profilePix"
+               placeholder="Upload your pix">
+      </label>
+
+      <div class="spanWidth socials-section">
+        <span class="extra-text">Add your social handles</span>
+
+        <div class="socials">
+          <ng-container *ngIf="memberData.socialHandles.length > 0;  then socialHandles; else noHandles">
+          </ng-container>
+          <ng-template #socialHandles>
+          <div *ngFor="let s of memberData.socialHandles" (click)="removeHandle(s.media)">
+            <div class="containing">
+          <span class="icon">
+            <fa-icon
+              [icon]="appService.getSocialIcon(s.media).icon"
+              [style.color]="appService.getSocialIcon(s.media).color"></fa-icon>
+          </span>
+            <span class="handle">{{s.handle}}</span>
+          </div>
+          </div>
+          </ng-template>
+          <ng-template #noHandles>
+            <div class="notice spanWidth">nothing to show</div>
+          </ng-template>
+        </div>
       </div>
-      <div class="form-group flex-column text-left">
-        <label for="email">Email Address *</label>
-        <input id="email" required type="email" [(ngModel)]='email' name="email" class="form-control w-100"
-          placeholder="e.g johndoe@gmail.com">
+
+      <div>
+        <button class="primary-button" [disabled]="mediaCount < 1 || submittingRequest" (click)="openSocialModal()">Add new</button>
       </div>
-      <div class="form-group flex-column text-left">
-        <label for="jobTitle">Job Title *</label>
-        <input id="jobTitle" required type="text" [(ngModel)]='jobTitle' name="jobTitle" class="form-control w-100"
-          placeholder="What best fits what you currently do?">
+
+      <div class="spanWidth">
+        <span>Your name is public. We'll use your email to send you updates on our meetups.
+        </span>
       </div>
-      <div class="form-group flex-column text-left">
-        <label for="twitterUsername">Twitter Username</label>
-        <input id="twitterUsername" type="text" [(ngModel)]='twitterUsername' name="twitterUsername"
-          class="form-control w-100" placeholder="Enter your twitter username">
+      <div class="spanWidth button-section">
+        <button class="primary-button" (click)="submitData()" [disabled]="memberForm.invalid || submittingRequest">
+          <span *ngIf="!submittingRequest">Become a Member</span>
+          <span *ngIf="submittingRequest" class="loadingData">Processing</span>
+        </button>
       </div>
-      <span class="notice d-block">Your name is public. We'll use your email to send you updates on our meetups.</span>
-      <button type="submit" [disabled]="membershipForm.invalid">Become a Member</button>
     </form>
   </div>
 </section>

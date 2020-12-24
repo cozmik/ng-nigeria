@@ -4,7 +4,6 @@ section {
   padding-top: 200px;
   padding-bottom: 200px;
 
-
   h2{
     text-align: center;
     color: $header-color;
@@ -20,32 +19,6 @@ section {
     border-radius: 6px;
     margin: 0 auto;
     max-width: 880px;
-
-
-    form {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-column-gap: 40px;
-      grid-row-gap: 10px;
-
-      label {
-        span {
-          display: block;
-          margin-bottom: 8px;
-        }
-
-        input, select {
-          width: 100%;
-          padding: 10px;
-          border-radius: 4px;
-          border: 1px solid #e8e9ec;
-
-          &::placeholder{
-            color: rgba($primary-text-color, .44);
-          }
-        }
-      }
-    }
 
     .radio {
       display: flex;
@@ -67,37 +40,6 @@ section {
           padding-left: 10px;
           display: inline-block;
           font-size: .9em;
-        }
-      }
-    }
-
-    .spanWidth {
-      grid-column: 1/ span 2;
-      margin-bottom: 20px;
-
-      span{
-        font-size: .85em;
-        font-style: italic;
-
-        a{
-          color: #1FA9E6;
-        }
-      }
-
-      &.button-section{
-        text-align: center;
-
-        button{
-          max-width: 400px;
-          width: 100%;
-          padding-top: 15px;
-          padding-bottom: 15px;
-          border-radius: 4px;
-          transition: 300ms all;
-
-          &:active:not(:disabled){
-            transform: scale(.99);
-          }
         }
       }
     }

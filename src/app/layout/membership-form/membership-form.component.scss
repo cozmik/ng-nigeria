@@ -1,7 +1,8 @@
 @import "src/assets/variables";
 
 section {
-  margin-top: 250px;
+  padding-top: 200px;
+  padding-bottom: 200px;
 }
 
 .main-title {
@@ -13,63 +14,107 @@ section {
   box-shadow: 0 3px 20px #fcc2bb2e;
   border: 1px solid #3333331a;
   border-radius: 6px;
-  padding: 0 50px;
-  margin: 0 auto 200px;
+  padding: 0 50px 50px;
+  margin: 0 auto;
   width: 90%;
   max-width: 780px;
-
-  label {
-    letter-spacing: 0px;
-    font-size: 20px;
-  }
-
-  .form-control {
-    border: 1px solid #e8e9ec;
-    border-radius: 4px;
-    height: 60px;
-    font-size: 20px;
-
-    &:focus {
-      outline: none !important;
-      border: none;
-    }
-  }
-
-  .notice {
-    letter-spacing: 0;
-    color: $primary-text-color;
-    font-style: italic;
-  }
 }
 
 .form-header {
-  margin: 60px 0;
-  font-size: 1.3em;
+  margin: 40px 0;
 }
 
-button {
-  margin-top: 30px;
+.notice{
   width: 100%;
-  height: 60px;
-  font-size: 1.3em;
-  border: none;
-  color: $secondary-text-color;
-  background-color: $accent-color;
-  border-radius: 4px;
-  margin-bottom: 60px;
+  justify-content: center;
+  font-size: 2em;
+  color: #ccc;
+  height: 20px;
+  margin-bottom: 0 !important;
+}
 
-  &:focus {
-    outline: none;
-  }
+.socials-section{
+  margin-bottom: 5px !important;
+}
 
-  &:disabled {
-    opacity: 0.6;
+.socials {
+  min-height: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  margin: 10px 25px 0 20px;
+
+  >div {
+    display: flex;
+    align-items: center;
+    &:not(:last-child)::after {
+      content: ' | ';
+      display: inline-block;
+      margin-right: 15px;
+      margin-left: 15px;
+    }
+    div.containing {
+      transition: all 400ms;
+      padding: 3px 6px;
+      border-radius: 5px;
+      border: none;
+      text-align: center;
+
+      &:active {
+        padding: 3px 6px;
+      }
+
+      &:hover {
+        box-shadow: 0 0 3px #dddd;
+        padding: 5px 10px;
+        cursor: pointer;
+
+        span.handle:after {
+          content: "";
+          display: inline-block;
+          animation: show-delete 400ms forwards;
+        }
+      }
+    }
+
+    span {
+      display: inline-block;
+
+      &.icon {
+        margin-right: 5px;
+      }
+
+      &.handle {
+        color: #333;
+        font-style: normal;
+        font-weight: 500;
+      }
+    }
   }
 }
 
 
-@media screen and (max-width: 700px){
-  section{
-    margin-top: 150px;
+@media screen and (max-width: 700px) {
+  section {
+    padding-top: 150px;
   }
+}
+
+
+@keyframes show-delete {
+  0%{
+    content: '';
+  }
+  100% {
+    content: "x";
+    color: white;
+    margin-left: 10px;
+    vertical-align: middle;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    background: tomato;
+    text-align: center;
+  }
+
 }

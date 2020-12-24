@@ -33,10 +33,9 @@ section {
 
   .hero {
     position: relative;
-    background: url("~src/assets/images/landing_bg.png") rgba(0, 0, 0, 0.6);
     background-blend-mode: multiply;
     height: 100vh;
-    background-size: cover;
+    background-size: cover !important;
 
     .container {
       margin: 0 auto;

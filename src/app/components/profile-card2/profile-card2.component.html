@@ -6,9 +6,10 @@
   <div class="job">{{job}}</div>
 
   <div class="social">
-    <ng-template ngFor let-social [ngForOf]="socialAccounts | keyvalue">
-      <a *ngIf="social.value.link" [href]="social.value.link" target="_blank">
-        <fa-icon *ngIf="social.value.link" [icon]="social.value.icon" [style.color]="social.value.color"></fa-icon>
+    <ng-template ngFor let-social [ngForOf]="socials">
+      <a *ngIf="social.link" [href]="social.link" target="_blank">
+        <fa-icon *ngIf="social.link" [icon]="appService.getSocialIcon(social).icon"
+                 [style.color]="appService.getSocialIcon(social).color"></fa-icon>
       </a>
     </ng-template>
   </div>

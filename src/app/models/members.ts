@@ -2,11 +2,10 @@ export interface Member {
   firstName: string;
   lastName: string;
   company: string;
-  profilePix: string;
+  number?: string;
+  email?: string;
+  profilePix: any;
   jobRole: string;
   type?: string;
-  socials?: Array<{
-    name: string;
-    link: string;
-  }>;
+  socialHandles?: any[];
 }

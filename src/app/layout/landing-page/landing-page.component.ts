@@ -34,16 +34,6 @@ export class LandingPageComponent implements OnInit {
   slackIcon = faSlackHash;
 
   eventDeadLine;
-
-  orginizer = {
-    name: 'kelechi Oti',
-    position: 'organizer',
-    profilePix: 'assets/images/funny-profile-pic59.jpg',
-    twitter: 'https://twitter.com',
-    facebook: 'https://facebook.com',
-    slack: 'https://slack.com',
-    stackoverflow: 'https://stackoverflow.com'
-  };
   upComing: EventModel[] = [];
   pastEvents: EventModel[] = [];
   videoId: string;
