@@ -1,14 +1,20 @@
 <section class="main tab">
   <tabs>
     <tab [tabTitle]="'Upcoming Events (' + futureEventCount + ')'">
-      <ng-nig-event-card *ngFor="let event of futureComing"
+      <ng-nig-event-card *ngFor="let event of futureEvents | paginate: { itemsPerPage: 5, currentPage: pu }"
                          [ngEvent]="event"
       ></ng-nig-event-card>
+      <div style="margin-top: 40px">
+        <pagination-controls *ngIf="futureEvents.length > 5" (pageChange)="pu = $event"></pagination-controls>
+      </div>
     </tab>
     <tab [tabTitle]="'Past Events (' + pastEventCount + ')'">
-      <ng-nig-event-card *ngFor="let event of pastEvents"
+      <ng-nig-event-card *ngFor="let event of pastEvents | paginate: { itemsPerPage: 5, currentPage: pp }"
                          [ngEvent]="event"
       ></ng-nig-event-card>
+      <div style="margin-top: 40px">
+        <pagination-controls *ngIf="pastEvents.length > 5" (pageChange)="pp = $event"></pagination-controls>
+      </div>
     </tab>
   </tabs>
 </section>

@@ -10,6 +10,7 @@ export class PhotosComponent implements OnInit {
 
 
   eventMemories = [];
+  p = 1;
 
   constructor(private appService: AppService) {
   }

@@ -51,7 +51,7 @@ export class AppService {
   attendees[]{fullName, email, twitterHandle, "picture":picture.asset->url},
   state,
   country,
-  organizers[]{firstName, lastName, 'socials': socialHandles[]{'link':handle, 'name': media->name}, 'profilePix': profilePix.asset->url},
+  organizers[]{firstName, lastName, jobRole, 'socialHandles': socialHandles[]{'link':handle, 'name': media->name}, 'profilePix': profilePix.asset->url},
   sponsors[]{"logo": logo.asset->url, website, category, "activated": activate},
   "image": image.asset->url
 }`;
@@ -122,7 +122,7 @@ export class AppService {
   email,
   firstName,
   lastName,
-  company, jobRole, 'socials': socialHandles[]{'link':handle, 'name': media->name}, 'profilePix': profilePix.asset->url},
+  company, jobRole, 'socialHandles': socialHandles[]{'link':handle, 'name': media->name}, 'profilePix': profilePix.asset->url},
   link,
   address,
   attendees[]{fullName, email, twitterHandle, "picture":picture.asset->url},
@@ -240,34 +240,40 @@ export class AppService {
         {
           icon: faTwitter,
           color: '#00ACEE',
+          link: 'https://www.twitter.com/'
         },
       facebook:
         {
           icon: faFacebookF,
           color: '#4064ac',
+          link: 'https://www.facebook.com/'
         },
       slack:
         {
           icon: faSlackHash,
           color: '#de156c',
+          link: 'request'
         },
       linkedin:
         {
           icon: faLinkedinIn,
           color: '#0e76a8',
+          link: 'https://www.linkedin.com/'
         },
 
       stackoverflow:
         {
           icon: faStackOverflow,
           color: '#f48024',
+          link: 'https://www.stackoverflow.com/'
         },
       github:
         {
           icon: faGithub,
           color: '#4078c0',
+          link: 'https://www.github.com/'
         },
     };
-    return socialAccounts[media.name.toLowerCase()];
+    return media.name ? socialAccounts[media.name.toLowerCase()] : '';
   }
 }

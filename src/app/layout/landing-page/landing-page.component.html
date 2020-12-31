@@ -12,7 +12,7 @@
         <div>
           <fa-icon [icon]="clockIcon"></fa-icon>
           {{nextEvent?.startTime | date: 'shortTime'}}
-           - {{nextEvent?.endTime | date: 'shortTime'}}
+          - {{nextEvent?.endTime | date: 'shortTime'}}
         </div>
         <div>
           <fa-icon [icon]="locationIcon"></fa-icon>
@@ -49,29 +49,31 @@
         </span>
         <div>
           <span>
-            <a href="#">
+            <a href="https://twitter.com/AngularNigeria" target="_blank">
               <fa-icon [icon]="twitterIcon"></fa-icon></a>
           </span>
           <span>
-            <a href="#">
+            <a href="#" target="_blank">
               <fa-icon [icon]="slackIcon" [style.color]="'#de156c'"></fa-icon>
             </a>
           </span>
           <span>
+            <a href="#" target="_blank">
               <fa-icon [icon]="whatsAppIcon" [style.color]="'#5add8b'"></fa-icon>
+              </a>
           </span>
         </div>
       </div>
     </article>
     <article class="profile-cards">
       <ng-template ngFor let-organizer [ngForOf]="organizers" let-i="index">
-      <ng-nig-profile-card
-        [name]="organizer.firstName + ' ' + organizer.lastName"
-        [position]="organizer.jobRole"
-        [profilePix]="organizer.profilePix"
-        [socials]="organizer.socials"
-        [type]="i < 2 ? '' : 'inverse'"
-      ></ng-nig-profile-card>
+        <ng-nig-profile-card
+          [name]="organizer.firstName + ' ' + organizer.lastName"
+          [position]="organizer.jobRole"
+          [profilePix]="organizer.profilePix"
+          [socials]="organizer.socialHandles"
+          [type]="i < 2 ? '' : 'inverse'"
+        ></ng-nig-profile-card>
       </ng-template>
     </article>
   </div>

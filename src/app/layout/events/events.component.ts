@@ -14,7 +14,9 @@ export class EventsComponent implements OnInit {
   pastEventCount = 0;
   futureEventCount = 0;
   pastEvents: EventModel[] = [];
-  futureComing: EventModel[] = [];
+  futureEvents: EventModel[] = [];
+  pp = 1;
+  pu = 1;
 
   constructor(private appService: AppService, private router: Router) { }
 
@@ -33,7 +35,7 @@ export class EventsComponent implements OnInit {
         }
 
         if ((!e.isPast) && futureCount < 5){
-          this.futureComing.push(e);
+          this.futureEvents.push(e);
           futureCount++;
         }
         if (e.isPast){

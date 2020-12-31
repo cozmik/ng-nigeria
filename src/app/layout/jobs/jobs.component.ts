@@ -9,6 +9,7 @@ import { JobModel } from '../../models/job.model';
 })
 export class JobsComponent implements OnInit {
   jobs: JobModel[] = [];
+  p = 1;
 
   constructor(private appService: AppService) { }
 

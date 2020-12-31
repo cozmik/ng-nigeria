@@ -12,7 +12,9 @@
   <div class="job-section">
     <div>
     <h4>{{jobs.length}} Job Opportunities Available</h4>
-  <ng-nig-job-card *ngFor="let job of jobs" [job]="job"></ng-nig-job-card>
+  <ng-nig-job-card *ngFor="let job of jobs | paginate: { itemsPerPage: 5, currentPage: p }"
+      [job]="job"></ng-nig-job-card>
     </div>
+    <pagination-controls *ngIf="jobs.length > 5" (pageChange)="p = $event"></pagination-controls>
   </div>
 </section>

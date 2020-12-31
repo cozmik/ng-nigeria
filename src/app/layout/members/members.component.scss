@@ -12,7 +12,15 @@ tabs {
   }
 
   ng-nig-profile-card2{
-    margin: 40px;
+    margin: 1%;
+
+    &:nth-child(4n + 1){
+      margin-left: 0;
+    }
+
+    &:nth-child(4n){
+      margin-right: 0;
+    }
   }
 
   ::ng-deep

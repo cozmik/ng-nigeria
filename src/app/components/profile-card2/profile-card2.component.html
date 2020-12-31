@@ -7,9 +7,10 @@
 
   <div class="social">
     <ng-template ngFor let-social [ngForOf]="socials">
-      <a *ngIf="social.link" [href]="social.link" target="_blank">
-        <fa-icon *ngIf="social.link" [icon]="appService.getSocialIcon(social).icon"
-                 [style.color]="appService.getSocialIcon(social).color"></fa-icon>
+      <a *ngIf="social.link" [href]="appService?.getSocialIcon(social).link + sanitizeHandle(social.link)"
+         target="_blank">
+        <fa-icon *ngIf="social.link" [icon]="appService?.getSocialIcon(social).icon"
+                 [style.color]="appService?.getSocialIcon(social).color"></fa-icon>
       </a>
     </ng-template>
   </div>

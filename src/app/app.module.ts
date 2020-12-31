@@ -20,6 +20,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {BecomeASponsorComponent} from './layout/become-a-sponsor/become-a-sponsor.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {ToastrModule} from 'ngx-toastr';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import {ToastrModule} from 'ngx-toastr';
     AppRoutingModule,
     ComponentsModule,
     FontAwesomeModule,
+    NgxPaginationModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     YouTubePlayerModule,

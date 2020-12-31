@@ -104,6 +104,7 @@ export class LandingPageComponent implements OnInit {
      this.pastEvents = [past[past.length - 1], past[past.length - 2]];
      this.upComing = future.filter((e, i) => i < 2);
      this.nextEvent = future[0];
+     console.log(this.nextEvent);
      this.organizers = this.nextEvent.organizers;
      this.eventDeadLine = this.nextEvent.endTime;
     });

@@ -29,18 +29,18 @@ body::-webkit-scrollbar-thumb {
   padding-bottom: 80px;
 }
 
-input{
+input {
   background: white !important;
   color: $primary-text-color !important;
 }
 
-.mat-dialog-container{
+.mat-dialog-container {
   background: $background-base !important;
   color: $primary-text-color;
   padding: 0 !important;
 }
 
-button:disabled{
+button:disabled {
   background: rgba($accent-color, .7);
   border-color: rgba($accent-color, .1);;
 }
@@ -71,9 +71,79 @@ button, input, select, input:active, input:focus, select:active, select:focus, b
   justify-content: center;
 }
 
-.mat-snack-bar-container{
+.mat-snack-bar-container {
   width: 100px !important;
   min-width: 100px !important;
 }
 
-html, body { height: 100%; }
+pagination-controls {
+  text-align: center;
+
+  li.pagination-previous, li.pagination-next {
+    @include outline-button($accent-color, $accent-color);
+    padding: 5px 20px !important;
+    width: unset !important;
+
+    a:hover {
+      background: none !important;
+    }
+
+    &:hover:not(.disabled) {
+      @include solid-button(white, rgba($accent-color, .6));
+      padding: 7px 22px !important;
+      border: none !important;
+    }
+
+    &.disabled {
+      @include outline-button(rgba($accent-color, .6), rgba($accent-color, .6));
+      padding: 5px 20px !important;
+    }
+  }
+
+  li.pagination-previous {
+    margin-right: 5px;
+  }
+
+  li.pagination-next {
+    margin-left: 5px;
+  }
+
+  li:not(.pagination-next):not(.pagination-previous) a:hover {
+    @include solid-button(white, rgba($accent-color, .6));
+    border-radius: 50%;
+    padding: 5px;
+    height: 35px !important;
+    width: 35px !important;
+    text-align: center;
+    border: none;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  a:active {
+    outline: none;
+  }
+
+  li:not(.pagination-next):not(.pagination-previous) {
+    height: 35px !important;
+    width: 35px !important;
+    margin: 0 5px;
+  }
+
+  li.current {
+    @include solid-button(white, $accent-color);
+    background: $accent-color !important;
+    border-radius: 50%;
+    padding: 5px !important;
+    height: 35px !important;
+    width: 35px !important;
+    text-align: center;
+    border: none;
+  }
+}
+
+html, body {
+  height: 100%;
+}

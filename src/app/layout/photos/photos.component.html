@@ -1,7 +1,8 @@
 <section class="main">
   <div>
-    <div *ngFor="let e of eventMemories" class="photogrid">
+    <div *ngFor="let e of eventMemories | paginate: { itemsPerPage: 5, currentPage: p}" class="photogrid">
       <ng-nig-event-photos [theEvent]="e"></ng-nig-event-photos>
     </div>
+    <pagination-controls *ngIf="eventMemories.length > 5" (pageChange)="p = $event"></pagination-controls>
   </div>
 </section>
