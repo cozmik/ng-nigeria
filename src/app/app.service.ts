@@ -87,6 +87,15 @@ export class AppService {
     );
   }
 
+  getVideo(): Observable<any>{
+    const data = `*[_type =='utility']{
+     youtubeLink
+  }`;
+    return this.http.get(this.serviceUrl('query') + '?query=' + data).pipe(
+      map((res: any) => res.result[0])
+    );
+  }
+
   getMembers(): Observable<Array<Member>> {
     const query = `*[_type == 'members']{
   firstName,

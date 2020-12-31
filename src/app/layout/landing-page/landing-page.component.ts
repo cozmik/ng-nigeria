@@ -49,7 +49,7 @@ export class LandingPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.videoId = '7W_qrc-TkR8';
+    this.getVideo();
     const tag = document.createElement('script');
     tag.src = 'https://www.youtube.com/iframe_api';
     document.body.appendChild(tag);
@@ -65,6 +65,12 @@ export class LandingPageComponent implements OnInit {
       if (result) {
         this.openResDialog(result);
       }
+    });
+  }
+
+  getVideo(): void {
+    this.appService.getVideo().subscribe(res => {
+      this.videoId = res.youtubeLink;
     });
   }
 
@@ -104,7 +110,6 @@ export class LandingPageComponent implements OnInit {
      this.pastEvents = [past[past.length - 1], past[past.length - 2]];
      this.upComing = future.filter((e, i) => i < 2);
      this.nextEvent = future[0];
-     console.log(this.nextEvent);
      this.organizers = this.nextEvent.organizers;
      this.eventDeadLine = this.nextEvent.endTime;
     });

@@ -20,7 +20,6 @@ export class ProfileCardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.socials);
   }
 
   sanitizeHandle(h: string): string {
