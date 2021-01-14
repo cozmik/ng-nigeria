@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../../app.service';
 import { JobModel } from '../../models/job.model';
+import {faSpinner} from '@fortawesome/free-solid-svg-icons/faSpinner';
 
 @Component({
   selector: 'ng-nig-jobs',
@@ -10,6 +11,8 @@ import { JobModel } from '../../models/job.model';
 export class JobsComponent implements OnInit {
   jobs: JobModel[] = [];
   p = 1;
+  loadingData: boolean;
+  faSpinner = faSpinner;
 
   constructor(private appService: AppService) { }
 
@@ -18,7 +21,9 @@ export class JobsComponent implements OnInit {
   }
 
   getJobs(): void {
+    this.loadingData = true;
     this.appService.getJobs().subscribe(res => {
+      this.loadingData = false;
       this.jobs = res;
     });
   }

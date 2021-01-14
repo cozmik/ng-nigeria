@@ -80,8 +80,11 @@
 
   <div class="upcoming events">
     <h2>Upcoming Events</h2>
-
-    <div class="container">
+    <div class="container empty-event" *ngIf="upComing.length < 1">
+      <fa-icon [icon]="calenderIcon"></fa-icon>
+      <div>No upcoming events</div>
+    </div>
+    <div class="container" *ngIf="upComing.length > 0">
       <ng-nig-event-card *ngFor="let event of upComing"
                          [ngEvent]="event"
       ></ng-nig-event-card>

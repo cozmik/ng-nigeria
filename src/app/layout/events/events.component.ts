@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {AppService} from '../../app.service';
 import {EventModel} from '../../models/events';
 import {Router} from '@angular/router';
+import {faCalendar} from '@fortawesome/free-solid-svg-icons/faCalendar';
+import {faSpinner} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'ng-nig-events',
@@ -17,6 +19,9 @@ export class EventsComponent implements OnInit {
   futureEvents: EventModel[] = [];
   pp = 1;
   pu = 1;
+  calenderIcon = faCalendar;
+  faSpinner = faSpinner;
+  loadingData: boolean;
 
   constructor(private appService: AppService, private router: Router) { }
 
@@ -25,9 +30,11 @@ export class EventsComponent implements OnInit {
   }
 
   getEvents(): void {
+    this.loadingData = true;
     let pastCount = 0;
     let futureCount = 0;
     this.appService.getEvents().subscribe(res => {
+      this.loadingData = false;
       res.forEach((e, i) => {
         if (e.isPast && pastCount < 5){
           this.pastEvents.push(e);

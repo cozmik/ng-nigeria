@@ -29,6 +29,7 @@ export class ResponseModalComponent implements OnInit {
   copyIcon = faCopy;
   twitterIcon = faTwitter;
   messageToShare: string;
+  linkMessage: string;
 
   constructor(public dialogRef: MatDialogRef<ResponseModalComponent>,
               @Inject(MAT_DIALOG_DATA) public data: EventRegResp,
@@ -42,6 +43,7 @@ export class ResponseModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.messageToShare = 'I will be attending ' + this.title + ' meetup. Register here';
+    this.linkMessage = 'I will be attending ' + encodeURIComponent(this.title) + ' meetup. Register here';
   }
 
   onNoClick(): void {

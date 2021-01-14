@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AppService} from '../../app.service';
 import {Member} from '../../models/members';
+import {faSpinner} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'ng-nig-members',
@@ -9,6 +10,8 @@ import {Member} from '../../models/members';
 })
 export class MembersComponent implements OnInit {
   members: Array<Member>;
+  loadingData: boolean;
+  faSpinner = faSpinner;
 
   constructor(private appService: AppService) { }
 
@@ -17,7 +20,9 @@ export class MembersComponent implements OnInit {
   }
 
   getMembers(): void{
+    this.loadingData = true;
     this.appService.getMembers().subscribe(res => {
+      this.loadingData = false;
       this.members = res;
     });
   }

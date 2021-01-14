@@ -130,6 +130,17 @@ section {
     position: relative;
     min-height: 100vh;
 
+    .empty-event{
+      text-align: center;
+      fa-icon{
+        font-size: 10em;
+        opacity: .4;
+      }
+      div{
+        font-size: 1.5em;
+      }
+    }
+
     .container {
       width: 60vw;
     }
@@ -139,7 +150,6 @@ section {
       color: $header-color;
       text-align: center;
       position: relative;
-      margin-left: 10%;
     }
 
     &.upcoming{

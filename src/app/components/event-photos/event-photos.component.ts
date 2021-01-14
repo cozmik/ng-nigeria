@@ -23,9 +23,11 @@ export class EventPhotosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.theEvent.eventPictures.forEach((data, i) => {
-        this.sample.push(new ImageItem({src: data, thumb: data}));
-    });
+    if (this.theEvent.eventPictures !== undefined) {
+      this.theEvent.eventPictures.forEach((data, i) => {
+          this.sample.push(new ImageItem({src: data, thumb: data}));
+      });
+    }
     this.basicLightboxExample();
   }
 

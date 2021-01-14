@@ -1,17 +1,35 @@
 <section class="main tab">
   <tabs>
     <tab [tabTitle]="'Upcoming Events (' + futureEventCount + ')'">
-      <ng-nig-event-card *ngFor="let event of futureEvents | paginate: { itemsPerPage: 5, currentPage: pu }"
-                         [ngEvent]="event"
-      ></ng-nig-event-card>
+      <ng-template [ngIf]="loadingData">
+        <fa-icon class="loader" [icon]="faSpinner" [spin]="true"></fa-icon>
+      </ng-template>
+      <ng-template [ngIf]="!loadingData">
+      <div class="container empty-event" *ngIf="futureEventCount < 1">
+        <fa-icon [icon]="calenderIcon"></fa-icon>
+        <div>No upcoming events</div>
+      </div>
+      <ng-template [ngIf]="futureEventCount > 0">
+        <ng-nig-event-card *ngFor="let event of futureEvents | paginate: { itemsPerPage: 5, currentPage: pu }"
+                           [ngEvent]="event"
+        ></ng-nig-event-card>
+      </ng-template>
+      </ng-template>
+
       <div style="margin-top: 40px">
         <pagination-controls *ngIf="futureEvents.length > 5" (pageChange)="pu = $event"></pagination-controls>
       </div>
     </tab>
     <tab [tabTitle]="'Past Events (' + pastEventCount + ')'">
-      <ng-nig-event-card *ngFor="let event of pastEvents | paginate: { itemsPerPage: 5, currentPage: pp }"
-                         [ngEvent]="event"
-      ></ng-nig-event-card>
+      <div class="container empty-event" *ngIf="pastEvents.length < 1">
+        <fa-icon [icon]="calenderIcon"></fa-icon>
+        <div>No upcoming events</div>
+      </div>
+      <ng-template [ngIf]="pastEventCount > 0">
+        <ng-nig-event-card *ngFor="let event of pastEvents | paginate: { itemsPerPage: 5, currentPage: pp }"
+                           [ngEvent]="event"
+        ></ng-nig-event-card>
+      </ng-template>
       <div style="margin-top: 40px">
         <pagination-controls *ngIf="pastEvents.length > 5" (pageChange)="pp = $event"></pagination-controls>
       </div>

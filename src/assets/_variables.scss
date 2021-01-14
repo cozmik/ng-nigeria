@@ -62,3 +62,8 @@ section.main{
   background: $background-base;
   min-height: 90vh;
 }
+
+fa-icon.loader{
+  font-size: 10em;
+  opacity: .4;
+}

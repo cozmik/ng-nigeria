@@ -22,6 +22,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {ToastrModule} from 'ngx-toastr';
 import {NgxPaginationModule} from 'ngx-pagination';
 
+
 @NgModule({
   declarations: [
     AppComponent,

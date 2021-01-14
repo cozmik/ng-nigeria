@@ -46,10 +46,15 @@ export class LandingPageComponent implements OnInit {
               public dialog: MatDialog
   ) {
     this.getEvents();
+    console.log(window.location.origin);
   }
 
   ngOnInit(): void {
-    this.getVideo();
+    AppService.utilityLinks.subscribe(res => {
+      if (res) {
+        this.videoId = res.youtubeLink;
+      }
+    });
     const tag = document.createElement('script');
     tag.src = 'https://www.youtube.com/iframe_api';
     document.body.appendChild(tag);
@@ -68,16 +73,13 @@ export class LandingPageComponent implements OnInit {
     });
   }
 
-  getVideo(): void {
-    this.appService.getVideo().subscribe(res => {
-      this.videoId = res.youtubeLink;
-    });
-  }
-
   openResDialog(result): void {
     const dialogRef = this.dialog.open(ResponseModalComponent, {
       width: '550px',
-      data: {title: this.nextEvent.title, type: 'eventReg', status: result, message: 'Registration Successful!', link: 'https://angularm'}
+      data: {title: this.nextEvent.title, type: 'eventReg',
+        status: result, message: 'Registration Successful!',
+        link: window.location.origin + '/events/' + this.nextEvent.id
+      }
     });
 
     dialogRef.afterClosed().subscribe(res => {
@@ -109,7 +111,11 @@ export class LandingPageComponent implements OnInit {
       });
      this.pastEvents = [past[past.length - 1], past[past.length - 2]];
      this.upComing = future.filter((e, i) => i < 2);
-     this.nextEvent = future[0];
+     if (future.length < 1){
+       this.nextEvent = this.pastEvents[0];
+     }else {
+       this.nextEvent = future[0];
+     }
      this.organizers = this.nextEvent.organizers;
      this.eventDeadLine = this.nextEvent.endTime;
     });

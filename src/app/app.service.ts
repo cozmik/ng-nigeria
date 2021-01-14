@@ -12,6 +12,14 @@ import {faFacebookF, faGithub, faLinkedinIn, faSlackHash, faStackOverflow, faTwi
   providedIn: 'root'
 })
 export class AppService {
+
+  static utilityLinks = new BehaviorSubject<{
+    youtubeLink: string;
+    twitterLink: string;
+    whatsappLink: string;
+    slackLink: string;
+    telegramLink: string}>(null);
+
   selectedService = new BehaviorSubject<EventModel>(null);
   headers = new HttpHeaders({
     'Content-type': 'application/json',
@@ -89,7 +97,11 @@ export class AppService {
 
   getVideo(): Observable<any>{
     const data = `*[_type =='utility']{
-     youtubeLink
+     youtubeLink,
+     whatsappLink,
+     telegramLink,
+     slackLink,
+     twitterLink
   }`;
     return this.http.get(this.serviceUrl('query') + '?query=' + data).pipe(
       map((res: any) => res.result[0])

@@ -11,9 +11,17 @@
 
   <div class="job-section">
     <div>
-    <h4>{{jobs.length}} Job Opportunities Available</h4>
-  <ng-nig-job-card *ngFor="let job of jobs | paginate: { itemsPerPage: 5, currentPage: p }"
-      [job]="job"></ng-nig-job-card>
+      <h4>{{jobs.length}} Job Opportunities Available</h4>
+
+      <ng-template [ngIf]="loadingData">
+        <div class="loading">
+        <fa-icon class="loader" [icon]="faSpinner" [spin]="true"></fa-icon>
+        </div>
+      </ng-template>
+      <ng-template [ngIf]="!loadingData">
+        <ng-nig-job-card *ngFor="let job of jobs | paginate: { itemsPerPage: 5, currentPage: p }"
+                         [job]="job"></ng-nig-job-card>
+      </ng-template>
     </div>
     <pagination-controls *ngIf="jobs.length > 5" (pageChange)="p = $event"></pagination-controls>
   </div>

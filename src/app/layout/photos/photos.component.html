@@ -1,8 +1,13 @@
 <section class="main">
   <div>
-    <div *ngFor="let e of eventMemories | paginate: { itemsPerPage: 5, currentPage: p}" class="photogrid">
-      <ng-nig-event-photos [theEvent]="e"></ng-nig-event-photos>
+    <div class="loading" *ngIf="loadingData">
+      <fa-icon class="loader" [icon]="faSpinner" [spin]="true"></fa-icon>
     </div>
+    <ng-template [ngIf]="!loadingData">
+      <div *ngFor="let e of eventMemories | paginate: { itemsPerPage: 5, currentPage: p}" class="photogrid">
+        <ng-nig-event-photos *ngIf="e.eventPictures !== undefined" [theEvent]="e"></ng-nig-event-photos>
+      </div>
+    </ng-template>
     <pagination-controls *ngIf="eventMemories.length > 5" (pageChange)="p = $event"></pagination-controls>
   </div>
 </section>

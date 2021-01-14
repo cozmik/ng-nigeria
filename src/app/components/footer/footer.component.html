@@ -14,13 +14,13 @@
   <div class="sub-footer">
     <span>Angular Nigeria &copy;{{year}}</span>
     <div>
-      <a href="https://twitter.com/AngularNigeria">
+      <a [href]="socialLinks?.twitterLink" target="_blank">
         <img src="assets/images/twitter-colored.png" alt="twitter" class="footer-img">
       </a>
-      <a href="#">
+      <a [href]="socialLinks?.slackLink" target="_blank">
         <img src="assets/images/slack-colored.png" alt="slack" class="footer-img">
       </a>
-      <a href="#">
+      <a [href]="socialLinks?.whatsappLink" target="_blank">
         <img src="assets/images/whatsapp-colored.png" alt="whatsapp" class="footer-img">
       </a>
     </div>
