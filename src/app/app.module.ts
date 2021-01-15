@@ -21,6 +21,7 @@ import {BecomeASponsorComponent} from './layout/become-a-sponsor/become-a-sponso
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {ToastrModule} from 'ngx-toastr';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {NgTinyUrlModule} from 'ng-tiny-url';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     FormsModule,
     MatDialogModule,
     MatProgressSpinnerModule,
+    NgTinyUrlModule
   ],
   providers: [],
   bootstrap: [AppComponent]

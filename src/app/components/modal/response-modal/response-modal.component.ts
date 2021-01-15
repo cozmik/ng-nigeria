@@ -4,6 +4,7 @@ import {faTwitter} from '@fortawesome/free-brands-svg-icons';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {faCheck} from '@fortawesome/free-solid-svg-icons';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {NgTinyUrlService} from 'ng-tiny-url';
 
 export interface EventRegResp {
   title: string;
@@ -33,12 +34,14 @@ export class ResponseModalComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<ResponseModalComponent>,
               @Inject(MAT_DIALOG_DATA) public data: EventRegResp,
-              private snackBar: MatSnackBar) {
+              private snackBar: MatSnackBar, private ngTinyUrl: NgTinyUrlService) {
     this.title = data.title;
     this.status = data.status;
     this.type = data.type;
     this.message = data.message;
-    this.link = data.link;
+    this.ngTinyUrl.shorten(data.link).subscribe(res => {
+      this.link = res;
+    });
   }
 
   ngOnInit(): void {
