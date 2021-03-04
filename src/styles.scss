@@ -151,3 +151,11 @@ pagination-controls {
 html, body {
   height: 100%;
 }
+
+.ngx-pagination{
+  li{
+    a{
+      text-decoration: none;
+    }
+  }
+}

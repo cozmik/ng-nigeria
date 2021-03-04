@@ -43,12 +43,13 @@
 
       <label for="country">
         <span>Country</span>
-        <select id="country" required [(ngModel)]="sponsorData.country" name="country">
+        <select id="country" required [(ngModel)]="country" name="country"
+                (ngModelChange)="getStates()">
           <option value="">
             Select Country
           </option>
-          <option value="Nigeria">
-            Nigeria
+          <option *ngFor="let country of countries" [value]="country.name">
+            {{country.name}}
           </option>
         </select>
       </label>
@@ -59,8 +60,8 @@
           <option value="">
             Select State
           </option>
-          <option value="Lagos">
-            Lagos
+          <option *ngFor="let state of states" [value]="state.name">
+            {{state.name}}
           </option>
         </select>
       </label>
@@ -68,19 +69,14 @@
 
       <label for="city">
         <span>City</span>
-        <select id="city" required [(ngModel)]="sponsorData.city" name="city">
-          <option value="">
-            Select City
-          </option>
-          <option value="Ikeja">
-            Ikeja
-          </option>
-        </select>
+        <input id="city" required placeholder="some lgvt area"
+               [(ngModel)]="sponsorData.city"
+               name="city">
       </label>
 
       <label for="street-address">
         <span>Street Address</span>
-        <input id="street-address" required placeholder="no 3, going-nowhere St, somewhere idk local gvt."
+        <input id="street-address" required placeholder="no 3, going-nowhere St, somewhere idk."
                [(ngModel)]="sponsorData.streetAddress"
                name="streetAddress">
       </label>

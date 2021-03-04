@@ -157,6 +157,12 @@ export class AppService {
     );
   }
 
+  getCountry(): Observable<any> {
+    return this.http.get('https://cozmik-country-list.herokuapp.com/').pipe(
+      map(res => res)
+    );
+  }
+
   becomeASponsor(data: any, eventId: string): Observable<any> {
     let mutations: any;
 

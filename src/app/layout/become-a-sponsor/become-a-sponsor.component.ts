@@ -12,6 +12,8 @@ import {MatDialog} from '@angular/material/dialog';
 })
 export class BecomeASponsorComponent implements OnInit {
   submittingRequest: boolean;
+  countries: any[];
+  states: any[];
   constructor(private ar: ActivatedRoute,
               private appService: AppService,
               private dialog: MatDialog
@@ -38,9 +40,13 @@ export class BecomeASponsorComponent implements OnInit {
 
   @ViewChild('fileInput') fileInputVariable: any;
   private readonly eventId: string;
+  country = '';
 
   ngOnInit(): void {
-
+    this.appService.getCountry().subscribe(res => {
+      this.countries = res.sort((a, b) => a.name.localeCompare(b.name));
+      console.log(res);
+    });
   }
 
   submitRequest(): void {
@@ -61,5 +67,11 @@ export class BecomeASponsorComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(res => {
     });
+  }
+
+  getStates(): void {
+    this.sponsorData.country = this.country;
+    this.states = this.countries.filter(country => country.name === this.country)[0]
+      .states.sort((a, b) => a.name.localeCompare(b.name));
   }
 }
