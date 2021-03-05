@@ -123,7 +123,6 @@ export class LandingPageComponent implements OnInit {
      this.eventDeadLine = this.nextEvent.endTime;
     });
   }
-
   gotoEventPage(): void {
     this.router.navigate(['events']);
   }
