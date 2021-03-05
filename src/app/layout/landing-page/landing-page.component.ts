@@ -40,13 +40,16 @@ export class LandingPageComponent implements OnInit {
   nextEvent: EventModel;
   sponsors: Sponsor[];
   organizers: Member[];
+  socials: { youtubeLink: string; twitterLink: string; whatsappLink: string; slackLink: string; telegramLink: string };
 
   constructor(private appService: AppService,
               private router: Router,
               public dialog: MatDialog
   ) {
     this.getEvents();
-    console.log(window.location.origin);
+    AppService.utilityLinks.subscribe(res => {
+      this.socials = res;
+    });
   }
 
   ngOnInit(): void {

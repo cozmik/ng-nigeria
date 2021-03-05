@@ -7,6 +7,7 @@ import {JobModel} from './models/job.model';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {map, mergeMap, tap} from 'rxjs/operators';
 import {faFacebookF, faGithub, faLinkedinIn, faSlackHash, faStackOverflow, faTwitter} from '@fortawesome/free-brands-svg-icons';
+import {environment} from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -23,12 +24,12 @@ export class AppService {
   selectedService = new BehaviorSubject<EventModel>(null);
   headers = new HttpHeaders({
     'Content-type': 'application/json',
-    Authorization: `Bearer sk5OnvEtAnxR8QfFwoA66w4Ze8NW2CtGlf3VrOwzpiAtzIoy5CHvCuQh7JUaXNzC2us0jSe3L2eurZHel4VxmNmFvjiWdG0qwav89YI0k2L7kqCxTuG6QAf0s7JKWukiClEtWz2b3pHt1WoVi1BKpQKlSlocrYWx2aEKJQUhFvoFhejRhFnP`
+    Authorization: `Bearer ${environment.token}`
   });
 
   uploadHeader = new HttpHeaders({
     'Content-type': 'image/*',
-    Authorization: `Bearer sk5OnvEtAnxR8QfFwoA66w4Ze8NW2CtGlf3VrOwzpiAtzIoy5CHvCuQh7JUaXNzC2us0jSe3L2eurZHel4VxmNmFvjiWdG0qwav89YI0k2L7kqCxTuG6QAf0s7JKWukiClEtWz2b3pHt1WoVi1BKpQKlSlocrYWx2aEKJQUhFvoFhejRhFnP`
+    Authorization: `Bearer ${environment.token}`
   });
 
   constructor(private http: HttpClient) {
@@ -36,9 +37,9 @@ export class AppService {
 
   serviceUrl(type): string {
     if (type === 'images') {
-      return `https://r9dd4cjo.api.sanity.io/v1/assets/images/production`;
+      return `https://r9dd4cjo.api.sanity.io/v1/assets/images/${environment.dataSet}`;
     }
-    return `https://r9dd4cjo.api.sanity.io/v1/data/${type}/production`;
+    return `https://r9dd4cjo.api.sanity.io/v1/data/${type}/${environment.dataSet}`;
   }
 
   getEvents(): Observable<Array<EventModel>> {
