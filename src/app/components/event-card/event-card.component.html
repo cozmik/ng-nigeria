@@ -29,7 +29,8 @@
 
   <div class="attendants">
     <ng-template ngFor let-attendee [ngForOf]="ngEvent.attendees" let-index="index">
-      <img *ngIf="index < 2" [src]="urlFor(attendee.picture)">
+      <img *ngIf="index < 2" [src]="urlFor(attendee.picture) ? urlFor(attendee.picture) :
+      '/assets/images/user-image.webp'">
     </ng-template>
     <span>
       {{totalAttendees}} people {{past ? 'attended' : 'are attending'}}
