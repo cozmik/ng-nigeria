@@ -22,7 +22,7 @@ export class PhotosComponent implements OnInit {
     this.loadingData = true;
     this.appService.getEventMemories().subscribe(res => {
       this.loadingData = false;
-      this.eventMemories = res.filter(e => e.isPast === true);
+      this.eventMemories = res.filter(e => e.isPast === true && e.eventPictures !== undefined);
     });
   }
 
