@@ -49,16 +49,16 @@
         </span>
         <div>
           <span>
-            <a [href]="socials.twitterLink" target="_blank">
+            <a [href]="socials?.twitterLink" target="_blank">
               <fa-icon [icon]="twitterIcon"></fa-icon></a>
           </span>
           <span>
-            <a [href]="socials.slackLink" target="_blank">
+            <a [href]="socials?.slackLink" target="_blank">
               <fa-icon [icon]="slackIcon" [style.color]="'#de156c'"></fa-icon>
             </a>
           </span>
           <span>
-            <a [href]="socials.whatsappLink" target="_blank">
+            <a [href]="socials?.whatsappLink" target="_blank">
               <fa-icon [icon]="whatsAppIcon" [style.color]="'#5add8b'"></fa-icon>
               </a>
           </span>
@@ -107,7 +107,7 @@
 
   <div class="eventVideo contain">
     <div class="container">
-      <youtube-player [videoId]="videoId"></youtube-player>
+      <youtube-player class="iframe-container" [videoId]="videoId"></youtube-player>
     </div>
   </div>
   <div class="sponsors-section contain sponsors">
