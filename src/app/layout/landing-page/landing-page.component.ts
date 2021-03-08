@@ -112,7 +112,7 @@ export class LandingPageComponent implements OnInit {
      future.sort((a, b) => {
         return DateTime.fromISO(a.startTime.toString()).toMillis() - DateTime.fromISO(b.startTime.toString()).toMillis();
       });
-     this.pastEvents = [past[past.length - 1], past[past.length - 2]];
+     this.pastEvents = past.slice(-2);
      this.upComing = future.filter((e, i) => i < 2);
      if (future.length < 1){
        this.nextEvent = this.pastEvents[0];
