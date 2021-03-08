@@ -3,6 +3,10 @@
     <div class="loading" *ngIf="loadingData">
       <fa-icon class="loader" [icon]="faSpinner" [spin]="true"></fa-icon>
     </div>
+    <h4 *ngIf="!loadingData && !eventMemories.length"
+        style="text-align: center; font-size: 1.8em; margin-top: 150px">No
+      Event Pictures To
+      Show</h4>
     <ng-template [ngIf]="!loadingData">
       <div *ngFor="let e of eventMemories | paginate: { itemsPerPage: 5, currentPage: p}" class="photogrid">
         <ng-nig-event-photos *ngIf="e.eventPictures !== undefined" [theEvent]="e"></ng-nig-event-photos>

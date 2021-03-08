@@ -1,13 +1,16 @@
 <section class="main tab">
   <tabs>
     <tab tabTitle="Leadership Team">
-
       <ng-template [ngIf]="loadingData">
         <fa-icon class="loader" [icon]="faSpinner" [spin]="true"></fa-icon>
       </ng-template>
+
+      <h4 *ngIf="!loadingData && !admins.length"
+          style="margin-top: 80px; font-size: 1.8em; text-align: center">No User To Show</h4>
+
       <ng-template [ngIf]="!loadingData">
-        <ng-template ngFor let-member [ngForOf]="members">
-          <ng-nig-profile-card2 *ngIf="member.type === 'admin'" [profilePix]="member.profilePix"
+        <ng-template ngFor let-member [ngForOf]="admins">
+          <ng-nig-profile-card2 [profilePix]="member.profilePix"
                                 userName="{{member.firstName + ' ' + member.lastName}}"
                                 job="{{member.jobRole}}, {{member.company}}"
                                 [socials]="member.socialHandles"
@@ -19,9 +22,13 @@
       <ng-template [ngIf]="loadingData">
         <fa-icon class="loader" [icon]="faSpinner" [spin]="true"></fa-icon>
       </ng-template>
+
+      <h4 *ngIf="!loadingData && !members.length"
+          style="margin-top: 80px; font-size: 1.8em; text-align: center">No User To Show</h4>
+
       <ng-template [ngIf]="!loadingData">
         <ng-template ngFor let-member [ngForOf]="members">
-          <ng-nig-profile-card2 *ngIf="member.type === 'member'" [profilePix]="member.profilePix"
+          <ng-nig-profile-card2 [profilePix]="member.profilePix"
                                 userName="{{member.firstName + ' ' + member.lastName}}"
                                 job="{{member.jobRole}}, {{member.company}}"
                                 [socials]="member.socialHandles"

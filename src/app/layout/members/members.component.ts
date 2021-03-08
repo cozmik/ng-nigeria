@@ -12,6 +12,7 @@ export class MembersComponent implements OnInit {
   members: Array<Member>;
   loadingData: boolean;
   faSpinner = faSpinner;
+  admins: Member[];
 
   constructor(private appService: AppService) { }
 
@@ -23,7 +24,8 @@ export class MembersComponent implements OnInit {
     this.loadingData = true;
     this.appService.getMembers().subscribe(res => {
       this.loadingData = false;
-      this.members = res;
+      this.admins = res.filter(u => u.type === 'admin');
+      this.members = res.filter(u => u.type === 'member');
     });
   }
 }
