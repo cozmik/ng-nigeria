@@ -38,6 +38,15 @@
                placeholder="What best fits what you currently do?">
       </label>
 
+      <label for="passCode" class="spanWidth">
+        <span>Event code *
+          <fa-icon class="info" [icon]="question"
+                   matTooltip="This code helps identify you when you register for an event."></fa-icon></span>
+        <input id="passCode" required type="text" [disabled]="submittingRequest" [(ngModel)]='memberData.code'
+               name="code"
+               placeholder="Choose a string or word you can easily remember">
+      </label>
+
       <label for="profilePix" class="spanWidth">
         <span>Profile Pix</span>
         <input id="profilePix" #fileInput type="file" [disabled]="submittingRequest"

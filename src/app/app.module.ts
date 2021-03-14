@@ -22,6 +22,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {ToastrModule} from 'ngx-toastr';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {NgTinyUrlModule} from 'ng-tiny-url';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import {NgTinyUrlModule} from 'ng-tiny-url';
     FormsModule,
     MatDialogModule,
     MatProgressSpinnerModule,
-    NgTinyUrlModule
+    NgTinyUrlModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

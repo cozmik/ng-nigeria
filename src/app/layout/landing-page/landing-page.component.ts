@@ -80,7 +80,7 @@ export class LandingPageComponent implements OnInit {
     const dialogRef = this.dialog.open(ResponseModalComponent, {
       width: '550px',
       data: {title: this.nextEvent.title, type: 'eventReg',
-        status: result, message: 'Registration Successful!',
+        status: result.status, message: result.message,
         link: window.location.origin + '/events/' + this.nextEvent.id
       }
     });

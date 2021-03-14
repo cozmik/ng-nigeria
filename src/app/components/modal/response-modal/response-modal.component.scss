@@ -1,4 +1,4 @@
-@import "src/assets/variables";
+@use "src/assets/variables";
 
 .dialog-title{
   font-size: 1.1em;
@@ -10,13 +10,18 @@
 
 .subtitle{
   font-size: .9em;
-  color: $header-color;
+  color: variables.$header-color;
   margin-bottom: 20px;
 }
 
 .success{
-  color: $success-color;
+  color: variables.$success-color;
 }
+
+.error{
+  color: tomato;
+}
+
 
 .icon-section {
   text-align: center;
@@ -29,7 +34,7 @@
     border-radius: 50%;
 
     &.success{
-      border-color: $success-color;
+      border-color: variables.$success-color;
     }
     &.error {
       border-color: tomato;
@@ -76,7 +81,7 @@
         font-size: 1.3em;
         margin-left: 8px;
         cursor: pointer;
-        color: rgba($header-color, .5);
+        color: rgba(variables.$header-color, .5);
       }
     }
   }
@@ -90,9 +95,9 @@
     padding: 10px 30px;
     width: 120px;
     text-align: center;
-    color: $secondary-text-color;
+    color: variables.$secondary-text-color;
   }
   a:hover{
-    color: $secondary-text-color;
+    color: variables.$secondary-text-color;
   }
 }

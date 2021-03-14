@@ -3,7 +3,7 @@
   <article class="dialog-content">
     <div class="icon-section">
       <fa-icon *ngIf="status === 'success'" class="success" [size]="1" [icon]="checkCircleIcon"></fa-icon>
-      <fa-icon *ngIf="status === 'error'" [icon]="timesCircleIcon"></fa-icon>
+      <fa-icon *ngIf="status === 'error'" class="error" [icon]="timesCircleIcon"></fa-icon>
       <div [class]="status">{{message}}</div>
     </div>
 

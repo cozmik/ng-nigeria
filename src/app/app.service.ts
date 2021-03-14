@@ -4,8 +4,8 @@ import {sponsors} from '../assets/demo-data';
 import {EventModel} from './models/events';
 import {Member} from './models/members';
 import {JobModel} from './models/job.model';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {map, mergeMap, tap} from 'rxjs/operators';
+import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
+import {map, mergeMap, switchMap, tap} from 'rxjs/operators';
 import {faFacebookF, faGithub, faLinkedinIn, faSlackHash, faStackOverflow, faTwitter} from '@fortawesome/free-brands-svg-icons';
 import {environment} from '../environments/environment';
 
@@ -19,7 +19,8 @@ export class AppService {
     twitterLink: string;
     whatsappLink: string;
     slackLink: string;
-    telegramLink: string}>(null);
+    telegramLink: string
+  }>(null);
 
   selectedService = new BehaviorSubject<EventModel>(null);
   headers = new HttpHeaders({
@@ -74,29 +75,72 @@ export class AppService {
     twitter: string,
     fullName: string,
     email: string,
+    code: string
   }): Observable<any> {
-    const mutations = [{
-      patch: {
-        id: data.eventId,
-        insert: {
-          after: 'attendees[-1]',
-          items: [
-            {
-              _type: 'attendees',
-              email: data.email,
-              fullName: data.fullName,
-              twitterHandle: data.twitter,
-            }
-          ]
+    const searchData = `*[_type == 'members' && code == '${data.code}' && email == '${data.email}']{
+    _id,
+     firstName,
+     lastName,
+     profilePix,
+     }`;
+    if (data.code) {
+      return this.http.get(this.serviceUrl('query') + '?query=' + encodeURIComponent(searchData)).pipe(
+        switchMap((res: any) => {
+          const searchRegistered = `*[_type == 'event' && _id == '${data.eventId}']
+          { 'attendees': attendees[]{'memberId': memberId->_id }}`;
+          return this.http.get(this.serviceUrl('query') + '?query=' + encodeURIComponent(searchRegistered)).pipe(
+            switchMap((r: any) => {
+              if (r.result[0].attendees.filter(d => d.memberId === res.result[0]._id).length) {
+                throw new HttpErrorResponse({error: 'Seems you are already registered for this event'});
+              } else {
+                const response = res.result[0];
+                const mutations = [{
+                  patch: {
+                    id: data.eventId,
+                    insert: {
+                      after: 'attendees[-1]',
+                      items: [
+                        {
+                          _type: 'attendees',
+                          email: data.email,
+                          fullName: `${response.firstName} ${response.lastName}`,
+                          twitterHandle: '',
+                          picture: response.profilePix,
+                          memberId: {_ref: response._id, _type: 'reference'}
+                        }
+                      ]
+                    }
+                  }
+                }];
+                return this.http.post(this.serviceUrl('mutate'), JSON.stringify({mutations}), {headers: this.headers});
+              }
+            })
+          );
+        })).pipe(
+        map((res: any) => res.result));
+    } else {
+      const mutations = [{
+        patch: {
+          id: data.eventId,
+          insert: {
+            after: 'attendees[-1]',
+            items: [
+              {
+                _type: 'attendees',
+                email: data.email,
+                fullName: data.fullName,
+                twitterHandle: data.twitter,
+              }
+            ]
+          }
         }
-      }
-    }];
-    return this.http.post(this.serviceUrl('mutate'), JSON.stringify({mutations}), {headers: this.headers}).pipe(
-      map((res: any) => res.result)
-    );
+      }];
+      return this.http.post(this.serviceUrl('mutate'), JSON.stringify({mutations}), {headers: this.headers}).pipe(
+        map((res: any) => res.result));
+    }
   }
 
-  getVideo(): Observable<any>{
+  getVideo(): Observable<any> {
     const data = `*[_type =='utility']{
      youtubeLink,
      whatsappLink,
@@ -228,26 +272,35 @@ export class AppService {
     });
     submittedData.socialHandles = submittedSocials;
 
-    return this.http.post(this.serviceUrl('images'), submittedData.profilePix[0], {headers: this.uploadHeader}).pipe(
-      tap((res: any) => {
-        submittedData.profilePix = {
-          _type: 'image',
-          asset: {
-            _type: 'reference',
-            _ref: res.document._id
+    const searchRegistered = `*[_type == 'members' && email == '${memberData.email}']
+          {_id}`;
+    return this.http.get(this.serviceUrl('query') + '?query=' + encodeURIComponent(searchRegistered)).pipe(
+      switchMap((r: any) => {
+        console.log(r.result.length);
+        if (r.result.length) {
+            throw new HttpErrorResponse({error: 'The provided email is already a member!!'});
+          } else {
+            return this.http.post(this.serviceUrl('images'), submittedData.profilePix[0], {headers: this.uploadHeader}).pipe(
+              tap((res: any) => {
+                submittedData.profilePix = {
+                  _type: 'image',
+                  asset: {
+                    _type: 'reference',
+                    _ref: res.document._id
+                  }
+                };
+                mutations = [{
+                  create: {
+                    _type: 'members',
+                    ...submittedData
+                  },
+                }];
+              }),
+             mergeMap(res => this.http.post(this.serviceUrl('mutate'), JSON.stringify({mutations}), {headers: this.headers})));
           }
-        };
-        mutations = [{
-          create: {
-            _type: 'members',
-            ...submittedData
-          },
-        }];
-      }),
-      mergeMap(res => this.http.post(this.serviceUrl('mutate'), JSON.stringify({mutations}), {headers: this.headers}).pipe(
-        map(response => response))
-      )
-    );
+        })
+      ).pipe(
+      map(response => response));
   }
 
   getSocialMedias(): Observable<any> {
@@ -262,7 +315,7 @@ export class AppService {
 
 
   // Utility service
-  getSocialIcon(media: {_id?: string, name: string}): any {
+  getSocialIcon(media: { _id?: string, name: string }): any {
     const socialAccounts = {
       twitter:
         {

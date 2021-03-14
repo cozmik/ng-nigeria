@@ -7,5 +7,6 @@ export interface Member {
   profilePix: any;
   jobRole: string;
   type?: string;
+  code?: string;
   socialHandles?: any[];
 }

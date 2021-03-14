@@ -17,6 +17,7 @@ export class EventRegistrationModalComponent implements OnInit {
     twitter: string,
     fullName: string,
     email: string,
+    code: string,
   };
 
   isLoading: boolean;
@@ -28,7 +29,7 @@ export class EventRegistrationModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.title = this.data.event.title;
-    this.regModel = {eventId: this.data.event.id, fullName: '', email: '', twitter: ''};
+    this.regModel = {eventId: this.data.event.id, ...this.regModel};
     this.isLoading = false;
   }
 
@@ -39,10 +40,11 @@ export class EventRegistrationModalComponent implements OnInit {
   submit(): void {
     this.isLoading = true;
     this.appService.registerForEvent(this.regModel).subscribe(res => {
-      this.dialogRef.close('success');
+      this.dialogRef.close({status: 'success', message: 'Registration Successful!'});
       this.isLoading = false;
     }, error => {
-      this.dialogRef.close('error');
+      this.dialogRef.close({status: 'error', message: error.error });
+      console.log(error);
       this.isLoading = false;
     });
   }

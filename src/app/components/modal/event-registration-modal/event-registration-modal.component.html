@@ -16,6 +16,11 @@
                placeholder="e.g johndoe@domain.com"
                required>
       </label>
+      <label for="code">
+        <span>Member code</span>
+        <input id="code" type="email" [disabled]="isLoading" name="code" [(ngModel)]="regModel.code"
+               placeholder="my-event-code">
+      </label>
       <label for="twitter">
         <span>Twitter Handle</span>
         <input id="twitter" type="text" [disabled]="isLoading" name="twitter" [(ngModel)]="regModel.twitter"
