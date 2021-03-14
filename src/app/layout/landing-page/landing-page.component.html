@@ -18,7 +18,7 @@
         </div>
         <div>
           <fa-icon [icon]="locationIcon"></fa-icon>
-          {{nextEvent?.shortAddress}}
+          {{nextEvent?.online ? 'Online' : nextEvent?.shortAddress}}
         </div>
       </article>
       <article class="description">
@@ -115,6 +115,6 @@
   <div class="sponsors-section contain sponsors">
     <h2>Sponsors</h2>
     <h6>Our amazing sponsors</h6>
-    <ng-nig-sponsors [sponsors]="pastEvents[0]?.sponsors"></ng-nig-sponsors>
+    <ng-nig-sponsors [sponsors]="nextEvent?.sponsors"></ng-nig-sponsors>
   </div>
 </section>

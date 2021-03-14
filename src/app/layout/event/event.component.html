@@ -19,7 +19,7 @@
       </span>
         <span>
           <fa-icon [icon]="locationIcon"></fa-icon>
-          <span>{{event?.fullAddress}}</span>
+          <span>{{event.online ? 'Online' : event?.fullAddress}}</span>
       </span>
       </div>
     </div>
@@ -83,7 +83,7 @@
   </article>
 
   <article class="contain">
-    <h2>Sponsors</h2>
+    <h2 style="padding-top: 65px">Sponsors</h2>
     <h5>This ngEvent is possible from the support of these wonderful people</h5>
 
    <ng-nig-sponsors [sponsors]="event?.sponsors"></ng-nig-sponsors>

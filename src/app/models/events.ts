@@ -3,6 +3,13 @@ import {Member} from './members';
 import {Sponsor} from './sponsor.model';
 
 export class EventModel {
+  get online(): boolean {
+    return this._online;
+  }
+
+  set online(value: boolean) {
+    this._online = value;
+  }
   get eventPictures(): string[] {
     return this._eventPictures;
   }
@@ -42,6 +49,7 @@ export class EventModel {
   private _id: string;
   private _address: string;
   private _state: string;
+  private _online: boolean;
   private _country: string;
   private _speakers: Member[];
   private _sponsors: Sponsor[];
@@ -160,6 +168,7 @@ export class EventModel {
     this._speakers = data.speakers;
     this._title = data.title;
     this._desc = data.desc;
+    this._online = data.online;
     this._date = data.startTime;
     this._startTime = data.startTime;
     this._endTime = data.endTime;
