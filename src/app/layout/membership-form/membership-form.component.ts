@@ -5,6 +5,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {SocialMediaModalComponent} from '../../components/modal/social-media-modal/social-media-modal.component';
 import {ToastrService} from 'ngx-toastr';
 import {faQuestionCircle} from '@fortawesome/free-regular-svg-icons/faQuestionCircle';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'ng-nig-membership-form',
@@ -35,7 +36,7 @@ export class MembershipFormComponent implements OnInit {
   private socialMedias: { _id: string, name: string }[];
   mediaCount: number;
 
-  constructor(public appService: AppService, private dialog: MatDialog, private toastr: ToastrService) {
+  constructor(public appService: AppService, private dialog: MatDialog, private toastr: ToastrService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -49,6 +50,9 @@ export class MembershipFormComponent implements OnInit {
       this.memberData.socialHandles = [];
       this.memberData = {...this.emptyData};
       this.toastr.success('Your details has been submitted', 'Success!');
+      setTimeout(() => {
+        this.router.navigate(['members']);
+      }, 5000);
     }, err => {
       this.submittingRequest = false;
       const errMsg = err.error ? err.error : 'Sorry, something went wrong!!';

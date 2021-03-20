@@ -29,12 +29,18 @@ section {
 }
 
 .notice{
-  width: 100%;
   justify-content: center;
   font-size: 2em;
   color: #ccc;
   height: 20px;
-  margin-bottom: 0 !important;
+  display: inline-block;
+  margin: 0 auto -10px !important;
+  padding: 30px;
+  cursor: pointer;
+
+  border-radius: 20px;
+  border: 2px dashed rgba(black, .2);
+
 }
 
 .socials-section{

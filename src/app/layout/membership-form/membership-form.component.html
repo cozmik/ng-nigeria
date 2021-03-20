@@ -27,19 +27,19 @@
                placeholder="e.g johndoe@gmail.com">
       </label>
       <label for="company">
-        <span>Company *</span>
-        <input id="company" required type="text" [disabled]="submittingRequest" [(ngModel)]='memberData.company' name="company"
+        <span>Company</span>
+        <input id="company" type="text" [disabled]="submittingRequest" [(ngModel)]='memberData.company' name="company"
                placeholder="What best fits what you currently do?">
       </label>
 
       <label for="jobTitle">
-        <span>Job Title *</span>
-        <input id="jobTitle" required type="text" [disabled]="submittingRequest" [(ngModel)]='memberData.jobRole' name="jobTitle"
+        <span>Job Title</span>
+        <input id="jobTitle" type="text" [disabled]="submittingRequest" [(ngModel)]='memberData.jobRole' name="jobTitle"
                placeholder="What best fits what you currently do?">
       </label>
 
       <label for="passCode" class="spanWidth">
-        <span>Event code *
+        <span>Member code *
           <fa-icon class="info" [icon]="question"
                    matTooltip="This code helps identify you when you register for an event."></fa-icon></span>
         <input id="passCode" required type="text" [disabled]="submittingRequest" [(ngModel)]='memberData.code'
@@ -56,7 +56,7 @@
       </label>
 
       <div class="spanWidth socials-section">
-        <span class="extra-text">Add your social handles</span>
+        <span class="extra-text">Social handles</span>
 
         <div class="socials">
           <ng-container *ngIf="memberData.socialHandles.length > 0;  then socialHandles; else noHandles">
@@ -74,13 +74,14 @@
           </div>
           </ng-template>
           <ng-template #noHandles>
-            <div class="notice spanWidth">nothing to show</div>
+            <div (click)="openSocialModal()" class="notice spanWidth">add you social handle</div>
           </ng-template>
         </div>
       </div>
 
       <div>
-        <button class="primary-button" [disabled]="mediaCount < 1 || submittingRequest" (click)="openSocialModal()">Add new</button>
+        <button class="primary-button" *ngIf="memberData.socialHandles.length > 0" [disabled]="mediaCount < 1 || submittingRequest"
+                (click)="openSocialModal()">Add new</button>
       </div>
 
       <div class="spanWidth">

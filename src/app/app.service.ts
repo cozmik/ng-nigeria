@@ -154,7 +154,7 @@ export class AppService {
   }
 
   getMembers(): Observable<Array<Member>> {
-    const query = `*[_type == 'members']{
+    const query = `*[_type == 'members'] | order(_createdAt desc){
   firstName,
   lastName,
   company,
@@ -272,16 +272,16 @@ export class AppService {
     });
     submittedData.socialHandles = submittedSocials;
 
-    const searchRegistered = `*[_type == 'members' && email == '${memberData.email}']
+    const searchRegistered = `*[_type == 'members' && email == '${memberData.email}' || phone === '${memberData.number}']
           {_id}`;
     return this.http.get(this.serviceUrl('query') + '?query=' + encodeURIComponent(searchRegistered)).pipe(
       switchMap((r: any) => {
-        console.log(r.result.length);
         if (r.result.length) {
-            throw new HttpErrorResponse({error: 'The provided email is already a member!!'});
+            throw new HttpErrorResponse({error: 'The provided email or number is already exists!!'});
           } else {
             return this.http.post(this.serviceUrl('images'), submittedData.profilePix[0], {headers: this.uploadHeader}).pipe(
               tap((res: any) => {
+                console.log(res);
                 submittedData.profilePix = {
                   _type: 'image',
                   asset: {
@@ -339,7 +339,7 @@ export class AppService {
         {
           icon: faLinkedinIn,
           color: '#0e76a8',
-          link: 'https://www.linkedin.com/'
+          link: 'https://www.linkedin.com/in/'
         },
 
       stackoverflow:
