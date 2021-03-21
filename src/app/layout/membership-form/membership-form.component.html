@@ -5,25 +5,29 @@
     <form #memberForm="ngForm">
       <label for="fName">
         <span>First Name *</span>
-        <input id="fName" required [disabled]="submittingRequest" type="text" [(ngModel)]='memberData.firstName' name="fullName"
+        <input id="fName" required [disabled]="submittingRequest" type="text" [(ngModel)]='memberData.firstName'
+               name="fullName"
                placeholder="Enter your First Name">
       </label>
 
       <label for="lName">
         <span>Last Name *</span>
-        <input id="lName" required type="text" [disabled]="submittingRequest" [(ngModel)]='memberData.lastName' name="fullName"
+        <input id="lName" required type="text" [disabled]="submittingRequest" [(ngModel)]='memberData.lastName'
+               name="fullName"
                placeholder="Enter your Last Name">
       </label>
 
       <label for="number">
         <span>Phone number *</span>
-        <input id="number" required type="text" [disabled]="submittingRequest" [(ngModel)]='memberData.number' name="number"
+        <input id="number" required type="text" [disabled]="submittingRequest" [(ngModel)]='memberData.number'
+               name="number"
                placeholder="Phone Number">
       </label>
 
       <label for="email">
         <span>Email Address *</span>
-        <input id="email" required type="email" [disabled]="submittingRequest" [(ngModel)]='memberData.email' name="email"
+        <input id="email" required type="email" [disabled]="submittingRequest" [(ngModel)]='memberData.email'
+               name="email"
                placeholder="e.g johndoe@gmail.com">
       </label>
       <label for="company">
@@ -36,15 +40,6 @@
         <span>Job Title</span>
         <input id="jobTitle" type="text" [disabled]="submittingRequest" [(ngModel)]='memberData.jobRole' name="jobTitle"
                placeholder="What best fits what you currently do?">
-      </label>
-
-      <label for="passCode" class="spanWidth">
-        <span>Member code *
-          <fa-icon class="info" [icon]="question"
-                   matTooltip="This code helps identify you when you register for an event."></fa-icon></span>
-        <input id="passCode" required type="text" [disabled]="submittingRequest" [(ngModel)]='memberData.code'
-               name="code"
-               placeholder="Choose a string or word you can easily remember">
       </label>
 
       <label for="profilePix" class="spanWidth">
@@ -62,16 +57,16 @@
           <ng-container *ngIf="memberData.socialHandles.length > 0;  then socialHandles; else noHandles">
           </ng-container>
           <ng-template #socialHandles>
-          <div *ngFor="let s of memberData.socialHandles" (click)="removeHandle(s.media)">
-            <div class="containing">
+            <div *ngFor="let s of memberData.socialHandles" (click)="removeHandle(s.media)">
+              <div class="containing">
           <span class="icon">
             <fa-icon
               [icon]="appService.getSocialIcon(s.media).icon"
               [style.color]="appService.getSocialIcon(s.media).color"></fa-icon>
           </span>
-            <span class="handle">{{s.handle}}</span>
-          </div>
-          </div>
+                <span class="handle">{{s.handle}}</span>
+              </div>
+            </div>
           </ng-template>
           <ng-template #noHandles>
             <div (click)="openSocialModal()" class="notice spanWidth">add you social handle</div>
@@ -80,8 +75,10 @@
       </div>
 
       <div>
-        <button class="primary-button" *ngIf="memberData.socialHandles.length > 0" [disabled]="mediaCount < 1 || submittingRequest"
-                (click)="openSocialModal()">Add new</button>
+        <button class="primary-button" *ngIf="memberData.socialHandles.length > 0"
+                [disabled]="mediaCount < 1 || submittingRequest"
+                (click)="openSocialModal()">Add new
+        </button>
       </div>
 
       <div class="spanWidth">

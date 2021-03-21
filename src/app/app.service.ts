@@ -44,7 +44,7 @@ export class AppService {
   }
 
   getEvents(): Observable<Array<EventModel>> {
-    const data = `*[_type =='event']{
+    const data = `*[_type =='event'] | order(startTime desc) {
      _id,
   title,
   desc,
@@ -72,50 +72,53 @@ export class AppService {
 
   registerForEvent(data: {
     eventId: string,
-    twitter: string,
-    fullName: string,
+    twitter?: string,
+    fullName?: string,
     email: string,
-    code: string
   }): Observable<any> {
-    const searchData = `*[_type == 'members' && code == '${data.code}' && email == '${data.email}']{
+    const searchData = `*[_type == 'members' && email == '${data.email}']{
     _id,
      firstName,
      lastName,
      profilePix,
      }`;
-    if (data.code) {
+    if (data.email && !data.fullName) {
       return this.http.get(this.serviceUrl('query') + '?query=' + encodeURIComponent(searchData)).pipe(
         switchMap((res: any) => {
-          const searchRegistered = `*[_type == 'event' && _id == '${data.eventId}']
+          if (res.result[0]) {
+            const searchRegistered = `*[_type == 'event' && _id == '${data.eventId}']
           { 'attendees': attendees[]{'memberId': memberId->_id }}`;
-          return this.http.get(this.serviceUrl('query') + '?query=' + encodeURIComponent(searchRegistered)).pipe(
-            switchMap((r: any) => {
-              if (r.result[0].attendees.filter(d => d.memberId === res.result[0]._id).length) {
-                throw new HttpErrorResponse({error: 'Seems you are already registered for this event'});
-              } else {
-                const response = res.result[0];
-                const mutations = [{
-                  patch: {
-                    id: data.eventId,
-                    insert: {
-                      after: 'attendees[-1]',
-                      items: [
-                        {
-                          _type: 'attendees',
-                          email: data.email,
-                          fullName: `${response.firstName} ${response.lastName}`,
-                          twitterHandle: '',
-                          picture: response.profilePix,
-                          memberId: {_ref: response._id, _type: 'reference'}
-                        }
-                      ]
+            return this.http.get(this.serviceUrl('query') + '?query=' + encodeURIComponent(searchRegistered)).pipe(
+              switchMap((r: any) => {
+                if (r.result[0].attendees.filter(d => d.memberId === res.result[0]._id).length) {
+                  throw new HttpErrorResponse({error: 'Seems you are already registered for this event'});
+                } else {
+                  const response = res.result[0];
+                  const mutations = [{
+                    patch: {
+                      id: data.eventId,
+                      insert: {
+                        after: 'attendees[-1]',
+                        items: [
+                          {
+                            _type: 'attendees',
+                            email: data.email,
+                            fullName: `${response.firstName} ${response.lastName}`,
+                            twitterHandle: '',
+                            picture: response.profilePix,
+                            memberId: {_ref: response._id, _type: 'reference'}
+                          }
+                        ]
+                      }
                     }
-                  }
-                }];
-                return this.http.post(this.serviceUrl('mutate'), JSON.stringify({mutations}), {headers: this.headers});
-              }
-            })
-          );
+                  }];
+                  return this.http.post(this.serviceUrl('mutate'), JSON.stringify({mutations}), {headers: this.headers});
+                }
+              })
+            );
+          } else {
+            throw new HttpErrorResponse({error: 'Provided email does not belong to a registered member.'});
+          }
         })).pipe(
         map((res: any) => res.result));
     } else {
@@ -135,8 +138,15 @@ export class AppService {
           }
         }
       }];
-      return this.http.post(this.serviceUrl('mutate'), JSON.stringify({mutations}), {headers: this.headers}).pipe(
-        map((res: any) => res.result));
+      return this.http.get(this.serviceUrl('query') + '?query=' + encodeURIComponent(searchData)).pipe(
+        switchMap((res: any) => {
+          if (res.result[0]) {
+            throw new HttpErrorResponse({error: 'Provided email belongs to a registered member, please register as a member'});
+          } else {
+            return this.http.post(this.serviceUrl('mutate'), JSON.stringify({mutations}), {headers: this.headers}).pipe(
+              map((response: any) => response.result));
+          }
+        }));
     }
   }
 
@@ -169,7 +179,7 @@ export class AppService {
   }
 
   getJobs(): Observable<JobModel[]> {
-    const query = `*[_type=='job']{_d, about, link, location, title, type}`;
+    const query = `*[_type=='job'] | order(_createdAt desc){_d, about, link, location, title, type}`;
     return this.http.get(this.serviceUrl('query') + '?query=' + query).pipe(
       map((res: any) => res.result.map(data => data as JobModel))
     );
@@ -271,35 +281,41 @@ export class AppService {
       });
     });
     submittedData.socialHandles = submittedSocials;
-
-    const searchRegistered = `*[_type == 'members' && email == '${memberData.email}' || phone === '${memberData.number}']
+    const searchRegistered = `*[_type == 'members' && email == '${memberData.email}' || phone == '${memberData.number}']
           {_id}`;
     return this.http.get(this.serviceUrl('query') + '?query=' + encodeURIComponent(searchRegistered)).pipe(
       switchMap((r: any) => {
         if (r.result.length) {
-            throw new HttpErrorResponse({error: 'The provided email or number is already exists!!'});
-          } else {
-            return this.http.post(this.serviceUrl('images'), submittedData.profilePix[0], {headers: this.uploadHeader}).pipe(
-              tap((res: any) => {
-                console.log(res);
-                submittedData.profilePix = {
-                  _type: 'image',
-                  asset: {
-                    _type: 'reference',
-                    _ref: res.document._id
-                  }
-                };
-                mutations = [{
-                  create: {
-                    _type: 'members',
-                    ...submittedData
-                  },
-                }];
-              }),
-             mergeMap(res => this.http.post(this.serviceUrl('mutate'), JSON.stringify({mutations}), {headers: this.headers})));
-          }
-        })
-      ).pipe(
+          throw new HttpErrorResponse({error: 'The provided email or number is already exists!!'});
+        } else if (submittedData.profilePix) {
+          return this.http.post(this.serviceUrl('images'), submittedData.profilePix[0], {headers: this.uploadHeader}).pipe(
+            tap((res: any) => {
+              submittedData.profilePix = {
+                _type: 'image',
+                asset: {
+                  _type: 'reference',
+                  _ref: res.document._id
+                }
+              };
+              mutations = [{
+                create: {
+                  _type: 'members',
+                  ...submittedData
+                },
+              }];
+            }),
+            mergeMap(res => this.http.post(this.serviceUrl('mutate'), JSON.stringify({mutations}), {headers: this.headers})));
+        } else {
+          mutations = [{
+            create: {
+              _type: 'members',
+              ...submittedData
+            },
+          }];
+          return this.http.post(this.serviceUrl('mutate'), JSON.stringify({mutations}), {headers: this.headers});
+        }
+      })
+    ).pipe(
       map(response => response));
   }
 

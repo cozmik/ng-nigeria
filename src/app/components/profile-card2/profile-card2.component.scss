@@ -1,8 +1,8 @@
-@import "~src/assets/variables";
+@use "~src/assets/variables";
 
 div.card-container {
-  box-shadow: 0 3px 40px rgba($primary-text-color, .2);
-  background: $secondary-text-color;
+  box-shadow: 0 3px 40px rgba(variables.$primary-text-color, .2);
+  background: variables.$secondary-text-color;
   width: stretch;
   text-align: center;
   padding: 40px 40px 25px;

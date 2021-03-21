@@ -1,12 +1,30 @@
-@import "src/assets/variables";
+@use "src/assets/variables";
 
 .dialog-title{
   font-size: 1.1em;
 }
 
+.check{
+  margin-right: 10px;
+}
+
+.member-select{
+  display: flex;
+  align-items: baseline;
+  span{
+    font-weight: 500;
+  }
+  input{
+    width: 0 !important;
+  }
+  div {
+    color: variables.$accent-color;
+  }
+}
+
 .subtitle{
   font-size: .9em;
-  color: $header-color;
+  color: variables.$header-color;
   margin-bottom: 20px;
 }
 
@@ -24,7 +42,7 @@ label{
     width: 100%;
 
     &::placeholder{
-      color: rgba($primary-text-color, .4);
+      color: rgba(variables.$primary-text-color, .4);
     }
   }
 }

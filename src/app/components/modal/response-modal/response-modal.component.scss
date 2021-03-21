@@ -28,17 +28,8 @@
   margin-top: 20px;
   margin-bottom: 30px;
   fa-icon {
-    font-size: 1.5em;
+    font-size: 5em;
     padding: 25px;
-    border: 2px solid;
-    border-radius: 50%;
-
-    &.success{
-      border-color: variables.$success-color;
-    }
-    &.error {
-      border-color: tomato;
-    }
   }
   div{
     margin-top: 30px;

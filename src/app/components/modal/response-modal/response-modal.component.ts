@@ -2,9 +2,9 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {faCopy, faTimesCircle} from '@fortawesome/free-regular-svg-icons';
 import {faTwitter} from '@fortawesome/free-brands-svg-icons';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {faCheck} from '@fortawesome/free-solid-svg-icons';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {NgTinyUrlService} from 'ng-tiny-url';
+import {faCheckCircle} from '@fortawesome/free-regular-svg-icons/faCheckCircle';
 
 export interface EventRegResp {
   title: string;
@@ -24,7 +24,7 @@ export class ResponseModalComponent implements OnInit {
   status: string;
   message: string;
   type: string;
-  checkCircleIcon = faCheck;
+  checkCircleIcon = faCheckCircle;
   timesCircleIcon = faTimesCircle;
   link: string;
   copyIcon = faCopy;

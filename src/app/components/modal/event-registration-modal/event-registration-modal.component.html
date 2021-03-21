@@ -1,39 +1,66 @@
 <ng-nig-modal (close)="onNoClick()">
   <h2 class="dialog-title">{{title}}</h2>
   <article class="dialog-content">
-    <div class="subtitle">To register for this ngEvent, please fill in your full name and email address</div>
+    <div class="subtitle">Register to get a spot for this event.</div>
 
-    <form #registrationForm='ngForm'>
-      <label for="fullName">
-        <span>Name</span>
-        <input id="fullName" [disabled]="isLoading" name="fullName" [(ngModel)]="regModel.fullName" placeholder="Enter your full name"
-               type="text"
-               required>
-      </label>
-      <label for="fullName">
-        <span>Email</span>
-        <input id="email" type="email" [disabled]="isLoading" name="email" [(ngModel)]="regModel.email"
-               placeholder="e.g johndoe@domain.com"
-               required>
-      </label>
-      <label for="code">
-        <span>Member code</span>
-        <input id="code" type="email" [disabled]="isLoading" name="code" [(ngModel)]="regModel.code"
-               placeholder="my-event-code">
-      </label>
-      <label for="twitter">
-        <span>Twitter Handle</span>
-        <input id="twitter" type="text" [disabled]="isLoading" name="twitter" [(ngModel)]="regModel.twitter"
-               placeholder="e.g @johndoe">
-      </label>
-
-      <div class="button-section">
-      <button class="primary-button" [disabled]="!registrationForm.form.valid" (click)="submit()">
-        <span *ngIf="!isLoading">Register</span>
-        <fa-icon  *ngIf="isLoading" [icon]="loader" [spin]="true"></fa-icon>
-      </button>
+    <label for="mEmail" class="member-select">
+      <input id="mEmail" type="checkbox" (change)="isMember = !isMember" style="opacity: 0">
+      <div class="check">
+        <fa-icon [icon]="faBox" *ngIf="!isMember"></fa-icon>
+        <fa-icon [icon]="faCheckBox" *ngIf="isMember"></fa-icon>
       </div>
-    </form>
+      <span>I am a member.</span>
+    </label>
 
+    <ng-container *ngIf="isMember; then membersForm; else noMember"></ng-container>
+
+    <ng-template #membersForm>
+      <form #memberForm='ngForm'>
+        <label for="memberEmail">
+          <span>Email</span>
+          <input id="memberEmail" [disabled]="isLoading" name="email" [(ngModel)]="regModel.email"
+                 placeholder="e.g johndoe@domain.com"
+                 type="email"
+                 required>
+        </label>
+
+        <div class="button-section">
+          <button class="primary-button" [disabled]="!memberForm.form.valid" (click)="submit()">
+            <span *ngIf="!isLoading">Register</span>
+            <fa-icon *ngIf="isLoading" [icon]="loader" [spin]="true"></fa-icon>
+          </button>
+        </div>
+      </form>
+    </ng-template>
+
+    <ng-template #noMember>
+      <form #registrationForm='ngForm'>
+        <label for="fullName">
+          <span>Name</span>
+          <input id="fullName" [disabled]="isLoading" name="fullName" [(ngModel)]="regModel.fullName"
+                 placeholder="Enter your full name"
+                 type="text"
+                 required>
+        </label>
+        <label for="fullName">
+          <span>Email</span>
+          <input id="email" type="email" [disabled]="isLoading" name="email" [(ngModel)]="regModel.email"
+                 placeholder="e.g johndoe@domain.com"
+                 required>
+        </label>
+        <label for="twitter">
+          <span>Twitter Handle</span>
+          <input id="twitter" type="text" [disabled]="isLoading" name="twitter" [(ngModel)]="regModel.twitter"
+                 placeholder="e.g @johndoe">
+        </label>
+
+        <div class="button-section">
+          <button class="primary-button" [disabled]="!registrationForm.form.valid" (click)="submit()">
+            <span *ngIf="!isLoading">Register</span>
+            <fa-icon *ngIf="isLoading" [icon]="loader" [spin]="true"></fa-icon>
+          </button>
+        </div>
+      </form>
+    </ng-template>
   </article>
 </ng-nig-modal>

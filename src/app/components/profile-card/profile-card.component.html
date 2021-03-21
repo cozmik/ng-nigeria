@@ -1,6 +1,6 @@
 <section [class.invert]="type === 'inverse'">
   <article class="profile-image">
-    <img [src]="profilePix">
+    <img [src]="profilePix ? profilePix : './assets/images/profile-image.png'">
   </article>
   <article class="details">
     <h4 class="name">{{name | titlecase}}</h4>
