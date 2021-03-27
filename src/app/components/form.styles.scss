@@ -1,4 +1,4 @@
-@import "../../assets/variables";
+@use "../../assets/variables";
 
 form {
   display: grid;
@@ -52,7 +52,7 @@ form {
       border: 1px solid #e8e9ec;
 
       &::placeholder{
-        color: rgba($primary-text-color, .44);
+        color: rgba(variables.$primary-text-color, .44);
       }
     }
   }
@@ -68,6 +68,13 @@ form {
   }
 }
 
+
+@media screen and (max-width: 530px) {
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+}
 
 @keyframes loadingDots {
   0%{

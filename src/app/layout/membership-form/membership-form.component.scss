@@ -9,8 +9,8 @@ section {
   margin-bottom: 60px;
 }
 
-.info{
-  color: rgba(0,0,0, .5);
+.info {
+  color: rgba(0, 0, 0, .5);
 }
 
 .form-container {
@@ -28,7 +28,7 @@ section {
   margin: 40px 0;
 }
 
-.notice{
+.notice {
   justify-content: center;
   font-size: 2em;
   color: #ccc;
@@ -43,7 +43,7 @@ section {
 
 }
 
-.socials-section{
+.socials-section {
   margin-bottom: 5px !important;
 }
 
@@ -54,15 +54,17 @@ section {
   align-content: center;
   margin: 10px 25px 0 20px;
 
-  >div {
+  > div {
     display: flex;
     align-items: center;
+
     &:not(:last-child)::after {
       content: ' | ';
       display: inline-block;
       margin-right: 15px;
       margin-left: 15px;
     }
+
     div.containing {
       transition: all 400ms;
       padding: 3px 6px;
@@ -111,8 +113,29 @@ section {
 }
 
 
+@media screen and (max-width: 530px) {
+
+  h1.main-title{
+    font-size: 2.3em;
+  }
+
+  .form-container{
+    padding: 0 20px 50px;
+  }
+  .socials-section {
+    .socials {
+      margin: 10px 5px 0 5px !important;
+
+      .notice{
+        font-size: 1.2em;
+      }
+    }
+  }
+}
+
+
 @keyframes show-delete {
-  0%{
+  0% {
     content: '';
   }
   100% {
