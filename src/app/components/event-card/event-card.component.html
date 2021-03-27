@@ -19,7 +19,7 @@
        </span>
       <span>
          <fa-icon [icon]="locationIcon"></fa-icon>
-        {{location}}
+        {{ngEvent?.online ? 'Online' : location}}
        </span>
     </div>
     <button class="primary-button" [style.visibility]="past ? 'hidden': 'visible'"

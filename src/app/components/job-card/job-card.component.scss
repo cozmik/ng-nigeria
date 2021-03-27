@@ -19,6 +19,9 @@ section {
   .desc {
     grid-area: desc;
     font-size: 1.1em;
+    max-height: 350px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .extras {

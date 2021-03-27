@@ -105,8 +105,10 @@ export class LandingPageComponent implements OnInit {
           futureCount++;
         }
       });
+
+     console.log(res);
      past.sort((a, b) => {
-        return DateTime.fromISO(a.startTime.toString()).toMillis() - DateTime.fromISO(b.startTime.toString()).toMillis();
+        return DateTime.fromISO(b.startTime.toString()).toMillis() - DateTime.fromISO(a.startTime.toString()).toMillis();
       });
 
      future.sort((a, b) => {
