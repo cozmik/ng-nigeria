@@ -26,12 +26,13 @@
       </article>
 
       <div class="button-section">
-        <button (click)='openRegDialog(nextEvent)' class="solid-button primary-button">Register now</button>
+        <button (click)='openRegDialog(nextEvent)' class="solid-button primary-button" *ngIf="upComing.length">Register
+          now</button>
         <button [routerLink]="'events/' + nextEvent?.id" class="outline-button">View details</button>
       </div>
     </div>
     <div class="timerContainer">
-      <ng-nig-count-down-timer [time]="eventDeadLine"></ng-nig-count-down-timer>
+      <ng-nig-count-down-timer *ngIf="upComing.length" [time]="eventDeadLine"></ng-nig-count-down-timer>
     </div>
   </div>
 
@@ -80,7 +81,7 @@
     </article>
   </div>
 
-  <div class="upcoming events">
+  <div class="upcoming events" *ngIf="upComing.length">
     <h2>Upcoming Events</h2>
     <div class="container empty-event" *ngIf="upComing.length < 1">
       <fa-icon [icon]="calenderIcon"></fa-icon>

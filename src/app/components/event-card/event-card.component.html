@@ -22,8 +22,7 @@
         {{ngEvent?.online ? 'Online' : location}}
        </span>
     </div>
-    <button class="primary-button" [style.visibility]="past ? 'hidden': 'visible'"
-            (click)="openRegDialog(ngEvent)">Register now
+    <button class="primary-button" routerLink="events/{{ngEvent.id}}">View details
     </button>
   </div>
 

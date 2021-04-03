@@ -23,7 +23,7 @@
       </span>
       </div>
     </div>
-    <button class="primary-button" (click)="openRegDialog()">register</button>
+    <button class="primary-button" (click)="openRegDialog()" *ngIf="!event.isPast">register</button>
   </div>
 
   <div class="timerContainer">
@@ -78,17 +78,17 @@
     </div>
 
     <div class="button">
-      <button class="primary-button" (click)="openRegDialog()">Register now</button>
+      <button class="primary-button" (click)="openRegDialog()" *ngIf="!event.isPast">Register now</button>
     </div>
   </article>
 
   <article class="contain">
     <h2 style="padding-top: 65px">Sponsors</h2>
-    <h5>This ngEvent is possible from the support of these wonderful people</h5>
+    <h5>This ngEvent is possible from the support of these wonderful sponsors</h5>
 
    <ng-nig-sponsors [sponsors]="event?.sponsors"></ng-nig-sponsors>
     <div class="button-container">
-      <button class="solid-button primary-button" (click)="sponsorEvent()">become a sponsor</button>
+      <button class="solid-button primary-button" (click)="sponsorEvent()" *ngIf="!event.isPast">become a sponsor</button>
     </div>
   </article>
 </section>

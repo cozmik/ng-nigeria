@@ -79,7 +79,8 @@ export class LandingPageComponent implements OnInit {
   openResDialog(result): void {
     const dialogRef = this.dialog.open(ResponseModalComponent, {
       width: '550px',
-      data: {title: this.nextEvent.title, type: 'eventReg',
+      data: {
+        title: this.nextEvent.title, type: 'eventReg',
         status: result.status, message: result.message,
         link: window.location.origin + '/events/' + this.nextEvent.id
       }
@@ -93,9 +94,9 @@ export class LandingPageComponent implements OnInit {
     let pastCount = 0;
     let futureCount = 0;
     this.appService.getEvents().subscribe((res: EventModel[]) => {
-     const past = [];
-     const future = [];
-     res.forEach((e, i) => {
+      const past = [];
+      const future = [];
+      res.forEach((e, i) => {
         if (e.isPast) {
           past.push(e);
           pastCount++;
@@ -106,25 +107,25 @@ export class LandingPageComponent implements OnInit {
         }
       });
 
-     console.log(res);
-     past.sort((a, b) => {
+      past.sort((a, b) => {
         return DateTime.fromISO(b.startTime.toString()).toMillis() - DateTime.fromISO(a.startTime.toString()).toMillis();
       });
 
-     future.sort((a, b) => {
+      future.sort((a, b) => {
         return DateTime.fromISO(a.startTime.toString()).toMillis() - DateTime.fromISO(b.startTime.toString()).toMillis();
       });
-     this.pastEvents = past.slice(-2);
-     this.upComing = future.filter((e, i) => i < 2);
-     if (future.length < 1){
-       this.nextEvent = this.pastEvents[0];
-     }else {
-       this.nextEvent = future[0];
-     }
-     this.organizers = this.nextEvent.organizers;
-     this.eventDeadLine = this.nextEvent.endTime;
+      this.pastEvents = past.slice(-2);
+      this.upComing = future.filter((e, i) => i < 2);
+      if (future.length < 1) {
+        this.nextEvent = this.pastEvents[0];
+      } else {
+        this.nextEvent = future[0];
+      }
+      this.organizers = this.nextEvent.organizers;
+      this.eventDeadLine = this.nextEvent.endTime;
     });
   }
+
   gotoEventPage(): void {
     this.router.navigate(['events']);
   }
