@@ -3,10 +3,9 @@
 div.card-container {
   box-shadow: 0 3px 40px rgba(variables.$primary-text-color, .2);
   background: variables.$secondary-text-color;
-  width: stretch;
   text-align: center;
   padding: 40px 40px 25px;
-  min-width: 300px;
+  width: 300px;
 
   .profile-pix {
     height: 100px;
@@ -14,7 +13,6 @@ div.card-container {
     border-radius: 100%;
     overflow: hidden;
     display: inline-block;
-    overflow: hidden;
 
     img {
       height: 100%;
