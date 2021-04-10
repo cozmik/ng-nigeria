@@ -116,10 +116,10 @@ export class LandingPageComponent implements OnInit {
       });
       this.pastEvents = past.slice(-2);
       this.upComing = future.filter((e, i) => i < 2);
-      if (future.length < 1) {
-        this.nextEvent = this.pastEvents[0];
-      } else {
+      if (future.length) {
         this.nextEvent = future[0];
+      } else {
+        this.nextEvent = this.pastEvents[0];
       }
       this.organizers = this.nextEvent.organizers;
       this.eventDeadLine = this.nextEvent.endTime;

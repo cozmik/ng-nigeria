@@ -140,7 +140,7 @@ export class EventModel {
   }
 
   get attendees(): any[] {
-    return this._attendees;
+    return this._attendees ? this._attendees : [];
   }
 
   set attendees(value) {
@@ -156,8 +156,8 @@ export class EventModel {
 
 
   get isPast(): boolean{
-      const currentTime = new Date().getDate();
-      return currentTime < new Date(this.date).getDate();
+      const currentTime = new Date();
+      return currentTime > new Date(this.date);
   }
 
   constructor(data: any) {
