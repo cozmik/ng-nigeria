@@ -82,7 +82,7 @@ export class LandingPageComponent implements OnInit {
       data: {
         title: this.nextEvent.title, type: 'eventReg',
         status: result.status, message: result.message,
-        link: window.location.origin + '/events/' + this.nextEvent.id
+        link: window.location.origin + '/#/events/' + this.nextEvent.id
       }
     });
 
