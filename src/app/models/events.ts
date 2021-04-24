@@ -157,7 +157,7 @@ export class EventModel {
 
   get isPast(): boolean{
       const currentTime = new Date();
-      return currentTime > new Date(this.date);
+      return currentTime > new Date(this.endTime.toString());
   }
 
   constructor(data: any) {

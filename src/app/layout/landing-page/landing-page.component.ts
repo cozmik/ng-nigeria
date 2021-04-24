@@ -85,7 +85,6 @@ export class LandingPageComponent implements OnInit {
         link: window.location.origin + '/#/events/' + this.nextEvent.id
       }
     });
-
     dialogRef.afterClosed().subscribe(res => {
     });
   }
@@ -94,8 +93,9 @@ export class LandingPageComponent implements OnInit {
     let pastCount = 0;
     let futureCount = 0;
     this.appService.getEvents().subscribe((res: EventModel[]) => {
-      const past = [];
+      let past = [];
       const future = [];
+      console.log(res);
       res.forEach((e, i) => {
         if (e.isPast) {
           past.push(e);
@@ -106,7 +106,7 @@ export class LandingPageComponent implements OnInit {
           futureCount++;
         }
       });
-
+      past = past.slice(-2);
       past.sort((a, b) => {
         return DateTime.fromISO(b.startTime.toString()).toMillis() - DateTime.fromISO(a.startTime.toString()).toMillis();
       });
@@ -114,11 +114,12 @@ export class LandingPageComponent implements OnInit {
       future.sort((a, b) => {
         return DateTime.fromISO(a.startTime.toString()).toMillis() - DateTime.fromISO(b.startTime.toString()).toMillis();
       });
-      this.pastEvents = past.slice(-2);
+      this.pastEvents = past
       this.upComing = future.filter((e, i) => i < 2);
       if (future.length) {
         this.nextEvent = future[0];
       } else {
+        console.log(this.pastEvents);
         this.nextEvent = this.pastEvents[0];
       }
       this.organizers = this.nextEvent.organizers;

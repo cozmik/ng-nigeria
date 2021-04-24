@@ -44,7 +44,7 @@ export class AppService {
   }
 
   getEvents(): Observable<Array<EventModel>> {
-    const data = `*[_type =='event'] | order(startTime desc) {
+    const data = `*[_type =='event'] | order(startTime asc) {
      _id,
   title,
   desc,
